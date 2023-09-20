@@ -1,0 +1,1 @@
+để các file này trong folder YOLOv7 khi tải folder YOLOv7 về

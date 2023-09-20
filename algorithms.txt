@@ -1,0 +1,28 @@
+1. OpenPose
+2. AlphaPose
+3. HRNet
+4. DEKR
+5. BlazePose
+6. YOLO Pose
+7. facemesh
+------- Yolov7: 
+Multiperson pose estimation model 
+(17 keypoints)
+input: 960P
+thực hiện phát hiện trên mọi khung hình
+phát hiện tốt cử chỉ người:
+- trong điều kiện thiếu sáng
+- camera quay cần cố định ở vị trí gần (nếu xa không nhận được cử chỉ)
+- phân biệt được chân người và chân động vật (vd: người đang cưỡi ngựa)
+Support for both CPU and GPU
+
+------- Mediapipe là framework: 
+Single person pose estimation model 
+(33 keypoints)
+input: 256x256
+sử dụng pp phát hiện cộng với theo dõi
+phát hiện tốt cử chỉ người:
+- khi camera ở vị trí xa vẫn phát hiện được cử chỉ người
+- nhận cử chỉ người không tốt trong điều kiện thiếu sáng
+- không phân biệt được chân người và chân động vật (vd: người đang cưỡi ngựa)
+Support Only CPU

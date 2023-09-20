@@ -1,0 +1,42 @@
+Có thể viết một file mới bên ngoài thư mục `yolov7` bằng cách sử dụng các hàm và lớp đã được định nghĩa trong `yolov7` mà không cần copy code thư mục `yolov7` vào trong project của bạn.
+
+Để làm được điều này, bạn cần đảm bảo rằng các file `yolov7_detector.py` và các file cần thiết khác trong thư mục `yolov7` được import và có thể truy cập từ thư mục gốc của project.
+
+Dưới đây là cách bạn có thể sử dụng các hàm và lớp từ file `yolov7_detector.py` trong một file mới bên ngoài thư mục `yolov7`:
+
+1. Trong thư mục `yolov7`, tạo một file có tên `yolov7_detector.py` và định nghĩa các hàm và lớp cần thiết trong đó.
+
+2. Trong file mới của bạn (nằm bên ngoài thư mục `yolov7`), sử dụng `import` để import các hàm và lớp từ file `yolov7_detector.py`. Đảm bảo rằng bạn có đường dẫn đúng để có thể import chúng.
+
+Ví dụ, nếu thư mục gốc của project của bạn là `project_folder`, và trong đó có thư mục `yolov7`, bạn có thể sử dụng import như sau:
+
+Trong file `yolov7_detector.py` (trong thư mục `yolov7`):
+
+```python
+# Thư mục yolov7_detector.py
+
+def initialize_model(weights_path):
+    # Định nghĩa hàm initialize_model ở đây
+    pass
+
+def detect_objects(model, device, img_path, half, img_size=640, conf_thres=0.1, iou_thres=0.45):
+    # Định nghĩa hàm detect_objects ở đây
+    pass
+
+# Các hàm và lớp khác trong file yolov7_detector.py
+```
+
+Trong file mới bên ngoài thư mục `yolov7`:
+
+```python
+# File mới bên ngoài thư mục yolov7
+
+import sys
+sys.path.append('/path/to/project_folder')  # Thay đổi đường dẫn tới thư mục project của bạn
+
+from yolov7.yolov7_detector import initialize_model, detect_objects
+
+# Tiếp tục viết code của bạn ở đây và sử dụng các hàm từ yolov7_detector.py
+```
+
+Lưu ý rằng bạn cần thay đổi `/path/to/project_folder` thành đường dẫn thư mục gốc của project của bạn để có thể import các hàm và lớp từ file `yolov7_detector.py` vào file mới của bạn.
