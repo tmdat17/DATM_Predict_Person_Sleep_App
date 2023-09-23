@@ -16,15 +16,15 @@ from YOLOv7.yolov7_detector import initialize_model, detect_objects
 # model_SVR = joblib.load('./models_lenet_SVR/Tuning_SVR/feature_lenet_SVR_epo35_bs16_grayImage_tuning.h5')
 
 weights_path = "E:\CTU\LUAN_VAN_2023\YOLOv7\pretrain\yolov7.pt"
-model_CNN = load_model('./model_lenet_train_pose//lenet_epo20_bs5_at_home.h5')
+model_CNN = load_model('./model_lenet_train_pose//lenet_epo20_bs5_at_home.h5', compile=False)
 
 categories = ['lie', 'sit', 'stand', 'minus']
 
 WIDTH=128
 HEIGHT=128
 N_CHANNELS = 3
-FAST_FORWARD_RATE = 50
-LIMIT_DISTANCE = 8
+FAST_FORWARD_RATE = 25
+LIMIT_DISTANCE = 4
 EACH_FRAME = 5
 isSleep = []
 f=0
@@ -90,18 +90,25 @@ def euclidean_base_landmark(results, img, pre_point):
                 euclidean_distance
                 cv2.circle(img, (cx, cy), 4, (255, 0, 0), cv2.FILLED)
 
-directory_save_text = './directory_save_text'
+directory_save_text = './text_short_video'
 os.makedirs(directory_save_text, exist_ok=True)
-filetext = 'lie_is_sleep_test.txt'
-if not os.path.isfile(filetext):
-    open(filetext, 'w').close()
-else: open(filetext, 'w').close()
 
-folder_ori = './clip_cropped/full_lie_sleep_at_home/20s/'               
+time_clip = '20s'
+name_folder_clip_cropped = 'full_lie_wake_at_home'
+folder_ori = f'./clip_cropped/{name_folder_clip_cropped}/{time_clip}/'               
 for filename in os.listdir(folder_ori):
         # make sure it is file not folder
-        if os.path.isfile(os.path.join(folder_ori, filename)): 
-            cap = cv2.VideoCapture(filename)
+        if os.path.isfile(os.path.join(folder_ori, filename)):
+            type_pose_folder = f'{directory_save_text}/{name_folder_clip_cropped}/{time_clip}'
+            os.makedirs(type_pose_folder, exist_ok=True)
+            filename_new = filename.split('.')[0]
+            filetext = f'{directory_save_text}/{name_folder_clip_cropped}/{time_clip}/{filename_new}.txt'
+            print('------------------------------------------------------------filename:  ', filename)
+            print('------------------------------------------------------------file_text:  ', filetext)
+            if not os.path.isfile(filetext):
+                open(filetext, 'w').close()
+            else: open(filetext, 'w').close()
+            cap = cv2.VideoCapture(f'{folder_ori}/{filename}')
             while True:
                 curr_full_time = time.time()
                 cap.set(cv2.CAP_PROP_POS_FRAMES, cap.get(cv2.CAP_PROP_POS_FRAMES) + FAST_FORWARD_RATE)
@@ -146,7 +153,7 @@ for filename in os.listdir(folder_ori):
                 pred=model_CNN.predict(image_expand)
                 res = argmax(pred, axis=1)
                 # if sit | lie => media pose
-                if categories[res[0]] == 'lie' or categories[res[0]] == 'sit' or categories[res[0]] == 'stand':
+                if categories[res[0]] == 'lie' or categories[res[0]] == 'sit':
                     results = pose.process(img)
                     if results.pose_landmarks:
                         # ghi nhan thong so khung xuong
@@ -188,7 +195,7 @@ for filename in os.listdir(folder_ori):
                 cv2.rectangle(resized_img, (x, y), (x+w, y+h), color = (0, 0, 255), thickness=2)
                 cv2.putText(resized_img, str(accuracy_CNN_formatted) + "% CNN", (x+60, y-50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
                 cv2.putText(resized_img, categories[res[0]], (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
-                cv2.imshow('Image after predict pose', resized_img) 
+                cv2.imshow('Image after predict pose short video', resized_img) 
                 f+=1
                 key=cv2.waitKey(20)
                 now_full_time = time.time() - curr_full_time
