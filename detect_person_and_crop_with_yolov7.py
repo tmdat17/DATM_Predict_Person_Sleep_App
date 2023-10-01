@@ -24,9 +24,10 @@ weights_path = "E:\CTU\LUAN_VAN_2023\YOLOv7\pretrain\yolov7.pt"
 # --------------------------------------------- Video (use when crop img from video (has data crop img) for train model)
 HEIGHT = 128
 WIDTH = 128
-index = 0
-LIMIT_IMG = 1350
-action = 'sit_wake'
+index = 1351
+LIMIT_IMG = 2500
+action = 'sit_sleep'
+folder_save = 'sit'
 file_name = 'full_{}_at_home'.format(action)
 cap = cv2.VideoCapture('./converted_mp4_code/at_home/{}.mp4'.format(file_name))
 # cap = cv2.VideoCapture('./Data_Train_Pose/full_{}.mov'.format(action))
@@ -60,10 +61,10 @@ while True:
             # roi_gray = cv2.resize(roi_gray,(WIDTH,HEIGHT),interpolation=cv2.INTER_AREA)
             if not os.path.exists('./data_cropped/at_home'):
                 os.makedirs('./data_cropped/at_home')
-            if not os.path.exists('./data_cropped/at_home/{}/'.format(action)):
-                os.makedirs('./data_cropped/at_home/{}/'.format(action))
+            if not os.path.exists('./data_cropped/at_home/{}/'.format(folder_save)):
+                os.makedirs('./data_cropped/at_home/{}/'.format(folder_save))
             name_img = '{}_{}.jpg'.format(action, index)
-            filename="./data_cropped/at_home/{}/".format(action)+str(name_img)
+            filename="./data_cropped/at_home/{}/".format(folder_save)+str(name_img)
             # cv2.imwrite(filename,roi_gray)
             cv2.imwrite(filename,roi)
             print("saved image {}:".format(index))
