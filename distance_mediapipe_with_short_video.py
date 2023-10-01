@@ -23,11 +23,7 @@ categories = ['lie', 'sit', 'stand', 'minus']
 WIDTH=128
 HEIGHT=128
 N_CHANNELS = 3
-FAST_FORWARD_RATE = 25
-LIMIT_DISTANCE = 4
-EACH_FRAME = 5
-isSleep = []
-f=0
+
 
 # cap = cv2.VideoCapture("./sample_img_pose/sleep.mp4")
 # cap = cv2.VideoCapture("./Data_Train_Pose/lie_bonus.mov")
@@ -108,6 +104,16 @@ for filename in os.listdir(folder_ori):
             if not os.path.isfile(filetext):
                 open(filetext, 'w').close()
             else: open(filetext, 'w').close()
+            FAST_FORWARD_RATE = 25
+            LIMIT_DISTANCE = 4
+            EACH_FRAME = 5
+            isSleep = []
+            f=0
+            variables_to_remove = ['coordinate', 'pre_coordinate']
+            for variable_name in variables_to_remove:
+                if variable_name in globals():
+                    del globals()[variable_name]
+                    print(f'del variable {variable_name}')
             cap = cv2.VideoCapture(f'{folder_ori}/{filename}')
             while True:
                 curr_full_time = time.time()
@@ -154,7 +160,8 @@ for filename in os.listdir(folder_ori):
                 res = argmax(pred, axis=1)
                 # if sit | lie => media pose
                 if categories[res[0]] == 'lie' or categories[res[0]] == 'sit':
-                    results = pose.process(img)
+                    frameRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+                    results = pose.process(frameRGB)
                     if results.pose_landmarks:
                         # ghi nhan thong so khung xuong
                         lm = make_landmark_timestep(results)
@@ -168,6 +175,7 @@ for filename in os.listdir(folder_ori):
                         if f % EACH_FRAME == 0:
                             if 'pre_coordinate' in globals():
                                 print('pre_coordinate:  ', pre_coordinate)
+                                print('cur_coordinate:  ', cur_coordinate)
                                 for i in range(len(coordinate)):
                                     result_euclid = euclidean_distance(pre_coordinate[i], cur_coordinate[i])
                                     print('{} result_euclid: {}'.format(f, result_euclid))
@@ -195,7 +203,7 @@ for filename in os.listdir(folder_ori):
                 cv2.rectangle(resized_img, (x, y), (x+w, y+h), color = (0, 0, 255), thickness=2)
                 cv2.putText(resized_img, str(accuracy_CNN_formatted) + "% CNN", (x+60, y-50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
                 cv2.putText(resized_img, categories[res[0]], (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
-                cv2.imshow('Image after predict pose short video', resized_img) 
+                cv2.imshow(f'{filename}', resized_img) 
                 f+=1
                 key=cv2.waitKey(20)
                 now_full_time = time.time() - curr_full_time

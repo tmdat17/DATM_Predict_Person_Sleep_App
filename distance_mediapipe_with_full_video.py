@@ -23,8 +23,12 @@ categories = ['lie', 'sit', 'stand', 'minus']
 WIDTH=128
 HEIGHT=128
 N_CHANNELS = 3
+# name_video = 'full_lie_wake_at_home.mp4'
+name_video = 'full_lie_sleep_at_home.mp4'
+#NOTE: tên file sẽ là tên thư mục, cần điều chỉnh tên file .mp4 cho phù hợp tránh để các từ (p1,p2,..., v1,v2,...) vào, (nó sẽ tạo ra thư mục mới)
 
-cap = cv2.VideoCapture("./converted_mp4_code/at_home/full_lie_wake_at_home.mp4")
+
+cap = cv2.VideoCapture(f"./converted_mp4_code/at_home/{name_video}")
 
 model, device, half= initialize_model(weights_path)
 
@@ -79,8 +83,11 @@ def euclidean_base_landmark(results, img, pre_point):
                 print(cx, cy)
                 euclidean_distance
                 cv2.circle(img, (cx, cy), 4, (255, 0, 0), cv2.FILLED)
-            
-filename = 'lie_is_sleep_full_video_TEST.txt'
+
+folder_type_pose = name_video.split('.')[0]
+directory_save_text = f'./text_full_video/{folder_type_pose}'
+os.makedirs(directory_save_text, exist_ok=True)
+filename = f'./text_full_video/{folder_type_pose}/{folder_type_pose}.txt'
 if not os.path.isfile(filename):
     open(filename, 'w').close()
 # else: open(filename, 'w').close()
@@ -135,6 +142,7 @@ while True:
     res = argmax(pred, axis=1)
     # if sit | lie => media pose
     if categories[res[0]] == 'lie' or categories[res[0]] == 'sit':
+        frameRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         results = pose.process(img)
         if results.pose_landmarks:
             # ghi nhan thong so khung xuong

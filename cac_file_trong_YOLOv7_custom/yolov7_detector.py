@@ -77,7 +77,7 @@ def detect_objects(model, device, img, half,img_size=640, conf_thres=0.1, iou_th
 
     with torch.no_grad():
         pred = model(img, augment=False)[0]
-        pred = non_max_suppression(pred, conf_thres, iou_thres)
+        pred = non_max_suppression(pred, conf_thres, iou_thres, classes=[0])
         for i, det in enumerate(pred):
             if len(det):
                 det[:, :4] = scale_coords(img.shape[2:], det[:, :4], img0.shape).round()
