@@ -7,6 +7,8 @@ from sklearn.model_selection import KFold
 from sklearn.metrics import precision_recall_fscore_support
 from sklearn.metrics import accuracy_score
 import time
+import joblib
+
 def cal_average(num):
     sum_num = 0
     for t in num:
@@ -23,13 +25,14 @@ TOTAL_TIME = []
 K = 20
 N_NEIGHBORS = 20
 N_AVERAGE = 50
+MAX_ACC = -999999
 while (n < N_AVERAGE):
     n += 1
     print(f'LAN {n} --------------------------------------------------------------------------------------')
     # -----------------------------
     # Doc du lieu tu file
     dulieuload = pd.read_csv("../data_train_text/merge_2_lie_to_train.txt", delimiter=' ')
-    dulieuload.replace({'s': 1, 'w': 0}, inplace=True)
+    # dulieuload.replace({'s': 1, 'w': 0}, inplace=True)
     # print(dulieuload)
     dulieu_x = dulieuload.iloc[:, 0:-1]
     # Doc cot label 
@@ -64,26 +67,24 @@ while (n < N_AVERAGE):
     # -------------------------------
     # Load mo hinh KNN
     each_time_cur = time.time()
-    MoHinhDT = KNeighborsClassifier(n_neighbors = N_NEIGHBORS)
-    MoHinhDT.fit(x_train, y_train)
+    Model_Sleep = KNeighborsClassifier(n_neighbors = N_NEIGHBORS)
+    Model_Sleep.fit(x_train, y_train)
     end_each_time = time.time() - each_time_cur
     print(f'time train lan {n}:  ', end_each_time)
     TOTAL_TIME.append(end_each_time)
 
-    # -------------------------------- 
-    # Load mo hinh Beyes
-    # MoHinhDT = GaussianNB()
-    # MoHinhDT.fit(x_train,y_train)
-   
     # --------------------------------
     # Du doan mo hinh 
     print('x_test:  \n', x_test)
-    Y_dudoan = MoHinhDT.predict(x_test)
+    Y_dudoan = Model_Sleep.predict(x_test)
     print("Ket qua du doan", Y_dudoan)
     # ----------------------------------
     precision, recall, f1, support = precision_recall_fscore_support(y_test, Y_dudoan)
     accuracy = accuracy_score(y_test, Y_dudoan)*100
-
+    
+    if(accuracy >= 95 and accuracy > MAX_ACC):
+        joblib.dump(Model_Sleep, f'../model_detect_sleep/KNN/KNN_KFold_K_{K}_N_NEIGHBORS_{N_NEIGHBORS}.h5')
+        MAX_ACC = accuracy
     # In kết quả
     # print("Precision:", precision)
     # print("Recall:", recall)
@@ -111,11 +112,12 @@ print(f"trung binh {N_AVERAGE} lan accuracy", cal_average(KetquaNlan))
 print(f"trung binh {N_AVERAGE} lan F1", cal_average(cal_average(KetquaNlanF1)))
 print(f"trung binh {N_AVERAGE} lan Recall", cal_average(cal_average(KetquaNlanRecall)))
 print(f"trung binh {N_AVERAGE} lan Precision", cal_average(cal_average(KetquaNlanPrecision)))
+print(f"MAX ACCURACY IN {N_AVERAGE}:  {MAX_ACC}")
 print(f'TOTAL TIME {N_AVERAGE} lan:  ', sum(TOTAL_TIME))
 # ------------------------------------
 # Ma tran Nham lan (Loi), Confusion matrix
 # ThucTe = y_test
-# DuBaoKetQua = MoHinhDT.predict(x_test)
+# DuBaoKetQua = Model_Sleep.predict(x_test)
 # MaTranKetQua = confusion_matrix(ThucTe,DuBaoKetQua)
 # print(MaTranKetQua)
 

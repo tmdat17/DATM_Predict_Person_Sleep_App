@@ -7,6 +7,7 @@ from sklearn.model_selection import KFold
 from sklearn.metrics import precision_recall_fscore_support
 from sklearn.metrics import accuracy_score
 import time
+import joblib
 
 def cal_average(num):
     sum_num = 0
@@ -21,10 +22,11 @@ KetquaNlanF1 = []
 KetquaNlanRecall = []
 KetquaNlanPrecision = []
 TOTAL_TIME = []
-K = 60
+K = 75
+N_AVERAGE = 80
 C = 100000
 GAMMA = 0.001
-N_AVERAGE = 50
+MAX_ACC = -9999999
 while (n < N_AVERAGE):
     n += 1
     # -----------------------------
@@ -58,8 +60,8 @@ while (n < N_AVERAGE):
     # -------------------------------
     # Load mo hinh SVC
     each_time_cur = time.time()
-    MoHinhDT=SVC(kernel="rbf", C=C, gamma=GAMMA)
-    MoHinhDT.fit(x_train,y_train)
+    Model_Sleep=SVC(kernel="rbf", C=C, gamma=GAMMA)
+    Model_Sleep.fit(x_train,y_train)
     end_each_time = time.time() - each_time_cur
     print(f'time train lan {n}:  ', end_each_time)
     TOTAL_TIME.append(end_each_time)
@@ -67,11 +69,15 @@ while (n < N_AVERAGE):
     # -------------------------------- 
     # Du doan mo hinh 
     print('x_test:  \n', x_test)
-    Y_dudoan = MoHinhDT.predict(x_test)
+    Y_dudoan = Model_Sleep.predict(x_test)
     print("Ket qua du doan", Y_dudoan)
     # ----------------------------------
     precision, recall, f1, support = precision_recall_fscore_support(y_test, Y_dudoan)
     accuracy = accuracy_score(y_test, Y_dudoan)*100
+    if(accuracy >= 95 and accuracy > MAX_ACC):
+        joblib.dump(Model_Sleep, f'../model_detect_sleep/SVC/SVC_KFold_K_{K}_C_{C}_GAMMA_{GAMMA}.h5')
+        MAX_ACC = accuracy
+        # joblib.dump(model_SVR, './models_lenet_SVR/feature_lenet_SVR_epo{}_bs{}_grayImage.h5'.format(EPOCHS, BS))
 
     # In kết quả
     # print("Precision:", precision)
@@ -84,6 +90,7 @@ while (n < N_AVERAGE):
     KetquaNlanRecall.append(recall)
     KetquaNlanPrecision.append(precision)
 
+print (f"Danh gia mo hinh SVC\nk = {K}\nN_AVERAGE = {N_AVERAGE}\nC = {C}\nGamma = {GAMMA}")
 # print("Ket qua N lan accuracy", KetquaNlan)
 # print("Ket qua N lan F1", KetquaNlanF1)
 # print("Ket qua N lan Recall", KetquaNlanRecall)
@@ -96,14 +103,15 @@ print(f'{N_AVERAGE} lan Precision: {KetquaNlanPrecision}')
 
 print('-------------------------------------- Trung Binh ------------------------------')
 print(f"trung binh {N_AVERAGE} lan accuracy", cal_average(KetquaNlan))
-print(f"trung binh {N_AVERAGE} lan F1", cal_average(KetquaNlanF1))
-print(f"trung binh {N_AVERAGE} lan Recall", cal_average(KetquaNlanRecall))
-print(f"trung binh {N_AVERAGE} lan Precision", cal_average(KetquaNlanPrecision))
+print(f"trung binh {N_AVERAGE} lan F1", cal_average(cal_average(KetquaNlanF1)))
+print(f"trung binh {N_AVERAGE} lan Recall", cal_average(cal_average(KetquaNlanRecall)))
+print(f"trung binh {N_AVERAGE} lan Precision", cal_average(cal_average(KetquaNlanPrecision)))
+print(f"MAX ACCURACY IN {N_AVERAGE}:  {MAX_ACC}")
 print(f'TOTAL TIME {N_AVERAGE} lan:  ', sum(TOTAL_TIME))
 # ------------------------------------
 # Ma tran Nham lan (Loi), Confusion matrix
 # ThucTe = y_test
-# DuBaoKetQua = MoHinhDT.predict(x_test)
+# DuBaoKetQua = Model_Sleep.predict(x_test)
 # MaTranKetQua = confusion_matrix(ThucTe,DuBaoKetQua)
 # print(MaTranKetQua)
 
