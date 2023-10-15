@@ -1,6 +1,6 @@
 import time
 import mediapipe as mp
-
+import pandas as pd
 import numpy as np
 from numpy import argmax
 import PIL
@@ -24,7 +24,7 @@ categories = ['lie', 'sit', 'stand', 'minus']
 WIDTH=128
 HEIGHT=128
 N_CHANNELS = 3
-name_video = 'full_lie_sleep_at_home.mp4'
+name_video = 'full_lie_wake_at_home_p4_done.mp4'
 # name_video = 'full_lie_wake_at_home.mp4'
 #NOTE: tên file sẽ là tên thư mục, cần điều chỉnh tên file .mp4 cho phù hợp tránh để các từ (p1,p2,..., v1,v2,...) vào, (nó sẽ tạo ra thư mục mới)
 
@@ -111,6 +111,7 @@ LIMIT_DISTANCE = 2.5
 EACH_FRAME = 5
 isSleep = []
 f=0
+STATUS = 'STATUS'
 while True:
     curr_full_time = time.time()
     cap.set(cv2.CAP_PROP_POS_FRAMES, cap.get(cv2.CAP_PROP_POS_FRAMES) + FAST_FORWARD_RATE)
@@ -182,20 +183,25 @@ while True:
                             isSleep.append(0)   # DONT SLEEP
                             with open(filename, 'a') as file:
                                 if(i == len(coordinate) - 1):
-                                    file.write('0')                                    
+                                    file.write('0\n')                                    
                                 else: file.write('0 ')
                         elif result_euclid <= LIMIT_DISTANCE:
                             isSleep.append(1)   # SLEEP
                             with open(filename, 'a') as file:
                                 if(i == len(coordinate) - 1):
-                                    file.write('1')                                    
+                                    file.write('1\n')                                    
                                 else: file.write('1 ')
                 pre_coordinate = coordinate
-        print('{} have isSleep: {}'.format(f, isSleep))
+        print('{} have isSleep: {}\nsize: {}'.format(f, isSleep, len(isSleep)))
         if(len(isSleep) == 20):
-            input_model_sleep = ' '.join(map(str, isSleep))
-            preds = model_detect_sleep.predict(input_model_sleep)
-            print('preds:  ', preds)
+            test_df = pd.DataFrame([isSleep])
+            preds = model_detect_sleep.predict(test_df)
+            if(preds[0] == 's'):
+                print('preds:  SLEEP', )
+                STATUS = 'SLEEP'
+            else: 
+                print('preds:  WAKE', )
+                STATUS = 'WAKE'
             isSleep = []
         
         
@@ -208,7 +214,8 @@ while True:
     cv2.rectangle(resized_img, (x, y), (x+w, y+h), color = (0, 0, 255), thickness=2)
     cv2.putText(resized_img, str(accuracy_CNN_formatted) + "% CNN", (x+60, y-50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
     cv2.putText(resized_img, categories[res[0]], (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
-    cv2.imshow('Image after predict pose', resized_img) 
+    cv2.putText(resized_img, STATUS, (x , y + 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
+    cv2.imshow(f'Image {name_video}', resized_img) 
     f+=1
     key=cv2.waitKey(20)
     now_full_time = time.time() - curr_full_time
