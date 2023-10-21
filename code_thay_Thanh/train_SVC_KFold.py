@@ -22,16 +22,17 @@ KetquaNlanF1 = []
 KetquaNlanRecall = []
 KetquaNlanPrecision = []
 TOTAL_TIME = []
-K = 75
-N_AVERAGE = 80
+K = 50
+N_AVERAGE = 50
 C = 100000
 GAMMA = 0.001
 MAX_ACC = -9999999
+LIMIT_LINE = 3
 while (n < N_AVERAGE):
     n += 1
     # -----------------------------
     # Doc du lieu tu file
-    dulieuload = pd.read_csv("../data_train_text/merge_2_lie_to_train.txt", delimiter=' ')
+    dulieuload = pd.read_csv(f"../data_train_text/{LIMIT_LINE}_line/{LIMIT_LINE}_line_merge_2_lie_to_train.txt", delimiter=' ')
     # print(dulieuload)
     dulieu_x = dulieuload.iloc[:, 0:-1]
     # Doc cot label 
@@ -75,9 +76,8 @@ while (n < N_AVERAGE):
     precision, recall, f1, support = precision_recall_fscore_support(y_test, Y_dudoan)
     accuracy = accuracy_score(y_test, Y_dudoan)*100
     if(accuracy >= 95 and accuracy > MAX_ACC):
-        joblib.dump(Model_Sleep, f'../model_detect_sleep/SVC/SVC_KFold_K_{K}_C_{C}_GAMMA_{GAMMA}.h5')
+        joblib.dump(Model_Sleep, f'../model_detect_sleep/SVC/SVC_KFold_{LIMIT_LINE}_lines_K_{K}_C_{C}_GAMMA_{GAMMA}.h5')
         MAX_ACC = accuracy
-        # joblib.dump(model_SVR, './models_lenet_SVR/feature_lenet_SVR_epo{}_bs{}_grayImage.h5'.format(EPOCHS, BS))
 
     # In kết quả
     # print("Precision:", precision)
@@ -90,7 +90,7 @@ while (n < N_AVERAGE):
     KetquaNlanRecall.append(recall)
     KetquaNlanPrecision.append(precision)
 
-print (f"Danh gia mo hinh SVC\nk = {K}\nN_AVERAGE = {N_AVERAGE}\nC = {C}\nGamma = {GAMMA}")
+print (f"Danh gia mo hinh SVC {LIMIT_LINE} lines\nk = {K}\nN_AVERAGE = {N_AVERAGE}\nC = {C}\nGamma = {GAMMA}")
 # print("Ket qua N lan accuracy", KetquaNlan)
 # print("Ket qua N lan F1", KetquaNlanF1)
 # print("Ket qua N lan Recall", KetquaNlanRecall)
@@ -102,6 +102,7 @@ print(f'{N_AVERAGE} lan Recall: {KetquaNlanRecall}')
 print(f'{N_AVERAGE} lan Precision: {KetquaNlanPrecision}')
 
 print('-------------------------------------- Trung Binh ------------------------------')
+print(f'{LIMIT_LINE} lines\n---------------------------------------------------------------------------------\n')
 print(f"trung binh {N_AVERAGE} lan accuracy", cal_average(KetquaNlan))
 print(f"trung binh {N_AVERAGE} lan F1", cal_average(cal_average(KetquaNlanF1)))
 print(f"trung binh {N_AVERAGE} lan Recall", cal_average(cal_average(KetquaNlanRecall)))
