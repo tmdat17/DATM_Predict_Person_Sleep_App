@@ -24,10 +24,10 @@ KetquaNlanPrecision = []
 TOTAL_TIME = []
 K = 50
 N_AVERAGE = 50
-C = 100000
-GAMMA = 0.001
+C = 1000
+GAMMA = 0.00001
 MAX_ACC = -9999999
-LIMIT_LINE = 3
+LIMIT_LINE = 5
 while (n < N_AVERAGE):
     n += 1
     # -----------------------------

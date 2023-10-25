@@ -1,0 +1,2474 @@
+
+E:\CTU\LUAN_VAN_2023\code_thay_Thanh>python train_KNN_KFold.py
+LAN 1 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 1:   1.0202550888061523
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+52    1    1    1    1    1    1    1  1    1    1    1    1
+91    1    0    1    1    1    0    1  1    1    1    1    1
+105   1    1    1    1    1    1    1  1    1    1    1    1
+224   1    1    1    1    1    1    1  1    1    0    1    1
+263   1    1    1    1    1    1    1  1    1    0    1    1
+383   1    1    1    1    1    1    1  1    1    1    1    1
+427   1    1    1    1    1    1    1  1    1    1    1    1
+437   1    1    1    1    1    1    1  1    1    1    1    1
+439   1    1    1    1    1    1    1  1    1    1    1    1
+505   1    1    1    1    1    0    1  1    1    1    1    1
+542   1    0    1    1    1    1    1  1    1    0    1    1
+599   1    1    1    1    1    1    1  1    1    1    1    1
+659   1    1    1    1    1    1    1  1    1    1    1    1
+678   1    1    1    1    1    1    1  1    1    1    1    1
+699   1    1    1    1    1    1    1  1    1    1    1    1
+761   1    1    1    1    1    1    1  1    1    1    1    1
+810   1    1    1    1    1    1    1  1    1    1    1    1
+855   0    0    0    0    0    0    0  0    0    0    0    0
+956   1    0    0    1    0    0    1  1    1    0    1    1
+975   1    0    0    0    0    0    0  0    0    0    0    0
+1092  0    1    0    0    1    1    0  0    1    1    1    0
+1098  0    0    0    0    0    0    0  1    1    0    0    0
+1103  0    0    0    0    1    0    0  0    0    0    0    0
+1262  0    0    1    1    0    0    1  1    0    0    0    0
+1285  0    0    0    0    1    1    0  0    0    0    0    0
+1300  1    1    0    0    0    0    0  0    1    1    0    0
+1417  1    1    1    1    0    0    1  0    0    1    0    0
+1431  1    1    0    1    0    0    0  0    1    1    0    0
+1473  0    0    0    0    1    0    0  1    1    0    1    0
+1524  1    1    0    0    0    0    0  0    1    1    0    0
+1541  0    0    0    0    1    0    0  0    1    0    0    0
+1580  1    0    1    1    1    1    1  1    0    0    0    0
+1607  1    0    0    0    1    0    1  0    0    0    0    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w'
+ 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 's' 'w']
+LAN 2 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 2:   0.008001089096069336
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+6     1    0    1    1    1    1    1  1    1    1    1    1
+35    1    1    1    1    1    1    1  1    1    1    1    1
+69    1    0    1    1    1    1    1  1    1    0    1    1
+72    1    1    1    1    1    1    1  1    1    1    1    1
+166   1    1    1    1    1    1    1  1    1    1    1    1
+256   1    0    1    1    1    1    1  1    1    1    1    1
+449   1    1    1    1    1    1    1  1    1    1    1    1
+533   1    0    1    1    1    0    1  1    1    1    1    1
+585   1    1    1    1    1    1    1  1    1    1    1    1
+632   1    1    1    1    1    1    1  1    1    1    1    1
+636   1    1    1    1    1    1    1  1    1    1    1    1
+768   1    1    1    1    1    1    1  1    1    1    1    1
+795   1    1    1    1    1    1    1  1    1    1    1    1
+823   1    1    1    1    1    1    1  1    1    1    1    1
+863   0    0    0    0    0    0    0  0    0    0    1    0
+879   1    0    1    1    1    0    1  1    1    0    1    0
+884   1    0    0    0    1    0    0  0    0    0    0    0
+941   1    0    0    0    1    0    0  0    0    0    1    0
+998   1    0    0    0    1    0    1  1    1    0    0    0
+1014  1    0    0    0    1    1    0  1    0    0    0    1
+1059  0    0    0    1    0    0    0  0    0    0    0    1
+1083  0    0    0    1    1    0    0  0    0    0    0    0
+1199  0    0    0    0    0    0    0  0    0    0    0    0
+1266  0    0    0    0    0    1    1  0    0    0    1    1
+1295  0    0    1    1    1    0    0  1    0    0    0    1
+1389  0    0    1    1    1    0    1  1    1    1    0    0
+1392  1    1    1    1    0    0    1  1    0    0    0    1
+1522  1    1    0    0    0    1    0  0    0    0    1    0
+1540  1    0    0    1    1    0    0  0    0    0    0    0
+1590  1    1    1    1    1    1    0  0    1    0    0    0
+1620  0    0    0    1    1    1    0  0    0    0    0    1
+1624  1    1    1    0    0    0    1  1    1    1    0    1
+1647  1    1    1    0    1    0    0  0    1    1    0    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 's' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 's' 'w']
+LAN 3 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 3:   0.00901031494140625
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+0     0    0    1    1    1    0    1  1    1    1    1    1
+73    1    1    1    1    1    0    1  1    1    1    1    1
+297   1    1    1    1    1    1    1  1    1    1    1    1
+323   1    1    1    1    1    1    1  1    1    1    1    1
+378   1    1    1    1    1    1    1  1    1    0    1    1
+398   1    1    1    1    1    1    1  1    1    0    1    1
+404   1    1    1    1    1    0    1  1    1    0    1    1
+452   1    1    1    1    1    1    1  1    1    1    1    1
+515   1    0    1    1    1    0    1  1    1    0    1    1
+631   1    1    1    1    1    1    1  1    1    1    1    1
+699   1    1    1    1    1    1    1  1    1    1    1    1
+739   1    1    1    1    1    1    1  1    1    1    1    1
+814   1    1    1    1    1    1    1  1    1    1    1    1
+854   0    0    0    0    0    0    0  0    0    0    0    0
+949   0    0    1    1    0    0    1  1    0    0    1    1
+952   1    1    1    0    1    0    0  0    1    0    0    0
+983   1    0    0    0    1    0    0  0    0    1    0    0
+1029  0    0    0    0    0    0    0  1    0    1    1    1
+1105  1    0    1    0    0    0    0  0    0    0    0    0
+1115  0    0    0    0    0    0    0  0    0    0    0    0
+1136  0    1    0    0    0    0    0  0    0    0    0    1
+1208  0    0    0    0    1    1    0  0    0    1    0    0
+1225  1    0    0    0    1    0    0  0    1    1    0    0
+1266  0    0    0    0    0    1    1  0    0    0    1    1
+1284  0    0    0    1    0    0    0  1    0    0    1    1
+1299  0    1    0    1    0    0    0  0    0    0    1    0
+1392  1    1    1    1    0    0    1  1    0    0    0    1
+1395  1    0    0    0    1    0    0  0    1    1    0    0
+1403  0    0    0    0    1    1    1  0    1    1    0    1
+1523  0    1    1    0    0    1    0  0    1    1    1    1
+1535  0    0    0    0    0    0    0  1    1    1    1    0
+1590  1    1    1    1    1    1    0  0    1    0    0    0
+1631  1    0    0    1    1    0    0  0    1    0    0    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 4 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 4:   0.007998228073120117
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+17    1    1    1    1    1    1    1  1    1    1    1    1
+45    1    1    1    1    1    1    1  1    1    1    1    1
+81    1    0    1    1    1    1    1  1    1    1    1    1
+143   1    0    1    1    1    0    1  1    1    0    1    1
+193   1    1    1    1    1    0    1  1    1    1    1    1
+316   1    1    1    1    1    1    1  1    1    1    1    1
+398   1    1    1    1    1    1    1  1    1    0    1    1
+408   1    1    1    1    1    0    1  1    1    0    1    1
+506   1    1    1    1    1    0    1  1    1    0    1    1
+519   1    0    1    1    1    0    1  1    1    0    1    1
+575   1    1    1    1    1    1    1  1    1    1    1    1
+624   1    1    1    1    1    1    1  1    1    1    1    1
+650   1    1    1    1    1    1    1  1    1    1    1    1
+728   1    1    1    1    1    1    1  1    1    1    1    1
+757   1    1    1    1    1    1    1  1    1    1    1    1
+792   1    1    1    1    1    1    1  1    1    1    1    1
+878   0    0    0    1    1    0    1  1    0    0    0    0
+961   0    1    1    0    0    1    0  0    1    0    0    0
+964   1    0    1    0    0    0    1  0    1    1    0    0
+965   0    0    1    0    0    0    0  1    1    0    0    0
+1011  1    0    0    0    0    0    1  0    0    0    0    1
+1121  1    1    1    0    1    1    1  1    1    1    1    0
+1123  0    1    0    1    0    1    0  0    1    1    0    0
+1154  1    1    0    1    1    1    0  0    0    0    0    0
+1169  0    0    0    0    0    0    0  0    0    0    0    0
+1173  0    0    0    1    0    0    0  0    0    0    0    0
+1190  0    0    0    0    1    1    0  0    1    1    0    1
+1396  1    0    0    0    1    0    1  0    0    0    0    0
+1399  0    1    0    0    0    1    0  0    1    1    1    0
+1584  0    0    0    1    1    1    0  0    1    0    0    0
+1590  1    1    1    1    1    1    0  0    1    0    0    0
+1631  1    0    0    1    1    0    0  0    1    0    0    1
+1651  1    1    1    1    1    1    1  0    1    1    0    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w'
+ 'w' 'w' 'w' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 's']
+LAN 5 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 5:   0.006002187728881836
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+19    1    1    1    1    1    1    1  1    1    1    1    1
+88    1    1    1    1    1    1    1  1    1    1    1    1
+98    1    1    1    1    1    1    1  1    1    1    1    1
+153   1    1    1    1    1    0    1  1    1    0    1    1
+178   1    1    1    1    1    1    1  1    1    1    1    1
+210   1    1    1    1    1    1    1  1    1    1    1    1
+286   1    1    1    1    1    0    1  1    1    0    1    1
+307   1    1    1    1    1    1    1  1    1    0    1    1
+336   1    1    1    1    1    1    1  1    1    1    1    1
+379   1    0    1    1    1    0    1  1    1    1    1    1
+382   1    1    1    1    1    1    1  1    1    0    1    1
+419   0    0    0    0    0    0    0  0    0    0    1    1
+436   1    1    1    1    1    1    1  1    1    1    1    1
+437   1    1    1    1    1    1    1  1    1    1    1    1
+438   1    1    1    1    1    1    1  1    1    1    1    1
+513   1    0    1    1    1    1    1  1    1    0    1    1
+546   1    0    1    1    1    0    1  1    1    1    1    1
+642   1    1    1    1    1    1    1  1    1    1    1    1
+655   1    1    1    1    1    1    1  1    1    1    0    0
+669   1    1    1    1    1    1    1  1    1    1    1    1
+820   1    1    1    1    1    1    1  1    1    1    1    1
+821   1    1    1    1    1    1    1  1    1    1    1    1
+1001  0    1    0    0    0    0    1  0    0    0    1    0
+1057  1    1    0    0    1    1    0  0    0    0    0    1
+1059  0    0    0    1    0    0    0  0    0    0    0    1
+1060  0    0    0    0    0    0    0  1    1    1    1    0
+1088  0    0    0    1    0    0    0  1    0    0    1    0
+1101  0    1    1    1    0    1    0  1    0    1    1    0
+1180  1    0    0    0    1    0    0  0    0    0    0    1
+1221  1    0    0    1    0    0    0  0    0    0    0    0
+1226  0    0    0    0    1    1    0  1    0    0    0    0
+1241  0    0    0    0    0    0    0  0    0    0    0    0
+1652  1    1    0    1    1    1    1  0    1    1    0    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 's' 's' 's' 's' 's' 's'
+ 's' 's' 's' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 6 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 6:   0.006995677947998047
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+68    1    1    1    1    1    1    1  1    1    0    1    1
+93    1    1    1    1    1    1    1  1    1    1    1    1
+110   1    1    1    1    1    0    1  1    1    0    1    1
+300   1    1    1    1    1    1    1  1    1    0    1    1
+447   1    1    1    1    1    1    1  1    1    1    1    1
+572   1    1    1    1    1    1    1  1    1    1    1    1
+608   1    1    1    1    1    1    0  0    1    1    0    1
+612   1    1    1    1    1    1    1  1    1    1    1    1
+711   1    1    1    1    1    1    1  1    1    1    1    1
+712   1    1    1    1    1    1    1  1    1    1    1    1
+722   1    1    1    1    1    1    1  1    1    1    1    1
+769   1    1    1    1    1    1    1  1    1    1    1    1
+783   1    1    1    1    1    1    1  0    1    1    1    1
+804   1    1    1    1    1    1    1  1    1    1    1    1
+834   0    0    1    0    0    0    0  1    0    0    0    0
+845   1    1    0    0    1    1    0  0    0    0    0    0
+916   1    0    0    0    1    0    0  0    0    0    1    1
+1002  0    1    1    0    0    1    1  1    0    0    1    0
+1023  0    1    0    0    0    1    0  0    0    1    1    0
+1105  1    0    1    0    0    0    0  0    0    0    0    0
+1107  1    0    0    0    1    0    0  0    0    0    0    0
+1178  0    0    0    0    0    0    1  1    0    0    0    0
+1242  1    1    0    0    1    1    0  1    1    1    0    1
+1272  0    0    0    1    0    0    0  1    1    0    0    1
+1357  1    1    0    1    0    0    0  1    0    1    0    0
+1404  0    0    0    1    1    1    1  0    0    1    0    0
+1429  1    1    1    1    1    1    0  0    0    0    0    0
+1556  1    1    0    0    1    1    0  0    1    1    0    0
+1576  1    1    0    0    1    1    0  0    1    1    0    0
+1613  1    1    0    1    0    0    0  1    0    0    0    0
+1617  1    1    0    1    1    1    0  1    1    1    0    1
+1639  1    0    0    0    1    1    1  0    0    0    0    1
+1645  1    1    0    0    1    1    0  0    1    1    0    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 'w' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 7 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 7:   0.00699925422668457
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+6     1    0    1    1    1    1    1  1    1    1    1    1
+147   1    1    1    1    1    0    1  1    1    0    1    1
+153   1    1    1    1    1    0    1  1    1    0    1    1
+196   1    1    1    1    1    1    1  1    1    1    1    1
+280   1    0    1    1    1    0    1  1    1    0    1    1
+305   1    1    1    1    1    1    1  1    1    1    1    1
+436   1    1    1    1    1    1    1  1    1    1    1    1
+450   1    1    1    1    1    1    1  1    1    1    1    1
+472   1    0    1    1    1    0    1  1    1    0    0    1
+499   1    1    1    1    1    1    1  1    1    1    1    1
+511   1    1    1    1    1    1    1  1    1    1    1    1
+528   1    1    1    1    1    1    1  1    1    0    1    1
+546   1    0    1    1    1    0    1  1    1    1    1    1
+553   1    1    1    1    1    0    1  1    0    0    1    1
+574   1    1    1    1    1    1    1  1    1    1    1    1
+601   1    1    1    1    1    1    1  1    1    1    1    1
+606   1    1    1    1    1    1    1  1    1    0    1    1
+652   1    1    1    1    1    1    1  1    1    1    1    1
+823   1    1    1    1    1    1    1  1    1    1    1    1
+824   1    1    1    1    1    1    1  1    1    1    1    1
+869   0    0    0    0    0    0    0  0    0    0    0    0
+884   1    0    0    0    1    0    0  0    0    0    0    0
+926   1    1    0    0    1    1    0  0    0    0    0    0
+927   0    0    0    0    0    0    1  0    0    0    1    0
+967   1    0    0    0    0    0    0  0    0    0    1    0
+1015  1    1    0    1    1    0    0  0    1    0    0    0
+1032  0    0    0    0    0    0    0  0    1    0    0    0
+1131  0    0    0    1    0    0    0  1    0    1    0    0
+1220  1    1    0    0    0    0    0  0    1    0    0    1
+1221  1    0    0    1    0    0    0  0    0    0    0    0
+1322  0    0    0    0    1    0    0  0    1    0    0    1
+1500  1    0    1    0    0    1    1  1    0    1    1    1
+1643  1    1    1    0    0    1    1  1    0    1    0    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's'
+ 's' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 's' 'w']
+LAN 8 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 8:   0.005988597869873047
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+17    1    1    1    1    1    1    1  1    1    1    1    1
+96    1    1    1    1    1    1    1  1    1    0    1    1
+209   1    0    1    1    1    0    1  1    1    1    1    1
+283   1    0    1    1    1    1    1  1    1    0    1    1
+288   1    0    1    1    1    1    1  1    1    0    1    1
+290   1    1    1    1    1    1    1  1    1    1    1    1
+316   1    1    1    1    1    1    1  1    1    1    1    1
+364   1    1    1    1    1    1    1  1    1    1    1    1
+390   1    1    1    1    1    1    1  1    1    1    1    1
+419   0    0    0    0    0    0    0  0    0    0    1    1
+431   0    0    0    1    0    0    1  1    0    0    1    1
+464   1    1    1    1    1    1    1  1    1    1    1    1
+474   1    1    1    1    1    1    1  1    1    0    1    1
+521   1    0    1    1    1    0    1  1    1    0    1    1
+550   1    1    1    1    1    1    1  1    1    1    1    1
+557   1    1    1    1    1    1    1  1    1    1    1    1
+579   1    1    1    1    1    1    1  1    1    1    1    1
+591   1    1    1    1    1    1    1  1    1    1    1    1
+717   1    1    1    1    1    1    1  1    1    1    1    1
+738   1    1    1    1    1    1    1  1    1    1    1    1
+783   1    1    1    1    1    1    1  0    1    1    1    1
+840   0    0    1    0    0    1    0  0    0    0    1    1
+851   1    0    1    0    0    0    0  0    1    0    0    0
+882   0    0    0    1    0    0    0  1    1    0    0    0
+994   0    0    0    0    0    1    0  1    1    0    1    0
+1127  0    1    0    1    0    1    1  0    0    1    1    1
+1154  1    1    0    1    1    1    0  0    0    0    0    0
+1165  1    1    0    0    1    1    0  0    0    0    0    0
+1234  0    0    0    1    0    0    0  1    0    0    1    0
+1432  0    0    0    1    0    0    0  0    0    0    0    0
+1434  0    1    1    1    0    0    0  0    0    1    0    1
+1436  1    1    1    1    0    0    1  0    0    1    0    1
+1656  1    1    1    0    1    1    0  0    1    1    0    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 's' 's' 's' 's' 's' 's' 's'
+ 's' 's' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 9 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 9:   0.00799870491027832
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+2     1    1    1    1    1    0    1  1    1    1    1    1
+34    1    1    1    1    1    1    1  1    1    1    1    1
+76    1    1    1    1    1    1    1  1    1    1    1    1
+122   1    1    1    1    1    0    1  1    1    1    1    1
+261   1    1    1    1    1    0    1  1    1    1    1    1
+315   1    1    1    1    1    1    1  1    1    1    1    1
+328   1    1    1    1    1    1    1  1    1    1    1    1
+344   1    1    1    1    1    1    1  1    1    1    1    1
+382   1    1    1    1    1    1    1  1    1    0    1    1
+531   1    0    1    1    1    1    1  1    1    0    1    1
+568   1    1    0    1    1    1    1  1    1    1    1    1
+601   1    1    1    1    1    1    1  1    1    1    1    1
+604   1    1    1    1    1    1    1  1    1    1    1    1
+628   1    1    1    1    1    1    1  1    1    1    1    1
+636   1    1    1    1    1    1    1  1    1    1    1    1
+699   1    1    1    1    1    1    1  1    1    1    1    1
+701   1    1    1    1    1    1    1  1    1    1    1    1
+734   1    1    1    1    1    1    1  0    1    1    1    1
+902   0    0    1    1    0    0    1  0    0    0    0    0
+922   1    0    1    1    0    0    0  0    1    0    0    0
+947   0    0    0    0    0    0    1  1    0    0    1    1
+1007  0    0    0    1    0    0    0  0    1    0    0    0
+1155  0    0    0    1    0    0    0  0    0    0    0    0
+1161  0    0    1    0    0    0    0  1    0    0    0    0
+1203  1    0    0    0    1    1    0  0    0    1    0    0
+1245  0    0    0    0    0    0    0  1    0    1    0    0
+1251  0    0    0    1    0    0    1  1    0    1    1    1
+1252  0    0    1    1    0    0    0  1    0    0    0    1
+1268  1    0    0    0    0    0    0  0    0    0    0    1
+1309  0    0    0    1    0    0    1  1    0    1    0    1
+1366  1    0    0    1    0    0    0  0    1    1    0    0
+1433  1    0    0    0    0    0    0  0    1    1    0    1
+1442  0    1    0    0    1    1    1  0    0    0    1    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 10 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 10:   0.006004810333251953
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+51    1    1    1    1    1    0    1  1    1    0    1    1
+86    1    0    1    1    1    1    1  1    1    0    1    1
+119   0    0    1    1    0    0    1  0    1    0    1    1
+130   1    1    1    1    1    1    1  1    1    1    1    1
+175   1    1    1    1    1    0    1  1    1    0    1    1
+214   1    1    1    1    1    1    1  1    1    1    1    1
+267   1    0    1    1    1    0    1  1    1    1    1    1
+418   0    0    0    0    0    0    0  0    0    0    1    0
+442   1    1    1    1    1    1    1  1    1    1    1    1
+468   1    1    1    1    1    1    1  1    0    1    1    0
+471   1    0    1    1    1    1    1  1    1    0    1    1
+509   1    1    1    1    1    1    1  1    1    0    1    1
+558   1    1    1    1    1    1    1  1    1    1    1    1
+622   1    1    1    1    1    1    1  1    1    1    1    1
+637   1    1    1    1    1    1    1  1    1    1    1    1
+652   1    1    1    1    1    1    1  1    1    1    1    1
+704   1    1    1    1    1    1    1  1    1    1    1    1
+730   1    1    1    1    1    1    1  1    1    1    1    1
+748   1    1    1    1    1    1    1  1    1    1    1    1
+805   1    1    1    1    1    1    1  1    1    1    1    1
+866   0    0    0    0    0    0    0  0    0    1    0    0
+1023  0    1    0    0    0    1    0  0    0    1    1    0
+1056  1    1    0    0    1    1    0  1    1    1    0    1
+1146  0    1    0    1    0    0    0  0    0    0    0    0
+1251  0    0    0    1    0    0    1  1    0    1    1    1
+1265  0    1    1    1    1    1    1  1    0    1    0    0
+1271  0    0    0    0    0    0    0  0    1    0    0    1
+1281  1    0    1    1    0    0    0  1    0    0    0    1
+1378  1    1    0    0    0    0    0  0    1    1    0    0
+1392  1    1    1    1    0    0    1  1    0    0    0    1
+1585  0    1    1    1    1    1    1  1    0    0    0    0
+1614  1    0    0    1    0    0    0  0    1    0    0    0
+1662  0    1    0    0    0    0    0  1    1    0    0    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 'w' 's' 's' 's' 's' 'w' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's'
+ 's' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 11 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 11:   0.006008625030517578
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+22    1    1    1    1    1    0    1  1    1    1    1    1
+92    1    1    1    1    1    1    1  1    1    1    1    1
+110   1    1    1    1    1    0    1  1    1    0    1    1
+157   1    1    1    1    1    1    1  1    1    1    1    1
+230   1    0    1    1    1    1    1  1    1    1    1    1
+233   1    0    1    1    1    0    1  1    1    1    1    1
+256   1    0    1    1    1    1    1  1    1    1    1    1
+369   1    1    1    1    1    1    1  1    1    1    1    1
+451   1    1    1    1    1    1    1  1    1    1    1    1
+482   1    1    1    1    1    1    1  1    1    0    1    1
+501   1    1    1    1    1    1    1  1    1    1    1    1
+595   1    1    1    1    1    1    1  1    1    1    1    1
+604   1    1    1    1    1    1    1  1    1    1    1    1
+720   1    1    1    1    1    1    1  1    1    1    1    1
+779   1    1    1    1    1    1    1  1    1    1    1    1
+792   1    1    1    1    1    1    1  1    1    1    1    1
+800   1    1    1    1    1    1    1  1    1    1    1    1
+873   0    0    0    1    1    1    0  1    0    0    1    1
+929   0    0    1    0    0    0    0  0    0    0    1    1
+937   0    1    0    0    0    0    0  0    0    0    0    0
+951   1    0    0    0    0    0    0  0    0    1    0    1
+990   0    1    1    0    0    1    1  0    1    0    1    0
+995   1    0    0    0    1    0    0  0    1    0    0    0
+1031  1    0    0    1    1    1    0  1    1    0    0    0
+1186  1    1    0    0    0    0    0  0    0    1    0    0
+1333  0    0    1    1    0    1    1  0    0    1    1    1
+1366  1    0    0    1    0    0    0  0    1    1    0    0
+1514  0    0    1    1    0    0    1  1    0    0    0    1
+1524  1    1    0    0    0    0    0  0    1    1    0    0
+1527  0    0    0    1    0    0    0  1    0    0    0    0
+1622  1    0    0    0    0    0    0  1    0    0    0    0
+1629  1    1    0    0    1    1    0  0    0    0    0    0
+1636  1    0    1    0    1    1    1  0    1    1    1    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 12 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 12:   0.006995677947998047
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+57    1    1    1    1    1    1    1  1    1    1    1    1
+79    1    1    1    1    1    1    1  1    1    0    1    1
+145   1    0    1    1    1    0    1  1    1    1    1    1
+211   1    1    1    1    1    1    1  1    1    1    1    1
+266   1    0    1    1    1    0    1  1    1    0    1    1
+272   1    1    1    1    1    1    1  1    1    1    1    1
+385   1    0    1    1    1    1    1  1    1    0    1    1
+476   1    0    0    1    1    0    0  1    1    1    1    1
+533   1    0    1    1    1    0    1  1    1    1    1    1
+608   1    1    1    1    1    1    0  0    1    1    0    1
+653   1    1    1    1    1    1    1  1    1    1    1    1
+726   1    1    1    1    1    1    1  1    1    1    1    1
+745   1    1    1    1    1    1    1  1    1    1    1    1
+763   1    1    1    1    1    1    1  1    1    1    1    1
+802   1    1    1    1    1    1    1  1    1    1    1    1
+880   0    0    0    0    0    0    0  0    0    0    0    0
+912   0    0    0    0    0    0    0  0    0    0    0    0
+924   0    1    0    0    0    0    0  0    0    0    0    0
+982   1    0    0    1    0    0    1  1    1    0    1    1
+1087  1    1    0    0    1    1    0  0    0    0    0    1
+1103  0    0    0    0    1    0    0  0    0    0    0    0
+1126  1    1    0    0    1    0    0  0    0    0    0    0
+1186  1    1    0    0    0    0    0  0    0    1    0    0
+1226  0    0    0    0    1    1    0  1    0    0    0    0
+1362  1    1    0    0    0    1    1  0    1    1    1    1
+1400  0    0    0    0    0    0    0  0    1    0    1    0
+1402  1    1    0    1    0    1    0  0    1    1    0    0
+1428  0    0    0    0    0    0    0  0    0    0    0    0
+1431  1    1    0    1    0    0    0  0    1    1    0    0
+1544  1    1    0    1    1    1    1  1    0    1    1    0
+1554  0    0    0    1    1    0    0  0    0    0    0    0
+1623  1    0    1    1    1    0    1  1    1    0    1    0
+1628  1    1    1    0    1    1    1  1    0    1    0    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 's' 's' 's' 's' 's' 'w' 'w' 'w'
+ 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 's' 'w' 's' 's']
+LAN 13 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 13:   0.005999088287353516
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+51    1    1    1    1    1    0    1  1    1    0    1    1
+54    1    0    1    1    1    1    1  1    1    1    1    1
+103   1    1    1    1    1    1    1  1    1    1    1    1
+105   1    1    1    1    1    1    1  1    1    1    1    1
+204   1    1    1    1    1    1    1  1    1    1    1    1
+257   1    0    1    1    1    0    1  1    1    1    1    1
+316   1    1    1    1    1    1    1  1    1    1    1    1
+351   1    1    1    1    1    1    1  1    1    0    1    1
+582   1    1    1    1    1    1    1  1    1    1    1    1
+613   1    1    1    1    1    1    1  1    1    1    1    1
+654   1    1    1    1    1    1    1  1    1    1    1    1
+713   1    1    1    1    1    1    1  1    1    1    1    1
+728   1    1    1    1    1    1    1  1    1    1    1    1
+800   1    1    1    1    1    1    1  1    1    1    1    1
+908   0    0    0    1    0    0    0  1    1    1    0    0
+928   0    0    1    1    1    0    0  1    0    0    0    0
+951   1    0    0    0    0    0    0  0    0    1    0    1
+974   1    1    0    0    0    1    1  0    0    0    0    0
+1012  0    0    0    0    1    0    0  0    1    0    0    0
+1030  0    0    1    0    1    0    1  1    1    0    0    0
+1047  0    0    0    0    0    0    1  0    0    0    1    0
+1134  0    0    1    0    1    1    0  0    0    0    0    0
+1143  0    0    0    0    0    0    0  0    0    0    0    0
+1195  1    0    0    0    1    1    0  0    0    0    0    0
+1254  1    1    1    1    0    0    0  1    1    1    0    1
+1267  0    1    1    1    1    1    0  0    1    0    0    0
+1355  0    1    0    0    0    0    1  1    0    0    0    1
+1408  0    0    0    0    0    0    0  0    1    1    0    0
+1441  1    0    0    1    1    0    0  0    0    0    0    0
+1460  0    1    0    0    0    0    1  0    0    0    0    0
+1518  1    0    0    0    1    1    0  0    0    0    1    1
+1566  1    1    0    1    1    0    0  0    1    1    0    0
+1608  1    0    0    0    1    1    0  0    1    1    0    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 14 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 14:   0.007999658584594727
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+21    1    1    1    1    1    1    1  1    1    1    1    1
+59    1    1    1    1    1    1    1  1    1    0    1    1
+176   1    1    1    1    1    1    1  1    1    1    1    1
+181   1    1    1    1    1    1    1  1    1    1    1    1
+198   1    1    1    1    1    1    1  1    1    1    1    1
+205   1    0    1    1    1    0    1  1    1    1    1    1
+233   1    0    1    1    1    0    1  1    1    1    1    1
+298   1    1    1    1    1    1    1  1    1    1    1    1
+324   1    1    1    1    1    1    1  1    1    1    1    1
+531   1    0    1    1    1    1    1  1    1    0    1    1
+594   1    1    1    1    1    1    1  1    1    1    1    1
+609   1    1    1    1    1    1    1  1    1    1    1    1
+632   1    1    1    1    1    1    1  1    1    1    1    1
+642   1    1    1    1    1    1    1  1    1    1    1    1
+670   1    1    1    1    1    1    1  1    1    1    1    1
+768   1    1    1    1    1    1    1  1    1    1    1    1
+871   0    0    0    0    0    0    0  0    0    0    1    0
+891   0    0    1    0    0    0    1  1    0    0    1    1
+899   0    0    0    0    1    0    0  1    0    0    0    0
+929   0    0    1    0    0    0    0  0    0    0    1    1
+1000  1    1    0    1    0    0    1  0    1    0    1    1
+1011  1    0    0    0    0    0    1  0    0    0    0    1
+1073  1    0    0    1    1    0    0  1    1    1    0    1
+1112  0    0    0    0    0    0    0  0    0    0    0    0
+1132  0    0    0    0    0    0    0  1    0    0    0    1
+1136  0    1    0    0    0    0    0  0    0    0    0    1
+1145  0    0    0    0    0    0    0  0    0    0    0    0
+1311  0    0    0    0    0    0    0  0    0    0    1    0
+1363  0    1    1    1    0    0    1  1    0    0    0    0
+1393  0    0    0    1    0    1    0  1    1    0    0    1
+1440  0    0    0    0    0    0    0  0    1    0    1    1
+1481  0    1    0    0    0    0    0  0    0    0    0    0
+1610  0    0    0    0    0    0    0  1    0    0    1    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w'
+ 'w' 'w' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 15 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 15:   0.010009765625
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+50    1    1    1    1    1    1    1  1    1    1    1    1
+103   1    1    1    1    1    1    1  1    1    1    1    1
+210   1    1    1    1    1    1    1  1    1    1    1    1
+259   1    1    1    1    1    1    1  1    1    1    1    1
+385   1    0    1    1    1    1    1  1    1    0    1    1
+480   1    1    1    1    1    1    1  1    1    1    1    1
+553   1    1    1    1    1    0    1  1    0    0    1    1
+612   1    1    1    1    1    1    1  1    1    1    1    1
+640   1    1    1    1    1    0    0  0    1    1    1    1
+644   1    1    1    1    1    1    1  1    1    1    1    1
+760   1    1    1    1    1    1    1  1    1    1    1    1
+761   1    1    1    1    1    1    1  1    1    1    1    1
+767   1    1    1    1    1    1    1  1    1    1    1    1
+791   1    1    1    1    1    1    1  1    1    1    1    1
+800   1    1    1    1    1    1    1  1    1    1    1    1
+886   0    0    0    0    0    0    0  0    0    1    1    0
+922   1    0    1    1    0    0    0  0    1    0    0    0
+975   1    0    0    0    0    0    0  0    0    0    0    0
+979   1    0    0    0    0    0    1  0    0    0    1    0
+993   0    0    1    0    0    1    1  0    0    1    1    0
+1052  0    0    0    0    1    0    0  0    0    1    0    0
+1104  0    0    0    0    1    0    1  1    0    0    1    0
+1125  0    1    1    0    0    0    0  0    0    0    0    1
+1129  0    1    0    0    0    1    0  0    0    0    0    0
+1266  0    0    0    0    0    1    1  0    0    0    1    1
+1278  0    0    0    0    0    0    0  0    1    0    1    1
+1297  0    1    0    1    0    0    0  1    1    1    1    1
+1305  0    0    0    0    0    0    0  1    0    1    0    0
+1329  0    1    0    0    0    0    0  0    1    0    0    0
+1347  1    0    0    0    0    0    0  0    1    1    0    1
+1353  0    1    0    0    0    1    1  1    0    1    1    1
+1424  0    1    0    1    1    1    0  0    0    1    0    0
+1581  0    0    1    0    1    0    0  0    1    1    0    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 16 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 16:   0.006022930145263672
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+5     1    1    1    1    1    1    1  1    1    1    1    1
+6     1    0    1    1    1    1    1  1    1    1    1    1
+13    1    1    1    1    1    1    1  1    1    1    1    1
+17    1    1    1    1    1    1    1  1    1    1    1    1
+59    1    1    1    1    1    1    1  1    1    0    1    1
+169   1    1    1    1    1    1    1  1    1    1    1    1
+294   1    1    1    1    1    1    1  1    1    1    1    1
+320   1    1    1    1    1    1    1  1    1    1    1    1
+374   1    1    1    1    1    0    1  1    1    1    1    1
+376   1    0    1    1    1    1    1  1    1    1    1    1
+397   1    1    1    1    0    0    1  1    0    0    1    1
+561   1    1    1    1    1    1    1  1    1    1    1    1
+686   1    1    1    1    1    1    1  1    1    1    1    1
+695   1    1    1    1    1    1    1  1    1    1    1    1
+723   1    1    1    1    1    1    1  1    1    1    1    1
+731   1    1    1    1    1    1    1  1    1    1    1    1
+771   1    1    1    1    1    1    1  1    1    1    1    1
+787   1    1    1    1    1    1    0  1    1    1    1    1
+839   0    0    0    0    1    0    0  0    0    0    1    1
+858   0    0    0    0    0    0    0  0    0    0    0    0
+863   0    0    0    0    0    0    0  0    0    0    1    0
+904   0    0    1    0    0    0    0  0    0    0    0    0
+968   1    0    1    0    0    0    0  0    0    0    0    0
+1000  1    1    0    1    0    0    1  0    1    0    1    1
+1028  1    0    0    0    0    0    1  0    0    1    0    0
+1127  0    1    0    1    0    1    1  0    0    1    1    1
+1206  0    1    0    0    0    1    0  0    1    1    0    0
+1310  0    0    0    1    1    1    0  0    1    1    0    0
+1340  0    1    0    1    1    1    1  1    0    1    1    1
+1356  0    0    0    1    1    1    1  1    0    1    0    1
+1453  1    1    1    1    0    0    0  0    1    1    1    1
+1569  1    0    1    1    1    1    1  1    1    1    1    1
+1582  1    0    0    0    1    0    1  1    0    0    1    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's'
+ 'w' 'w' 'w' 'w' 'w' 's' 'w' 'w' 'w' 'w' 'w' 'w' 's' 's' 'w']
+LAN 17 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 17:   0.004987955093383789
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+147   1    1    1    1    1    0    1  1    1    0    1    1
+171   1    1    1    1    1    1    1  1    1    1    1    1
+200   1    1    1    1    1    1    1  1    1    1    1    1
+334   1    1    1    1    1    1    1  1    1    0    1    1
+337   1    1    1    1    1    1    1  1    1    1    1    1
+361   1    1    1    1    1    1    1  1    1    1    1    1
+402   1    1    1    1    1    0    1  1    1    1    1    1
+416   1    0    1    1    1    0    1  1    1    1    1    1
+432   0    0    1    1    1    1    1  1    1    1    1    1
+457   1    1    1    1    1    1    1  1    1    1    1    1
+518   1    0    1    1    1    0    1  1    1    0    1    1
+533   1    0    1    1    1    0    1  1    1    1    1    1
+546   1    0    1    1    1    0    1  1    1    1    1    1
+566   1    1    1    1    1    1    1  1    1    1    1    1
+581   1    1    1    1    1    1    1  1    1    1    1    1
+618   1    1    1    1    1    1    1  0    1    1    1    1
+654   1    1    1    1    1    1    1  1    1    1    1    1
+667   1    1    1    1    1    1    0  1    1    1    0    1
+688   1    1    1    1    1    1    1  1    1    1    1    1
+728   1    1    1    1    1    1    1  1    1    1    1    1
+736   1    1    1    1    1    1    1  1    1    1    1    1
+778   1    1    1    1    1    1    1  1    1    1    1    1
+855   0    0    0    0    0    0    0  0    0    0    0    0
+883   0    0    0    0    0    0    0  0    1    0    0    0
+946   0    0    1    1    0    0    0  0    1    1    1    0
+1005  0    0    1    0    0    0    0  0    0    0    0    0
+1136  0    1    0    0    0    0    0  0    0    0    0    1
+1224  0    1    0    0    0    0    0  0    0    0    0    1
+1237  0    0    0    0    0    0    0  0    0    1    0    0
+1247  0    0    0    0    0    0    0  1    0    0    0    1
+1301  0    0    0    0    0    0    0  0    0    0    0    1
+1500  1    0    1    0    0    1    1  1    0    1    1    1
+1642  1    1    1    0    1    1    1  1    1    0    1    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's'
+ 's' 's' 's' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 's' 's']
+LAN 18 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 18:   0.008906841278076172
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+23    1    1    1    1    1    1    1  1    1    1    1    1
+46    1    1    1    1    1    1    1  1    1    1    1    1
+104   1    0    1    1    1    1    1  1    1    1    1    1
+122   1    1    1    1    1    0    1  1    1    1    1    1
+204   1    1    1    1    1    1    1  1    1    1    1    1
+288   1    0    1    1    1    1    1  1    1    0    1    1
+507   1    0    1    1    1    1    1  1    1    0    1    1
+646   1    1    1    1    1    1    1  1    1    1    1    1
+655   1    1    1    1    1    1    1  1    1    1    0    0
+673   1    1    1    1    1    1    1  1    1    1    1    1
+693   1    1    1    1    1    1    1  1    1    1    1    1
+748   1    1    1    1    1    1    1  1    1    1    1    1
+751   1    1    1    1    1    1    1  1    1    1    1    1
+809   1    1    1    1    1    1    1  1    1    1    1    1
+815   1    1    1    1    1    1    1  1    1    1    1    1
+827   1    1    1    1    1    1    1  1    1    1    1    1
+928   0    0    1    1    1    0    0  1    0    0    0    0
+1067  0    0    0    1    1    0    0  1    0    0    1    0
+1087  1    1    0    0    1    1    0  0    0    0    0    1
+1119  0    0    0    1    1    1    0  1    0    0    0    0
+1121  1    1    1    0    1    1    1  1    1    1    1    0
+1166  0    0    0    1    0    0    0  0    0    0    0    0
+1171  0    0    0    0    0    1    1  1    0    0    0    0
+1173  0    0    0    1    0    0    0  0    0    0    0    0
+1206  0    1    0    0    0    1    0  0    1    1    0    0
+1238  1    0    1    0    0    0    0  0    1    1    0    0
+1351  0    0    1    1    0    0    1  0    1    1    1    1
+1374  0    0    0    0    0    0    0  0    0    0    1    0
+1398  0    0    1    1    0    0    0  1    0    0    0    1
+1526  1    1    1    1    1    0    0  0    1    0    0    0
+1563  0    1    0    0    1    1    0  0    0    1    0    0
+1605  1    0    0    0    1    0    1  0    1    0    0    0
+1611  0    0    0    0    0    0    0  0    0    0    1    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w'
+ 'w' 'w' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 19 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 19:   0.00600123405456543
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+38    1    1    1    1    1    1    1  1    1    1    1    1
+101   1    1    1    1    1    1    1  1    1    1    1    1
+147   1    1    1    1    1    0    1  1    1    0    1    1
+165   1    1    1    1    1    1    1  1    1    1    1    1
+211   1    1    1    1    1    1    1  1    1    1    1    1
+218   1    1    1    1    1    1    1  1    1    0    1    1
+247   1    0    1    1    1    0    1  1    1    1    1    1
+253   1    1    1    1    1    0    1  1    1    1    1    1
+261   1    1    1    1    1    0    1  1    1    1    1    1
+355   1    1    1    1    1    1    1  1    1    1    1    1
+430   1    1    1    1    1    1    0  1    0    0    0    0
+486   1    0    1    1    1    1    1  1    1    1    1    1
+489   1    1    1    1    1    1    1  1    1    1    1    1
+598   1    1    1    1    1    1    1  1    1    1    1    1
+600   1    1    1    1    1    1    1  1    1    1    1    1
+714   1    1    1    1    1    1    1  1    1    1    1    1
+754   1    1    1    1    1    1    1  1    1    1    1    1
+762   1    1    1    1    1    1    1  1    1    1    1    1
+861   0    0    0    0    0    0    0  0    0    0    0    0
+904   0    0    1    0    0    0    0  0    0    0    0    0
+931   0    0    1    0    0    0    0  1    0    0    0    0
+1082  0    0    0    1    0    0    0  0    0    0    0    0
+1150  0    0    0    0    0    0    0  0    1    0    1    0
+1270  0    1    0    0    0    1    0  1    0    0    0    1
+1277  0    0    0    0    0    0    0  1    0    0    0    1
+1372  1    1    0    0    1    1    0  0    0    0    0    0
+1382  0    1    1    1    0    0    1  1    0    0    0    0
+1454  0    1    0    0    1    1    0  1    1    1    1    0
+1462  1    1    1    0    0    0    0  0    1    0    0    0
+1483  0    1    0    0    0    1    0  1    0    1    0    1
+1511  0    1    0    0    0    1    0  0    0    1    0    1
+1527  0    0    0    1    0    0    0  1    0    0    0    0
+1579  1    1    0    0    1    1    1  0    1    1    1    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 's' 's' 's' 's' 's' 's' 's'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 20 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 20:   0.00700068473815918
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+203   1    1    1    1    1    1    1  1    1    1    1    1
+218   1    1    1    1    1    1    1  1    1    0    1    1
+264   1    1    1    1    1    0    1  1    1    0    1    1
+278   0    0    1    1    1    0    1  1    1    1    1    1
+283   1    0    1    1    1    1    1  1    1    0    1    1
+284   1    1    1    1    1    0    1  1    1    0    1    1
+304   1    1    1    1    1    1    1  1    1    1    1    1
+349   1    1    1    1    1    1    1  1    1    1    1    1
+363   1    1    1    1    1    1    1  1    1    1    1    1
+396   1    1    1    1    1    1    1  1    1    1    1    1
+417   1    0    1    1    1    1    1  1    1    1    1    1
+434   1    1    0    1    1    1    1  1    1    1    1    1
+436   1    1    1    1    1    1    1  1    1    1    1    1
+619   1    1    1    1    1    1    1  1    1    1    1    1
+730   1    1    1    1    1    1    1  1    1    1    1    1
+736   1    1    1    1    1    1    1  1    1    1    1    1
+739   1    1    1    1    1    1    1  1    1    1    1    1
+749   1    1    1    1    1    1    1  1    1    1    1    1
+777   1    0    1    0    1    1    1  1    1    1    1    1
+790   1    1    0    1    1    1    1  1    1    1    0    1
+795   1    1    1    1    1    1    1  1    1    1    1    1
+859   0    0    0    0    0    0    0  0    0    0    0    0
+864   0    0    0    0    1    1    0  1    0    0    0    0
+916   1    0    0    0    1    0    0  0    0    0    1    1
+994   0    0    0    0    0    1    0  1    1    0    1    0
+1031  1    0    0    1    1    1    0  1    1    0    0    0
+1073  1    0    0    1    1    0    0  1    1    1    0    1
+1080  0    0    0    1    0    0    0  0    0    0    0    0
+1152  0    0    0    0    0    0    0  0    0    0    0    0
+1170  0    0    1    0    1    0    1  0    0    0    1    1
+1348  0    0    0    0    0    0    0  1    0    0    1    1
+1457  1    0    0    0    1    1    0  1    1    1    1    0
+1495  0    0    1    0    1    0    0  0    0    0    1    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's'
+ 's' 's' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 21 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 21:   0.007004976272583008
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+5     1    1    1    1    1    1    1  1    1    1    1    1
+18    1    1    1    1    1    1    1  1    1    1    1    1
+54    1    0    1    1    1    1    1  1    1    1    1    1
+148   1    1    1    1    1    1    1  1    1    1    1    1
+266   1    0    1    1    1    0    1  1    1    0    1    1
+300   1    1    1    1    1    1    1  1    1    0    1    1
+345   1    1    1    1    1    1    1  1    1    1    1    1
+370   1    1    1    1    1    1    1  1    1    1    1    1
+415   1    1    1    1    1    1    1  1    1    1    1    1
+427   1    1    1    1    1    1    1  1    1    1    1    1
+437   1    1    1    1    1    1    1  1    1    1    1    1
+506   1    1    1    1    1    0    1  1    1    0    1    1
+631   1    1    1    1    1    1    1  1    1    1    1    1
+636   1    1    1    1    1    1    1  1    1    1    1    1
+648   1    1    1    1    1    1    1  1    1    1    1    1
+695   1    1    1    1    1    1    1  1    1    1    1    1
+705   1    1    1    1    1    1    1  1    1    1    1    1
+724   1    1    1    1    1    1    1  1    1    1    1    1
+781   1    1    1    1    1    1    1  1    1    1    1    1
+800   1    1    1    1    1    1    1  1    1    1    1    1
+851   1    0    1    0    0    0    0  0    1    0    0    0
+880   0    0    0    0    0    0    0  0    0    0    0    0
+935   0    0    0    0    0    0    0  0    1    0    0    0
+1128  0    0    1    1    0    0    0  1    1    1    0    0
+1152  0    0    0    0    0    0    0  0    0    0    0    0
+1198  0    0    0    0    1    1    0  1    1    1    0    1
+1211  1    0    0    0    0    0    0  0    0    0    0    0
+1335  0    1    1    1    0    0    1  1    0    0    1    1
+1346  1    1    0    0    1    1    1  1    1    0    0    0
+1450  1    1    0    0    1    1    1  1    1    0    0    1
+1569  1    0    1    1    1    1    1  1    1    1    1    1
+1576  1    1    0    0    1    1    0  0    1    1    0    0
+1583  1    1    1    0    1    1    0  1    1    0    1    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's'
+ 's' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 's' 'w' 's']
+LAN 22 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 22:   0.006985902786254883
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+51    1    1    1    1    1    0    1  1    1    0    1    1
+73    1    1    1    1    1    0    1  1    1    1    1    1
+84    1    1    1    1    1    0    1  1    1    1    1    1
+133   1    1    1    1    1    1    1  1    1    1    1    1
+150   1    1    1    1    1    0    1  1    1    1    1    1
+161   1    1    1    1    1    1    1  1    1    1    1    1
+183   1    1    1    1    1    1    1  1    1    1    1    1
+200   1    1    1    1    1    1    1  1    1    1    1    1
+229   1    1    1    1    1    0    1  1    1    1    1    1
+251   1    0    1    1    1    0    1  1    1    1    1    1
+330   1    1    1    1    1    1    1  1    1    1    1    1
+338   1    1    1    1    1    1    1  1    1    1    1    1
+393   1    1    1    1    1    1    1  1    1    1    1    1
+436   1    1    1    1    1    1    1  1    1    1    1    1
+489   1    1    1    1    1    1    1  1    1    1    1    1
+530   1    0    1    1    1    0    1  1    1    1    1    1
+544   1    0    1    1    1    0    1  1    1    1    1    1
+596   1    1    1    1    1    1    1  1    1    1    1    1
+610   0    0    1    1    0    1    1  1    0    1    1    1
+647   1    1    1    1    1    1    1  1    1    1    1    1
+672   1    1    1    1    1    1    1  1    1    0    0    1
+889   1    1    0    0    1    1    0  1    1    0    0    0
+1040  1    1    0    0    1    1    0  1    0    0    0    0
+1064  0    0    0    0    0    0    1  1    0    0    0    1
+1095  1    0    0    0    0    0    0  0    0    0    0    0
+1133  0    0    0    0    0    0    0  0    0    0    0    0
+1189  0    0    0    0    0    0    0  0    0    0    0    0
+1307  1    1    1    1    0    0    0  1    0    0    1    1
+1313  0    0    1    0    0    0    0  0    0    1    0    0
+1392  1    1    1    1    0    0    1  1    0    0    0    1
+1463  1    0    0    0    1    0    0  0    1    0    0    0
+1503  0    0    0    1    0    0    1  1    1    0    1    1
+1529  1    1    1    1    0    1    1  1    0    0    0    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's'
+ 'w' 's' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 23 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 23:   0.004996538162231445
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+12    1    1    1    1    1    1    1  1    1    1    1    1
+25    1    1    1    1    1    1    1  1    1    1    1    1
+112   1    0    1    1    1    1    1  1    1    1    1    1
+133   1    1    1    1    1    1    1  1    1    1    1    1
+179   1    1    1    1    1    1    1  1    1    1    1    1
+213   1    1    1    1    1    1    1  1    1    1    1    1
+216   1    1    1    1    1    0    1  1    1    0    1    1
+255   1    0    1    1    1    1    1  1    1    1    1    1
+366   1    1    1    1    1    1    1  1    1    1    1    1
+412   1    1    1    1    1    1    1  1    1    1    1    1
+415   1    1    1    1    1    1    1  1    1    1    1    1
+468   1    1    1    1    1    1    1  1    0    1    1    0
+490   1    1    1    1    1    0    1  1    1    1    1    1
+578   1    1    1    1    1    1    1  1    1    1    1    1
+611   0    0    1    1    1    0    1  1    0    0    1    1
+754   1    1    1    1    1    1    1  1    1    1    1    1
+792   1    1    1    1    1    1    1  1    1    1    1    1
+864   0    0    0    0    1    1    0  1    0    0    0    0
+907   1    0    1    0    0    0    0  0    0    0    0    0
+951   1    0    0    0    0    0    0  0    0    1    0    1
+964   1    0    1    0    0    0    1  0    1    1    0    0
+1006  1    0    0    0    0    0    0  1    0    0    0    1
+1036  1    1    1    1    1    1    1  1    0    0    0    0
+1048  1    0    1    0    1    1    1  1    0    0    1    0
+1049  0    0    0    0    0    0    1  0    0    1    1    1
+1072  0    0    0    0    0    0    0  1    1    1    0    0
+1233  0    0    0    1    0    0    0  0    0    0    0    0
+1272  0    0    0    1    0    0    0  1    1    0    0    1
+1335  0    1    1    1    0    0    1  1    0    0    1    1
+1376  0    1    0    0    0    1    0  0    1    0    0    0
+1414  0    1    0    0    0    1    1  0    0    0    0    0
+1579  1    1    0    0    1    1    1  0    1    1    1    0
+1623  1    0    1    1    1    0    1  1    1    0    1    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 's' 's' 'w'
+ 'w' 'w' 'w' 'w' 'w' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 's']
+LAN 24 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 24:   0.005998373031616211
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+63    1    1    1    1    1    1    1  1    1    0    1    1
+190   1    1    1    1    1    1    1  1    1    1    1    1
+359   1    0    1    1    1    1    1  1    1    1    1    1
+397   1    1    1    1    0    0    1  1    0    0    1    1
+409   1    1    1    1    1    1    1  1    1    1    1    1
+442   1    1    1    1    1    1    1  1    1    1    1    1
+473   1    1    1    1    1    0    1  1    1    0    1    1
+519   1    0    1    1    1    0    1  1    1    0    1    1
+527   1    0    1    1    1    1    1  1    1    0    1    1
+588   1    1    1    1    1    1    1  1    1    1    1    1
+663   1    1    1    1    1    1    1  1    1    1    1    1
+681   1    1    1    1    1    1    1  1    1    1    1    1
+783   1    1    1    1    1    1    1  0    1    1    1    1
+798   1    1    1    1    1    1    1  1    1    1    1    1
+810   1    1    1    1    1    1    1  1    1    1    1    1
+854   0    0    0    0    0    0    0  0    0    0    0    0
+868   0    0    0    0    0    0    0  0    0    0    0    0
+924   0    1    0    0    0    0    0  0    0    0    0    0
+974   1    1    0    0    0    1    1  0    0    0    0    0
+990   0    1    1    0    0    1    1  0    1    0    1    0
+997   1    0    0    0    1    0    0  1    1    0    1    0
+1038  0    0    1    1    0    1    1  0    0    0    1    0
+1167  0    0    0    0    0    0    0  0    0    0    0    0
+1326  0    1    0    1    0    0    0  0    1    0    0    0
+1367  0    1    0    0    0    1    0  0    0    0    0    0
+1517  0    0    0    0    1    0    0  0    1    0    0    0
+1531  1    1    0    1    0    1    1  0    0    1    0    0
+1554  0    0    0    1    1    0    0  0    0    0    0    0
+1568  0    0    0    1    1    1    0  1    0    0    1    1
+1584  0    0    0    1    1    1    0  0    1    0    0    0
+1592  0    0    1    0    0    0    0  0    1    1    0    0
+1618  1    1    0    1    0    0    0  0    0    0    1    1
+1619  0    0    0    0    1    1    0  0    0    0    0    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 25 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 25:   0.006997585296630859
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+17    1    1    1    1    1    1    1  1    1    1    1    1
+52    1    1    1    1    1    1    1  1    1    1    1    1
+164   1    1    1    1    1    1    1  1    1    1    1    1
+258   0    0    1    1    0    0    1  1    1    1    1    1
+275   0    0    0    0    0    0    1  0    1    0    1    1
+352   1    1    1    1    1    1    1  1    1    1    1    1
+397   1    1    1    1    0    0    1  1    0    0    1    1
+454   1    1    1    1    1    1    1  1    1    1    1    1
+458   1    1    1    1    1    1    1  1    1    1    1    1
+519   1    0    1    1    1    0    1  1    1    0    1    1
+671   1    1    1    1    1    1    1  1    1    1    1    1
+726   1    1    1    1    1    1    1  1    1    1    1    1
+730   1    1    1    1    1    1    1  1    1    1    1    1
+801   1    1    1    1    1    1    1  1    1    1    1    1
+849   1    0    0    0    1    1    0  0    1    0    0    0
+868   0    0    0    0    0    0    0  0    0    0    0    0
+877   0    0    0    1    0    1    1  1    1    1    0    0
+949   0    0    1    1    0    0    1  1    0    0    1    1
+1071  1    1    0    1    0    0    0  0    1    0    0    0
+1132  0    0    0    0    0    0    0  1    0    0    0    1
+1192  1    1    0    1    1    1    1  1    1    1    0    1
+1196  0    0    0    0    0    0    0  0    0    0    0    0
+1205  0    0    0    0    1    0    0  0    1    0    0    0
+1231  0    0    0    1    0    0    0  1    0    0    1    1
+1263  0    0    0    1    0    0    0  1    0    0    1    1
+1340  0    1    0    1    1    1    1  1    0    1    1    1
+1352  1    1    1    1    0    0    0  0    0    0    1    0
+1354  1    1    1    1    0    1    1  1    0    1    1    1
+1359  0    0    0    0    1    0    0  0    0    0    0    0
+1457  1    0    0    0    1    1    0  1    1    1    1    0
+1546  1    1    0    1    1    1    0  1    0    0    0    0
+1552  0    1    0    0    0    1    0  0    0    1    0    0
+1662  0    1    0    0    0    0    0  1    1    0    0    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 'w' 'w' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w' 'w'
+ 'w' 'w' 's' 'w' 'w' 'w' 'w' 'w' 'w' 's' 'w' 'w' 'w' 'w' 'w']
+LAN 26 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 26:   0.005998373031616211
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+39    1    1    1    1    1    1    1  1    1    1    1    1
+92    1    1    1    1    1    1    1  1    1    1    1    1
+167   1    1    1    1    1    1    1  1    1    1    1    1
+207   1    1    1    1    1    1    1  1    1    1    1    1
+232   1    1    1    1    1    0    1  1    1    1    1    1
+307   1    1    1    1    1    1    1  1    1    0    1    1
+432   0    0    1    1    1    1    1  1    1    1    1    1
+496   1    1    1    1    1    1    1  1    1    0    1    1
+605   1    1    1    1    1    1    1  1    1    0    1    1
+623   1    1    1    1    1    1    1  1    1    1    1    1
+697   1    1    1    1    1    1    1  1    1    1    1    1
+698   1    1    1    1    1    1    1  1    1    1    1    1
+730   1    1    1    1    1    1    1  1    1    1    1    1
+768   1    1    1    1    1    1    1  1    1    1    1    1
+786   0    1    0    1    1    1    0  1    1    1    0    1
+795   1    1    1    1    1    1    1  1    1    1    1    1
+816   1    1    1    1    1    1    1  1    1    1    1    1
+821   1    1    1    1    1    1    1  1    1    1    1    1
+841   0    0    0    0    0    0    0  0    1    1    0    0
+881   0    1    0    0    0    0    1  1    0    0    0    0
+986   1    0    1    0    1    1    1  0    0    0    1    1
+1008  1    1    0    0    1    0    0  0    0    0    0    0
+1041  0    1    1    0    0    0    1  1    0    0    0    0
+1042  0    1    0    0    0    0    0  0    0    0    0    0
+1116  0    0    0    0    0    0    0  0    0    1    0    0
+1146  0    1    0    1    0    0    0  0    0    0    0    0
+1153  0    0    0    0    0    0    0  0    0    0    0    0
+1232  0    0    0    1    0    0    0  1    0    0    0    1
+1346  1    1    0    0    1    1    1  1    1    0    0    0
+1363  0    1    1    1    0    0    1  1    0    0    0    0
+1480  0    0    1    0    1    0    1  1    0    0    1    0
+1529  1    1    1    1    0    1    1  1    0    0    0    0
+1656  1    1    1    0    1    1    0  0    1    1    0    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 's' 's' 's'
+ 'w' 'w' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 27 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 27:   0.006017446517944336
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+52    1    1    1    1    1    1    1  1    1    1    1    1
+77    1    1    1    1    1    1    1  1    1    0    1    1
+106   1    1    1    1    1    1    1  1    1    1    1    1
+471   1    0    1    1    1    1    1  1    1    0    1    1
+487   1    1    1    1    1    1    1  1    1    1    1    1
+501   1    1    1    1    1    1    1  1    1    1    1    1
+570   1    1    1    1    1    1    1  1    1    1    1    1
+576   1    1    1    1    1    1    1  1    1    1    1    1
+593   1    1    1    1    1    1    1  1    1    1    1    1
+619   1    1    1    1    1    1    1  1    1    1    1    1
+623   1    1    1    1    1    1    1  1    1    1    1    1
+648   1    1    1    1    1    1    1  1    1    1    1    1
+713   1    1    1    1    1    1    1  1    1    1    1    1
+720   1    1    1    1    1    1    1  1    1    1    1    1
+735   1    1    1    1    1    1    1  1    1    1    1    1
+746   1    1    1    1    1    1    1  1    1    1    1    1
+812   1    1    1    1    1    1    1  1    1    1    1    1
+840   0    0    1    0    0    1    0  0    0    0    1    1
+948   0    0    0    0    0    0    1  1    1    1    1    1
+1108  0    0    0    0    0    0    1  0    0    0    0    0
+1143  0    0    0    0    0    0    0  0    0    0    0    0
+1201  0    0    0    0    1    0    0  0    0    0    0    0
+1202  1    1    0    0    0    0    0  0    0    0    0    0
+1236  0    1    1    0    0    0    1  0    0    0    0    0
+1237  0    0    0    0    0    0    0  0    0    1    0    0
+1321  0    1    0    0    0    0    0  0    0    0    0    0
+1419  0    0    1    1    0    0    1  1    0    1    1    1
+1444  0    0    0    0    1    0    0  0    1    1    1    0
+1584  0    0    0    1    1    1    0  0    1    0    0    0
+1588  0    0    1    1    1    1    0  0    1    1    1    0
+1616  1    0    0    1    0    0    0  1    0    0    0    0
+1628  1    1    1    0    1    1    1  1    0    1    0    1
+1633  1    1    0    0    0    1    0  0    1    1    0    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 's' 'w']
+LAN 28 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 28:   0.005011081695556641
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+27    1    1    1    1    1    1    1  1    1    1    1    1
+53    1    1    1    1    1    1    1  1    1    0    1    1
+146   1    1    1    1    1    1    1  1    1    1    1    1
+191   1    1    1    1    1    1    1  1    1    1    1    1
+245   1    1    1    1    1    1    1  1    1    1    1    1
+333   1    1    1    1    1    1    1  1    1    1    1    1
+409   1    1    1    1    1    1    1  1    1    1    1    1
+642   1    1    1    1    1    1    1  1    1    1    1    1
+647   1    1    1    1    1    1    1  1    1    1    1    1
+731   1    1    1    1    1    1    1  1    1    1    1    1
+859   0    0    0    0    0    0    0  0    0    0    0    0
+877   0    0    0    1    0    1    1  1    1    1    0    0
+953   1    0    1    1    1    0    0  0    0    0    1    0
+969   0    0    0    0    1    0    1  0    0    0    0    0
+1060  0    0    0    0    0    0    0  1    1    1    1    0
+1064  0    0    0    0    0    0    1  1    0    0    0    1
+1070  0    0    0    1    1    0    0  0    1    1    1    1
+1078  0    0    0    0    1    0    0  0    1    0    0    0
+1109  1    0    0    0    0    0    0  0    0    0    0    0
+1114  1    0    0    0    0    1    0  0    0    1    0    0
+1157  0    0    0    1    0    0    0  0    0    0    0    1
+1165  1    1    0    0    1    1    0  0    0    0    0    0
+1228  0    0    0    0    0    0    0  0    0    1    0    0
+1262  0    0    1    1    0    0    1  1    0    0    0    0
+1336  0    0    0    0    0    0    0  0    1    1    0    1
+1369  0    0    0    0    1    0    0  0    1    0    0    0
+1374  0    0    0    0    0    0    0  0    0    0    1    0
+1443  0    0    1    1    1    1    1  0    0    0    1    1
+1476  1    1    1    0    1    1    1  0    1    1    1    0
+1516  0    1    1    0    1    0    1  0    0    0    1    1
+1530  0    0    0    1    1    0    0  0    0    0    1    1
+1598  1    1    1    1    0    1    0  0    0    0    0    0
+1632  0    0    0    0    0    0    0  0    1    0    0    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 29 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 29:   0.0060007572174072266
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+95    1    1    1    1    1    1    1  1    1    1    1    1
+142   1    0    1    1    1    0    1  1    1    1    1    1
+151   1    0    1    1    1    0    1  1    1    1    1    1
+185   1    1    1    1    1    1    1  1    1    1    1    1
+346   1    1    1    1    1    1    1  1    1    1    1    1
+390   1    1    1    1    1    1    1  1    1    1    1    1
+405   1    0    1    1    1    0    1  1    1    0    1    1
+565   1    1    1    1    1    1    1  1    1    1    1    1
+617   1    1    1    1    1    1    0  0    1    1    0    0
+635   1    1    1    1    1    1    1  1    1    1    1    1
+665   1    1    1    1    1    1    1  1    1    1    1    1
+693   1    1    1    1    1    1    1  1    1    1    1    1
+735   1    1    1    1    1    1    1  1    1    1    1    1
+802   1    1    1    1    1    1    1  1    1    1    1    1
+811   1    1    1    1    1    1    1  1    1    1    1    1
+921   1    1    0    0    0    0    0  1    0    0    1    0
+948   0    0    0    0    0    0    1  1    1    1    1    1
+1005  0    0    1    0    0    0    0  0    0    0    0    0
+1031  1    0    0    1    1    1    0  1    1    0    0    0
+1041  0    1    1    0    0    0    1  1    0    0    0    0
+1063  0    0    0    0    1    0    0  0    0    0    0    0
+1117  0    1    0    0    1    0    0  0    0    0    0    1
+1150  0    0    0    0    0    0    0  0    1    0    1    0
+1212  0    1    0    0    0    0    0  0    0    0    0    0
+1214  0    0    0    0    0    0    0  1    1    1    1    0
+1297  0    1    0    1    0    0    0  1    1    1    1    1
+1312  0    0    0    1    0    0    0  1    0    0    0    1
+1358  1    1    0    0    1    0    0  0    1    1    0    0
+1365  0    0    0    0    0    0    0  0    1    1    0    0
+1391  1    0    1    1    1    1    1  1    1    0    0    1
+1448  0    1    1    0    0    0    0  0    0    0    0    0
+1582  1    0    0    0    1    0    1  1    0    0    1    0
+1597  1    1    0    0    1    1    0  0    1    1    0    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 'w' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 's' 'w' 'w' 'w']
+LAN 30 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 30:   0.005004405975341797
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+2     1    1    1    1    1    0    1  1    1    1    1    1
+126   1    1    1    1    1    1    1  1    1    1    1    1
+170   1    1    1    1    1    1    1  1    1    1    1    1
+194   1    0    1    1    1    1    1  1    1    1    1    1
+207   1    1    1    1    1    1    1  1    1    1    1    1
+259   1    1    1    1    1    1    1  1    1    1    1    1
+337   1    1    1    1    1    1    1  1    1    1    1    1
+368   1    0    1    1    1    1    1  1    1    0    1    1
+405   1    0    1    1    1    0    1  1    1    0    1    1
+414   1    1    1    1    1    1    1  1    1    0    1    1
+443   1    1    1    1    1    1    1  1    1    1    1    1
+466   1    1    1    1    1    1    1  1    1    1    1    1
+502   1    1    1    1    1    1    1  1    1    1    1    1
+620   1    1    1    1    1    1    1  1    1    1    1    1
+677   1    1    1    1    1    1    1  1    1    1    1    1
+697   1    1    1    1    1    1    1  1    1    1    1    1
+742   1    1    1    1    1    1    1  1    1    1    1    1
+984   0    1    1    0    0    0    0  0    0    1    0    0
+1024  0    1    0    0    0    1    0  0    0    1    1    1
+1047  0    0    0    0    0    0    1  0    0    0    1    0
+1062  0    0    0    0    1    0    0  0    0    0    0    0
+1162  0    0    0    0    0    0    0  0    0    0    0    1
+1305  0    0    0    0    0    0    0  1    0    1    0    0
+1431  1    1    0    1    0    0    0  0    1    1    0    0
+1439  1    1    0    1    0    0    0  0    0    0    0    0
+1469  1    1    0    0    0    0    0  0    1    1    0    0
+1517  0    0    0    0    1    0    0  0    1    0    0    0
+1518  1    0    0    0    1    1    0  0    0    0    1    1
+1527  0    0    0    1    0    0    0  1    0    0    0    0
+1539  0    1    1    0    0    0    0  1    1    0    1    1
+1609  0    1    0    0    1    0    0  0    1    1    0    0
+1638  0    0    1    0    0    0    0  1    1    1    0    0
+1658  1    0    1    1    0    0    0  0    0    0    1    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 31 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 31:   0.005986452102661133
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+5     1    1    1    1    1    1    1  1    1    1    1    1
+12    1    1    1    1    1    1    1  1    1    1    1    1
+13    1    1    1    1    1    1    1  1    1    1    1    1
+102   1    1    1    1    1    1    1  1    1    1    1    1
+188   1    1    1    1    1    1    1  1    1    1    1    1
+192   1    1    1    1    1    1    1  1    1    1    1    1
+235   1    1    1    1    1    1    1  1    1    1    1    1
+240   1    1    1    1    1    1    1  1    1    1    1    1
+298   1    1    1    1    1    1    1  1    1    1    1    1
+303   1    1    1    1    1    1    1  1    1    1    1    1
+325   1    1    1    1    1    1    1  1    1    1    1    1
+474   1    1    1    1    1    1    1  1    1    0    1    1
+509   1    1    1    1    1    1    1  1    1    0    1    1
+525   1    1    1    1    1    1    1  1    1    0    1    1
+573   1    1    1    1    1    1    1  1    1    1    1    1
+666   1    1    1    1    1    1    1  1    1    1    1    1
+829   1    1    1    1    1    1    1  1    1    1    1    1
+877   0    0    0    1    0    1    1  1    1    1    0    0
+914   1    0    0    1    0    0    0  1    0    0    0    0
+941   1    0    0    0    1    0    0  0    0    0    1    0
+959   0    0    1    1    1    0    0  0    0    1    0    1
+1038  0    0    1    1    0    1    1  0    0    0    1    0
+1044  1    1    0    0    1    1    0  0    1    1    0    0
+1093  1    1    0    0    1    1    0  0    1    1    1    0
+1118  1    1    0    1    0    0    0  1    0    0    0    1
+1152  0    0    0    0    0    0    0  0    0    0    0    0
+1202  1    1    0    0    0    0    0  0    0    0    0    0
+1307  1    1    1    1    0    0    0  1    0    0    1    1
+1444  0    0    0    0    1    0    0  0    1    1    1    0
+1503  0    0    0    1    0    0    1  1    1    0    1    1
+1535  0    0    0    0    0    0    0  1    1    1    1    0
+1559  0    0    1    0    0    1    0  0    1    0    0    0
+1624  1    1    1    0    0    0    1  1    1    1    0    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 's']
+LAN 32 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 32:   0.0069866180419921875
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+38    1    1    1    1    1    1    1  1    1    1    1    1
+147   1    1    1    1    1    0    1  1    1    0    1    1
+218   1    1    1    1    1    1    1  1    1    0    1    1
+224   1    1    1    1    1    1    1  1    1    0    1    1
+281   1    0    1    1    1    0    1  1    1    0    1    1
+420   1    1    1    1    1    0    1  0    1    0    0    0
+433   1    1    1    1    1    1    1  1    1    1    1    1
+476   1    0    0    1    1    0    0  1    1    1    1    1
+544   1    0    1    1    1    0    1  1    1    1    1    1
+571   1    1    1    1    1    1    1  1    1    1    1    1
+656   1    1    0    0    1    1    1  1    1    1    1    1
+675   1    1    1    1    1    1    1  1    1    1    1    1
+765   1    1    1    1    1    1    1  1    1    1    1    1
+788   1    1    1    1    1    1    1  1    1    1    1    1
+885   0    1    1    1    0    0    0  1    0    0    0    0
+977   1    1    0    1    1    1    0  1    1    1    0    1
+1004  0    0    1    1    0    0    0  1    0    0    1    0
+1034  0    0    0    1    0    0    0  0    0    0    0    1
+1079  1    0    1    0    1    0    0  0    0    0    0    0
+1140  1    0    0    0    0    0    0  0    0    0    0    0
+1190  0    0    0    0    1    1    0  0    1    1    0    1
+1263  0    0    0    1    0    0    0  1    0    0    1    1
+1358  1    1    0    0    1    0    0  0    1    1    0    0
+1405  1    1    0    1    0    0    0  0    1    0    0    0
+1418  0    1    0    0    1    1    0  1    0    0    0    1
+1423  0    0    1    1    1    0    1  1    0    1    0    1
+1454  0    1    0    0    1    1    0  1    1    1    1    0
+1495  0    0    1    0    1    0    0  0    0    0    1    1
+1517  0    0    0    0    1    0    0  0    1    0    0    0
+1524  1    1    0    0    0    0    0  0    1    1    0    0
+1538  0    0    1    1    0    1    0  0    0    1    1    1
+1556  1    1    0    0    1    1    0  0    1    1    0    0
+1579  1    1    0    0    1    1    1  0    1    1    1    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 'w' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 33 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 33:   0.0060117244720458984
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+0     0    0    1    1    1    0    1  1    1    1    1    1
+8     1    1    1    1    1    1    1  1    1    0    1    1
+21    1    1    1    1    1    1    1  1    1    1    1    1
+38    1    1    1    1    1    1    1  1    1    1    1    1
+93    1    1    1    1    1    1    1  1    1    1    1    1
+108   1    1    1    1    1    0    1  1    1    0    1    1
+160   1    1    1    1    1    1    1  1    1    1    1    1
+165   1    1    1    1    1    1    1  1    1    1    1    1
+187   1    1    1    1    1    1    1  1    1    1    1    1
+221   1    1    1    1    1    1    1  1    1    1    1    1
+263   1    1    1    1    1    1    1  1    1    0    1    1
+289   1    0    1    1    1    1    1  1    1    0    1    1
+309   1    0    1    1    1    1    1  1    1    1    1    1
+434   1    1    0    1    1    1    1  1    1    1    1    1
+499   1    1    1    1    1    1    1  1    1    1    1    1
+553   1    1    1    1    1    0    1  1    0    0    1    1
+580   1    1    1    1    1    1    1  1    1    1    1    1
+616   1    1    1    1    1    1    1  1    1    1    1    1
+720   1    1    1    1    1    1    1  1    1    1    1    1
+779   1    1    1    1    1    1    1  1    1    1    1    1
+801   1    1    1    1    1    1    1  1    1    1    1    1
+981   0    0    1    0    0    0    0  0    0    0    1    0
+1104  0    0    0    0    1    0    1  1    0    0    1    0
+1144  0    0    0    0    0    0    0  0    0    0    0    0
+1164  0    0    0    1    0    1    0  0    0    1    0    0
+1349  0    1    0    0    0    0    0  0    1    1    1    1
+1366  1    0    0    1    0    0    0  0    1    1    0    0
+1386  0    0    0    0    0    0    0  0    0    0    0    0
+1401  1    1    0    1    1    0    0  0    0    1    0    0
+1473  0    0    0    0    1    0    0  1    1    0    1    0
+1498  0    0    0    0    0    0    0  1    0    1    1    1
+1576  1    1    0    0    1    1    0  0    1    1    0    0
+1599  1    0    0    0    1    1    0  0    1    1    0    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's'
+ 's' 's' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 34 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 34:   0.006988525390625
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+40    1    1    1    1    1    1    1  1    1    1    1    1
+49    1    1    1    1    1    1    1  1    1    1    1    1
+54    1    0    1    1    1    1    1  1    1    1    1    1
+325   1    1    1    1    1    1    1  1    1    1    1    1
+358   1    1    1    1    1    1    1  1    1    1    1    1
+382   1    1    1    1    1    1    1  1    1    0    1    1
+388   1    1    1    1    1    1    1  1    1    1    1    1
+462   1    1    1    1    1    1    1  1    1    1    1    1
+489   1    1    1    1    1    1    1  1    1    1    1    1
+540   1    0    1    1    1    1    1  1    1    0    1    1
+581   1    1    1    1    1    1    1  1    1    1    1    1
+587   1    1    1    1    1    1    1  1    1    1    1    1
+603   1    1    1    1    1    1    1  1    1    1    1    1
+741   1    1    1    1    1    1    1  1    1    1    1    1
+864   0    0    0    0    1    1    0  1    0    0    0    0
+868   0    0    0    0    0    0    0  0    0    0    0    0
+873   0    0    0    1    1    1    0  1    0    0    1    1
+954   0    0    1    0    1    0    1  0    0    0    1    0
+982   1    0    0    1    0    0    1  1    1    0    1    1
+1030  0    0    1    0    1    0    1  1    1    0    0    0
+1165  1    1    0    0    1    1    0  0    0    0    0    0
+1211  1    0    0    0    0    0    0  0    0    0    0    0
+1212  0    1    0    0    0    0    0  0    0    0    0    0
+1302  0    0    1    0    1    0    0  0    1    1    1    1
+1397  0    0    1    1    0    0    0  0    0    0    0    1
+1421  0    0    1    1    0    0    1  1    0    1    1    1
+1422  0    0    1    1    0    0    0  1    0    0    1    1
+1477  0    0    0    0    0    0    1  1    0    0    1    0
+1480  0    0    1    0    1    0    1  1    0    0    1    0
+1536  1    0    0    0    1    1    0  0    1    0    0    0
+1571  1    1    1    1    1    1    1  0    1    1    1    0
+1612  1    0    0    0    0    0    0  1    1    1    0    1
+1628  1    1    1    0    1    1    1  1    0    1    0    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w' 'w'
+ 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 's' 'w' 's']
+LAN 35 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 35:   0.005000591278076172
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+1     1    0    1    1    1    1    1  1    1    0    1    1
+20    1    1    1    1    1    1    1  1    1    1    1    1
+95    1    1    1    1    1    1    1  1    1    1    1    1
+121   1    1    1    1    1    1    1  1    1    0    1    1
+155   1    1    1    1    1    1    1  1    1    1    1    1
+217   1    0    1    1    1    1    1  1    1    1    1    1
+226   1    0    1    1    1    1    1  1    1    1    1    1
+252   1    1    1    1    1    0    1  1    1    1    1    1
+296   1    1    1    1    1    1    1  1    1    1    1    1
+349   1    1    1    1    1    1    1  1    1    1    1    1
+416   1    0    1    1    1    0    1  1    1    1    1    1
+421   0    0    0    0    1    0    0  1    1    1    0    1
+458   1    1    1    1    1    1    1  1    1    1    1    1
+509   1    1    1    1    1    1    1  1    1    0    1    1
+512   1    0    1    1    1    0    1  1    1    0    1    1
+525   1    1    1    1    1    1    1  1    1    0    1    1
+549   1    1    1    1    1    1    1  1    1    1    1    1
+596   1    1    1    1    1    1    1  1    1    1    1    1
+620   1    1    1    1    1    1    1  1    1    1    1    1
+653   1    1    1    1    1    1    1  1    1    1    1    1
+682   1    1    1    1    1    1    1  1    1    1    1    1
+746   1    1    1    1    1    1    1  1    1    1    1    1
+783   1    1    1    1    1    1    1  0    1    1    1    1
+857   0    0    0    0    0    0    0  0    0    0    0    0
+873   0    0    0    1    1    1    0  1    0    0    1    1
+1063  0    0    0    0    1    0    0  0    0    0    0    0
+1071  1    1    0    1    0    0    0  0    1    0    0    0
+1079  1    0    1    0    1    0    0  0    0    0    0    0
+1117  0    1    0    0    1    0    0  0    0    0    0    1
+1149  0    0    0    0    0    0    0  0    0    0    0    0
+1189  0    0    0    0    0    0    0  0    0    0    0    0
+1287  0    0    1    0    0    0    0  0    0    1    1    0
+1439  1    1    0    1    0    0    0  0    0    0    0    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 's' 's' 's' 's' 's' 's'
+ 's' 's' 's' 's' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 36 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 36:   0.005001068115234375
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+20    1    1    1    1    1    1    1  1    1    1    1    1
+119   0    0    1    1    0    0    1  0    1    0    1    1
+171   1    1    1    1    1    1    1  1    1    1    1    1
+184   1    1    1    1    1    1    1  1    1    0    1    1
+206   1    1    1    1    1    1    1  1    1    1    1    1
+246   1    1    1    1    1    1    1  1    1    1    1    1
+283   1    0    1    1    1    1    1  1    1    0    1    1
+402   1    1    1    1    1    0    1  1    1    1    1    1
+474   1    1    1    1    1    1    1  1    1    0    1    1
+602   1    1    1    1    1    1    1  1    1    1    1    1
+618   1    1    1    1    1    1    1  0    1    1    1    1
+675   1    1    1    1    1    1    1  1    1    1    1    1
+709   1    1    1    1    1    1    1  1    1    1    1    1
+812   1    1    1    1    1    1    1  1    1    1    1    1
+817   1    1    1    1    1    1    1  1    1    1    1    0
+865   0    0    0    0    0    0    1  0    0    0    0    0
+881   0    1    0    0    0    0    1  1    0    0    0    0
+892   0    0    0    0    0    0    1  0    0    0    1    0
+1021  0    0    1    1    0    1    1  1    0    1    0    0
+1056  1    1    0    0    1    1    0  1    1    1    0    1
+1140  1    0    0    0    0    0    0  0    0    0    0    0
+1143  0    0    0    0    0    0    0  0    0    0    0    0
+1158  1    0    0    0    1    1    0  0    0    0    0    0
+1194  0    0    0    1    0    0    1  1    0    0    0    0
+1261  0    0    1    1    0    0    1  1    0    1    1    1
+1312  0    0    0    1    0    0    0  1    0    0    0    1
+1316  1    0    0    0    1    0    0  0    0    1    0    0
+1344  0    0    0    1    0    0    0  1    0    0    0    1
+1413  1    1    0    0    0    1    0  0    0    1    0    0
+1539  0    1    1    0    0    0    0  1    1    0    1    1
+1580  1    0    1    1    1    1    1  1    0    0    0    0
+1627  1    0    0    1    1    0    0  1    1    1    0    0
+1635  1    0    1    1    0    0    1  0    1    0    1    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 'w' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 's' 'w' 'w']
+LAN 37 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 37:   0.008005619049072266
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+99    1    1    1    1    1    0    1  1    1    0    1    1
+117   1    0    1    1    1    0    1  1    1    0    1    1
+253   1    1    1    1    1    0    1  1    1    1    1    1
+287   1    0    1    1    1    1    1  1    1    0    1    1
+313   1    1    1    1    1    1    1  1    1    1    1    1
+330   1    1    1    1    1    1    1  1    1    1    1    1
+356   1    1    1    1    1    0    1  1    1    1    1    1
+410   1    1    1    1    1    1    1  1    1    0    1    1
+487   1    1    1    1    1    1    1  1    1    1    1    1
+546   1    0    1    1    1    0    1  1    1    1    1    1
+614   1    1    1    1    1    1    1  1    1    1    1    1
+646   1    1    1    1    1    1    1  1    1    1    1    1
+685   1    1    1    1    1    1    1  1    1    1    1    1
+701   1    1    1    1    1    1    1  1    1    1    1    1
+763   1    1    1    1    1    1    1  1    1    1    1    1
+775   1    1    1    1    1    1    1  1    1    1    1    1
+829   1    1    1    1    1    1    1  1    1    1    1    1
+875   0    0    1    1    0    0    1  1    0    0    1    1
+959   0    0    1    1    1    0    0  0    0    1    0    1
+967   1    0    0    0    0    0    0  0    0    0    1    0
+1032  0    0    0    0    0    0    0  0    1    0    0    0
+1089  1    1    1    0    1    0    1  1    0    0    1    0
+1204  1    1    0    0    1    1    0  0    0    0    0    0
+1206  0    1    0    0    0    1    0  0    1    1    0    0
+1225  1    0    0    0    1    0    0  0    1    1    0    0
+1280  0    0    1    1    0    0    1  1    0    1    1    1
+1300  1    1    0    0    0    0    0  0    1    1    0    0
+1391  1    0    1    1    1    1    1  1    1    0    0    1
+1403  0    0    0    0    1    1    1  0    1    1    0    1
+1525  1    1    0    0    1    1    0  0    1    1    1    1
+1544  1    1    0    1    1    1    1  1    0    1    1    0
+1567  1    0    0    1    1    1    1  1    0    1    1    1
+1644  1    1    0    0    1    1    0  0    1    1    1    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w'
+ 'w' 'w' 'w' 's' 'w' 'w' 'w' 'w' 'w' 's' 'w' 'w' 's' 's' 'w']
+LAN 38 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 38:   0.005988121032714844
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+34    1    1    1    1    1    1    1  1    1    1    1    1
+118   1    1    1    1    1    1    1  1    1    0    1    1
+303   1    1    1    1    1    1    1  1    1    1    1    1
+339   1    1    1    1    1    1    1  1    1    1    1    1
+358   1    1    1    1    1    1    1  1    1    1    1    1
+402   1    1    1    1    1    0    1  1    1    1    1    1
+445   1    1    1    1    1    1    1  1    1    1    1    1
+529   1    0    1    1    1    1    1  1    1    1    1    1
+544   1    0    1    1    1    0    1  1    1    1    1    1
+549   1    1    1    1    1    1    1  1    1    1    1    1
+555   0    0    1    1    1    1    0  1    1    1    1    1
+622   1    1    1    1    1    1    1  1    1    1    1    1
+659   1    1    1    1    1    1    1  1    1    1    1    1
+684   1    1    1    1    1    1    1  1    1    1    1    1
+706   1    1    1    1    1    1    1  1    1    1    1    1
+883   0    0    0    0    0    0    0  0    1    0    0    0
+948   0    0    0    0    0    0    1  1    1    1    1    1
+994   0    0    0    0    0    1    0  1    1    0    1    0
+1002  0    1    1    0    0    1    1  1    0    0    1    0
+1034  0    0    0    1    0    0    0  0    0    0    0    1
+1155  0    0    0    1    0    0    0  0    0    0    0    0
+1182  0    1    1    0    1    1    0  0    0    1    0    1
+1220  1    1    0    0    0    0    0  0    1    0    0    1
+1268  1    0    0    0    0    0    0  0    0    0    0    1
+1279  1    1    0    0    0    0    1  1    0    0    1    1
+1289  0    0    0    0    0    0    1  0    0    1    1    0
+1300  1    1    0    0    0    0    0  0    1    1    0    0
+1406  0    1    0    1    0    1    1  1    1    1    1    1
+1414  0    1    0    0    0    1    1  0    0    0    0    0
+1443  0    0    1    1    1    1    1  0    0    0    1    1
+1457  1    0    0    0    1    1    0  1    1    1    1    0
+1579  1    1    0    0    1    1    1  0    1    1    1    0
+1646  1    0    0    0    0    0    0  0    1    1    0    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 39 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 39:   0.006991147994995117
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+38    1    1    1    1    1    1    1  1    1    1    1    1
+157   1    1    1    1    1    1    1  1    1    1    1    1
+195   1    1    1    1    1    1    1  1    1    1    1    1
+214   1    1    1    1    1    1    1  1    1    1    1    1
+217   1    0    1    1    1    1    1  1    1    1    1    1
+333   1    1    1    1    1    1    1  1    1    1    1    1
+374   1    1    1    1    1    0    1  1    1    1    1    1
+405   1    0    1    1    1    0    1  1    1    0    1    1
+426   1    1    1    1    1    0    1  1    1    1    1    1
+471   1    0    1    1    1    1    1  1    1    0    1    1
+499   1    1    1    1    1    1    1  1    1    1    1    1
+522   1    1    1    1    1    1    1  1    1    1    1    1
+527   1    0    1    1    1    1    1  1    1    0    1    1
+549   1    1    1    1    1    1    1  1    1    1    1    1
+606   1    1    1    1    1    1    1  1    1    0    1    1
+791   1    1    1    1    1    1    1  1    1    1    1    1
+796   1    1    1    1    1    1    1  1    1    1    1    1
+803   1    1    1    1    1    0    0  0    1    0    1    1
+877   0    0    0    1    0    1    1  1    1    1    0    0
+1048  1    0    1    0    1    1    1  1    0    0    1    0
+1059  0    0    0    1    0    0    0  0    0    0    0    1
+1117  0    1    0    0    1    0    0  0    0    0    0    1
+1120  0    0    0    0    0    0    0  0    0    0    0    1
+1137  0    1    0    0    0    0    0  0    0    0    0    0
+1211  1    0    0    0    0    0    0  0    0    0    0    0
+1213  0    0    0    0    0    0    0  0    0    0    0    0
+1279  1    1    0    0    0    0    1  1    0    0    1    1
+1459  0    0    0    0    0    0    1  0    1    1    1    1
+1522  1    1    0    0    0    1    0  0    0    0    1    0
+1535  0    0    0    0    0    0    0  1    1    1    1    0
+1563  0    1    0    0    1    1    0  0    0    1    0    0
+1617  1    1    0    1    1    1    0  1    1    1    0    1
+1638  0    0    1    0    0    0    0  1    1    1    0    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's'
+ 'w' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 40 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 40:   0.005009889602661133
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+171   1    1    1    1    1    1    1  1    1    1    1    1
+194   1    0    1    1    1    1    1  1    1    1    1    1
+198   1    1    1    1    1    1    1  1    1    1    1    1
+205   1    0    1    1    1    0    1  1    1    1    1    1
+238   1    1    1    1    1    1    1  1    1    1    1    1
+274   1    1    1    1    1    1    1  1    1    1    1    1
+281   1    0    1    1    1    0    1  1    1    0    1    1
+424   1    1    1    1    1    1    1  1    1    1    1    1
+451   1    1    1    1    1    1    1  1    1    1    1    1
+584   1    1    1    1    1    1    1  1    1    1    1    1
+717   1    1    1    1    1    1    1  1    1    1    1    1
+851   1    0    1    0    0    0    0  0    1    0    0    0
+852   0    0    0    0    0    0    0  1    1    0    0    0
+860   0    0    0    0    0    0    0  0    0    0    1    1
+944   0    0    0    0    0    0    1  1    0    0    0    1
+962   0    0    0    0    0    0    0  0    0    0    1    0
+1034  0    0    0    1    0    0    0  0    0    0    0    1
+1035  0    0    0    0    0    0    0  0    1    0    0    0
+1128  0    0    1    1    0    0    0  1    1    1    0    0
+1133  0    0    0    0    0    0    0  0    0    0    0    0
+1157  0    0    0    1    0    0    0  0    0    0    0    1
+1174  0    1    0    1    0    0    1  0    0    0    1    1
+1195  1    0    0    0    1    1    0  0    0    0    0    0
+1196  0    0    0    0    0    0    0  0    0    0    0    0
+1270  0    1    0    0    0    1    0  1    0    0    0    1
+1302  0    0    1    0    1    0    0  0    1    1    1    1
+1326  0    1    0    1    0    0    0  0    1    0    0    0
+1381  1    1    0    1    0    0    1  0    0    1    0    1
+1386  0    0    0    0    0    0    0  0    0    0    0    0
+1593  1    1    0    0    1    1    0  0    0    0    1    0
+1601  1    0    0    1    1    1    0  0    0    0    0    0
+1607  1    0    0    0    1    0    1  0    0    0    0    0
+1647  1    1    1    0    1    0    0  0    1    1    0    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 41 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 41:   0.0060024261474609375
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+14    1    1    1    1    1    1    1  1    1    1    1    1
+20    1    1    1    1    1    1    1  1    1    1    1    1
+101   1    1    1    1    1    1    1  1    1    1    1    1
+156   1    1    1    1    1    1    1  1    1    1    1    1
+238   1    1    1    1    1    1    1  1    1    1    1    1
+239   1    1    1    1    1    1    1  1    1    1    1    1
+246   1    1    1    1    1    1    1  1    1    1    1    1
+258   0    0    1    1    0    0    1  1    1    1    1    1
+288   1    0    1    1    1    1    1  1    1    0    1    1
+389   1    1    1    1    1    1    1  1    1    1    1    1
+397   1    1    1    1    0    0    1  1    0    0    1    1
+450   1    1    1    1    1    1    1  1    1    1    1    1
+474   1    1    1    1    1    1    1  1    1    0    1    1
+484   1    0    1    1    1    0    1  1    1    1    1    1
+539   1    0    1    1    1    1    1  1    1    0    1    1
+560   1    1    1    1    1    1    1  1    1    0    1    1
+790   1    1    0    1    1    1    1  1    1    1    0    1
+857   0    0    0    0    0    0    0  0    0    0    0    0
+938   0    0    0    0    1    1    1  1    0    0    0    0
+960   0    0    0    0    0    0    0  0    0    1    1    0
+971   0    0    0    0    0    0    0  0    0    1    0    0
+974   1    1    0    0    0    1    1  0    0    0    0    0
+1026  1    1    1    0    0    0    0  0    1    1    1    1
+1144  0    0    0    0    0    0    0  0    0    0    0    0
+1145  0    0    0    0    0    0    0  0    0    0    0    0
+1299  0    1    0    1    0    0    0  0    0    0    1    0
+1301  0    0    0    0    0    0    0  0    0    0    0    1
+1422  0    0    1    1    0    0    0  1    0    0    1    1
+1559  0    0    1    0    0    1    0  0    1    0    0    0
+1569  1    0    1    1    1    1    1  1    1    1    1    1
+1593  1    1    0    0    1    1    0  0    0    0    1    0
+1599  1    0    0    0    1    1    0  0    1    1    0    0
+1640  0    0    0    0    1    0    0  0    1    1    1    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 'w' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 's' 'w' 'w' 'w']
+LAN 42 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 42:   0.004999637603759766
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+82    1    1    1    1    1    0    1  1    1    0    1    1
+266   1    0    1    1    1    0    1  1    1    0    1    1
+327   1    1    1    1    1    1    1  1    1    1    1    1
+405   1    0    1    1    1    0    1  1    1    0    1    1
+412   1    1    1    1    1    1    1  1    1    1    1    1
+504   1    0    1    1    1    1    1  1    1    1    1    1
+597   1    1    1    1    1    1    1  1    1    1    1    1
+665   1    1    1    1    1    1    1  1    1    1    1    1
+691   1    1    1    1    1    1    1  1    1    1    1    1
+734   1    1    1    1    1    1    1  0    1    1    1    1
+739   1    1    1    1    1    1    1  1    1    1    1    1
+770   1    1    1    1    1    1    1  1    1    1    1    1
+795   1    1    1    1    1    1    1  1    1    1    1    1
+896   1    1    1    0    1    1    1  1    1    1    1    1
+904   0    0    1    0    0    0    0  0    0    0    0    0
+1097  1    1    0    0    0    0    0  0    1    0    0    0
+1173  0    0    0    1    0    0    0  0    0    0    0    0
+1206  0    1    0    0    0    1    0  0    1    1    0    0
+1238  1    0    1    0    0    0    0  0    1    1    0    0
+1248  0    0    0    1    0    1    1  1    0    0    0    1
+1263  0    0    0    1    0    0    0  1    0    0    1    1
+1268  1    0    0    0    0    0    0  0    0    0    0    1
+1281  1    0    1    1    0    0    0  1    0    0    0    1
+1296  0    0    0    0    0    0    0  1    0    0    1    1
+1319  0    1    0    0    0    1    0  0    0    0    0    0
+1321  0    1    0    0    0    0    0  0    0    0    0    0
+1346  1    1    0    0    1    1    1  1    1    0    0    0
+1405  1    1    0    1    0    0    0  0    1    0    0    0
+1477  0    0    0    0    0    0    1  1    0    0    1    0
+1606  1    0    0    0    1    0    0  0    1    0    0    0
+1613  1    1    0    1    0    0    0  1    0    0    0    0
+1659  1    0    1    1    1    0    0  1    1    0    0    1
+1660  0    0    1    0    0    0    0  0    0    0    0    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 's' 'w']
+LAN 43 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 43:   0.0059888362884521484
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+33    1    1    1    1    1    1    1  1    1    1    1    1
+42    1    1    1    1    1    1    1  1    1    1    1    1
+62    1    1    1    1    1    1    1  1    1    1    1    1
+178   1    1    1    1    1    1    1  1    1    1    1    1
+194   1    0    1    1    1    1    1  1    1    1    1    1
+243   1    0    1    1    1    1    1  1    1    1    1    1
+278   0    0    1    1    1    0    1  1    1    1    1    1
+308   1    1    1    1    1    1    1  1    1    1    1    1
+349   1    1    1    1    1    1    1  1    1    1    1    1
+374   1    1    1    1    1    0    1  1    1    1    1    1
+411   1    0    1    1    1    1    1  1    1    1    1    1
+599   1    1    1    1    1    1    1  1    1    1    1    1
+682   1    1    1    1    1    1    1  1    1    1    1    1
+711   1    1    1    1    1    1    1  1    1    1    1    1
+816   1    1    1    1    1    1    1  1    1    1    1    1
+941   1    0    0    0    1    0    0  0    0    0    1    0
+944   0    0    0    0    0    0    1  1    0    0    0    1
+1090  1    0    0    0    1    0    0  0    0    1    0    0
+1101  0    1    1    1    0    1    0  1    0    1    1    0
+1151  1    0    0    0    0    0    0  1    0    0    0    1
+1181  0    0    0    0    0    0    0  0    0    0    1    0
+1197  1    1    0    0    1    1    0  0    0    0    0    1
+1278  0    0    0    0    0    0    0  0    1    0    1    1
+1403  0    0    0    0    1    1    1  0    1    1    0    1
+1407  0    1    0    0    0    0    0  1    0    1    1    0
+1437  0    0    0    1    1    1    0  1    1    0    1    1
+1459  0    0    0    0    0    0    1  0    1    1    1    1
+1513  0    1    0    1    0    1    0  1    1    0    1    1
+1560  0    0    0    0    0    0    0  0    0    0    1    1
+1576  1    1    0    0    1    1    0  0    1    1    0    0
+1578  1    0    0    0    1    1    1  0    1    1    0    0
+1584  0    0    0    1    1    1    0  0    1    0    0    0
+1609  0    1    0    0    1    0    0  0    1    1    0    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 44 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 44:   0.005000114440917969
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+73    1    1    1    1    1    0    1  1    1    1    1    1
+113   1    1    1    1    1    1    1  1    1    0    1    1
+125   1    0    1    1    1    1    1  1    1    1    1    1
+211   1    1    1    1    1    1    1  1    1    1    1    1
+213   1    1    1    1    1    1    1  1    1    1    1    1
+242   1    1    1    1    1    0    1  1    1    1    1    1
+287   1    0    1    1    1    1    1  1    1    0    1    1
+333   1    1    1    1    1    1    1  1    1    1    1    1
+421   0    0    0    0    1    0    0  1    1    1    0    1
+435   1    1    1    1    1    1    1  1    1    1    1    1
+513   1    0    1    1    1    1    1  1    1    0    1    1
+581   1    1    1    1    1    1    1  1    1    1    1    1
+683   1    1    1    1    1    1    1  1    1    1    1    1
+696   1    1    1    1    1    1    1  1    1    1    1    1
+702   1    1    1    1    1    1    1  1    1    1    1    1
+780   1    1    1    1    1    1    1  1    1    1    1    1
+827   1    1    1    1    1    1    1  1    1    1    1    1
+831   1    1    1    1    1    1    1  1    1    1    1    1
+851   1    0    1    0    0    0    0  0    1    0    0    0
+886   0    0    0    0    0    0    0  0    0    1    1    0
+917   0    0    0    0    0    0    0  1    1    0    0    0
+976   1    1    0    0    0    0    1  0    0    0    0    0
+991   0    0    1    0    0    1    0  1    1    0    1    1
+1079  1    0    1    0    1    0    0  0    0    0    0    0
+1123  0    1    0    1    0    1    0  0    1    1    0    0
+1150  0    0    0    0    0    0    0  0    1    0    1    0
+1249  0    0    0    0    0    0    0  0    0    0    0    1
+1366  1    0    0    1    0    0    0  0    1    1    0    0
+1422  0    0    1    1    0    0    0  1    0    0    1    1
+1451  1    0    1    0    1    0    1  0    1    0    0    0
+1553  1    1    0    0    0    0    0  0    0    0    0    0
+1578  1    0    0    0    1    1    1  0    1    1    0    0
+1657  1    0    0    0    1    1    0  0    1    1    1    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 'w' 's' 's' 's' 's' 's' 's' 's' 's' 's'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 45 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 45:   0.004999637603759766
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+27    1    1    1    1    1    1    1  1    1    1    1    1
+95    1    1    1    1    1    1    1  1    1    1    1    1
+105   1    1    1    1    1    1    1  1    1    1    1    1
+250   1    1    1    1    1    1    1  1    1    0    1    1
+391   1    1    1    1    1    1    1  1    1    1    1    1
+394   1    1    1    1    1    1    1  1    1    1    1    1
+528   1    1    1    1    1    1    1  1    1    0    1    1
+682   1    1    1    1    1    1    1  1    1    1    1    1
+684   1    1    1    1    1    1    1  1    1    1    1    1
+735   1    1    1    1    1    1    1  1    1    1    1    1
+766   1    1    1    1    1    1    1  1    1    1    1    1
+793   1    1    1    1    1    1    1  1    1    1    1    1
+798   1    1    1    1    1    1    1  1    1    1    1    1
+821   1    1    1    1    1    1    1  1    1    1    1    1
+859   0    0    0    0    0    0    0  0    0    0    0    0
+860   0    0    0    0    0    0    0  0    0    0    1    1
+874   0    0    0    0    1    0    0  0    0    0    0    0
+968   1    0    1    0    0    0    0  0    0    0    0    0
+1061  0    0    0    0    1    0    0  0    0    0    0    0
+1129  0    1    0    0    0    1    0  0    0    0    0    0
+1155  0    0    0    1    0    0    0  0    0    0    0    0
+1186  1    1    0    0    0    0    0  0    0    1    0    0
+1188  0    0    0    1    0    0    0  0    0    0    0    0
+1229  0    0    0    1    0    0    0  1    0    1    0    1
+1267  0    1    1    1    1    1    0  0    1    0    0    0
+1314  1    1    0    0    0    0    0  0    1    0    0    0
+1437  0    0    0    1    1    1    0  1    1    0    1    1
+1444  0    0    0    0    1    0    0  0    1    1    1    0
+1446  0    1    1    0    0    1    0  0    1    0    0    1
+1462  1    1    1    0    0    0    0  0    1    0    0    0
+1499  1    1    1    1    0    0    1  1    0    0    1    0
+1544  1    1    0    1    1    1    1  1    0    1    1    0
+1585  0    1    1    1    1    1    1  1    0    0    0    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 's' 'w']
+LAN 46 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 46:   0.0069980621337890625
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+27    1    1    1    1    1    1    1  1    1    1    1    1
+85    1    1    1    1    1    0    1  1    1    1    1    1
+164   1    1    1    1    1    1    1  1    1    1    1    1
+175   1    1    1    1    1    0    1  1    1    0    1    1
+198   1    1    1    1    1    1    1  1    1    1    1    1
+278   0    0    1    1    1    0    1  1    1    1    1    1
+399   1    0    1    1    1    0    1  1    1    0    1    1
+430   1    1    1    1    1    1    0  1    0    0    0    0
+462   1    1    1    1    1    1    1  1    1    1    1    1
+500   1    1    1    1    1    1    1  1    1    1    1    1
+564   1    1    1    1    1    1    1  1    1    1    1    1
+576   1    1    1    1    1    1    1  1    1    1    1    1
+640   1    1    1    1    1    0    0  0    1    1    1    1
+786   0    1    0    1    1    1    0  1    1    1    0    1
+808   1    1    1    1    1    1    1  1    1    1    1    1
+813   1    1    1    1    1    1    1  1    1    1    1    1
+873   0    0    0    1    1    1    0  1    0    0    1    1
+894   0    0    0    0    1    0    0  1    0    0    0    1
+979   1    0    0    0    0    0    1  0    0    0    1    0
+1034  0    0    0    1    0    0    0  0    0    0    0    1
+1051  0    1    0    0    1    1    0  0    0    0    0    1
+1182  0    1    1    0    1    1    0  0    0    1    0    1
+1189  0    0    0    0    0    0    0  0    0    0    0    0
+1267  0    1    1    1    1    1    0  0    1    0    0    0
+1272  0    0    0    1    0    0    0  1    1    0    0    1
+1278  0    0    0    0    0    0    0  0    1    0    1    1
+1286  0    0    0    1    0    0    1  0    0    1    0    1
+1369  0    0    0    0    1    0    0  0    1    0    0    0
+1374  0    0    0    0    0    0    0  0    0    0    1    0
+1388  0    0    0    0    0    0    0  0    1    0    0    0
+1428  0    0    0    0    0    0    0  0    0    0    0    0
+1570  1    0    0    0    0    1    1  0    1    1    0    0
+1620  0    0    0    1    1    1    0  0    0    0    0    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 'w' 's' 's' 's' 's' 's' 'w' 's' 's' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 47 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 47:   0.006012678146362305
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+54    1    0    1    1    1    1    1  1    1    1    1    1
+84    1    1    1    1    1    0    1  1    1    1    1    1
+96    1    1    1    1    1    1    1  1    1    0    1    1
+109   1    0    1    1    1    0    1  1    1    1    1    1
+148   1    1    1    1    1    1    1  1    1    1    1    1
+185   1    1    1    1    1    1    1  1    1    1    1    1
+223   1    1    1    1    1    1    1  1    1    1    1    1
+337   1    1    1    1    1    1    1  1    1    1    1    1
+362   1    1    1    1    1    1    1  1    1    0    1    1
+372   1    1    1    1    1    1    1  1    1    1    1    1
+384   1    1    1    1    1    1    1  1    1    1    1    1
+739   1    1    1    1    1    1    1  1    1    1    1    1
+927   0    0    0    0    0    0    1  0    0    0    1    0
+947   0    0    0    0    0    0    1  1    0    0    1    1
+959   0    0    1    1    1    0    0  0    0    1    0    1
+1003  0    1    1    0    0    0    1  1    0    0    1    1
+1038  0    0    1    1    0    1    1  0    0    0    1    0
+1063  0    0    0    0    1    0    0  0    0    0    0    0
+1093  1    1    0    0    1    1    0  0    1    1    1    0
+1136  0    1    0    0    0    0    0  0    0    0    0    1
+1218  0    1    0    0    0    0    0  0    0    0    0    0
+1228  0    0    0    0    0    0    0  0    0    1    0    0
+1236  0    1    1    0    0    0    1  0    0    0    0    0
+1237  0    0    0    0    0    0    0  0    0    1    0    0
+1319  0    1    0    0    0    1    0  0    0    0    0    0
+1394  1    0    0    0    1    1    0  0    1    0    0    0
+1528  0    0    0    0    0    0    0  1    0    1    0    0
+1557  1    1    0    0    0    0    0  0    1    0    0    0
+1576  1    1    0    0    1    1    0  0    1    1    0    0
+1590  1    1    1    1    1    1    0  0    1    0    0    0
+1602  0    0    1    0    1    1    0  0    0    0    0    0
+1636  1    0    1    0    1    1    1  0    1    1    1    0
+1654  1    1    0    0    1    1    0  0    1    1    0    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w' 'w' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 48 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 48:   0.008008956909179688
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+27    1    1    1    1    1    1    1  1    1    1    1    1
+47    1    1    1    1    1    1    1  1    1    1    1    1
+92    1    1    1    1    1    1    1  1    1    1    1    1
+134   1    0    1    1    1    0    1  1    1    1    1    1
+310   1    1    1    1    1    1    1  1    1    1    1    1
+344   1    1    1    1    1    1    1  1    1    1    1    1
+360   1    1    1    1    1    1    1  1    1    1    1    1
+370   1    1    1    1    1    1    1  1    1    1    1    1
+395   1    1    1    1    1    1    1  1    1    1    1    1
+407   1    1    1    1    1    1    1  1    1    1    1    1
+417   1    0    1    1    1    1    1  1    1    1    1    1
+489   1    1    1    1    1    1    1  1    1    1    1    1
+565   1    1    1    1    1    1    1  1    1    1    1    1
+592   1    1    1    1    1    1    1  1    1    1    1    1
+612   1    1    1    1    1    1    1  1    1    1    1    1
+651   1    1    1    1    1    1    1  1    1    1    1    1
+652   1    1    1    1    1    1    1  1    1    1    1    1
+697   1    1    1    1    1    1    1  1    1    1    1    1
+743   1    1    1    1    1    1    1  1    1    1    1    1
+770   1    1    1    1    1    1    1  1    1    1    1    1
+828   1    1    1    1    1    1    1  1    1    1    1    1
+839   0    0    0    0    1    0    0  0    0    0    1    1
+1014  1    0    0    0    1    1    0  1    0    0    0    1
+1049  0    0    0    0    0    0    1  0    0    1    1    1
+1164  0    0    0    1    0    1    0  0    0    1    0    0
+1170  0    0    1    0    1    0    1  0    0    0    1    1
+1225  1    0    0    0    1    0    0  0    1    1    0    0
+1340  0    1    0    1    1    1    1  1    0    1    1    1
+1370  0    1    0    0    1    1    0  0    0    1    0    0
+1426  1    1    1    1    0    0    1  0    1    1    0    0
+1525  1    1    0    0    1    1    0  0    1    1    1    1
+1536  1    0    0    0    1    1    0  0    1    0    0    0
+1596  0    0    0    0    1    0    0  1    1    1    0    1
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's'
+ 's' 's' 's' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 49 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 49:   0.004999637603759766
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+21    1    1    1    1    1    1    1  1    1    1    1    1
+36    1    1    1    1    1    1    1  1    1    1    1    1
+171   1    1    1    1    1    1    1  1    1    1    1    1
+338   1    1    1    1    1    1    1  1    1    1    1    1
+380   1    0    1    1    1    1    1  1    1    1    1    1
+407   1    1    1    1    1    1    1  1    1    1    1    1
+426   1    1    1    1    1    0    1  1    1    1    1    1
+489   1    1    1    1    1    1    1  1    1    1    1    1
+537   1    1    1    1    1    1    1  1    1    1    1    1
+585   1    1    1    1    1    1    1  1    1    1    1    1
+614   1    1    1    1    1    1    1  1    1    1    1    1
+620   1    1    1    1    1    1    1  1    1    1    1    1
+649   1    1    1    1    1    1    1  1    1    1    1    1
+654   1    1    1    1    1    1    1  1    1    1    1    1
+730   1    1    1    1    1    1    1  1    1    1    1    1
+872   0    0    1    1    0    0    0  0    0    1    1    0
+985   0    0    1    0    0    0    0  0    0    0    0    0
+1072  0    0    0    0    0    0    0  1    1    1    0    0
+1083  0    0    0    1    1    0    0  0    0    0    0    0
+1140  1    0    0    0    0    0    0  0    0    0    0    0
+1180  1    0    0    0    1    0    0  0    0    0    0    1
+1243  0    0    0    0    0    1    0  0    0    1    0    1
+1261  0    0    1    1    0    0    1  1    0    1    1    1
+1262  0    0    1    1    0    0    1  1    0    0    0    0
+1287  0    0    1    0    0    0    0  0    0    1    1    0
+1427  1    1    0    0    0    0    1  1    1    1    0    0
+1445  1    0    1    1    1    1    0  0    0    0    0    0
+1456  0    0    0    0    1    0    0  0    1    0    1    1
+1475  1    0    1    0    0    1    1  1    0    0    1    0
+1584  0    0    0    1    1    1    0  0    1    0    0    0
+1599  1    0    0    0    1    1    0  0    1    1    0    0
+1618  1    1    0    1    0    0    0  0    0    0    1    1
+1638  0    0    1    0    0    0    0  1    1    1    0    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 'w' 'w' 'w'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w']
+LAN 50 --------------------------------------------------------------------------------------
+len full data:  1665
+len x data:  1665
+len y data:  1665
+Kfold K = 50
+len x_train:   1632
+len y_train:   1632
+len x_test:   33
+len y_test:   33
+time train lan 50:   0.007010459899902344
+x_test:
+       0  0.1  0.2  0.3  0.4  0.5  0.6  1  0.7  0.8  1.1  1.2
+42    1    1    1    1    1    1    1  1    1    1    1    1
+62    1    1    1    1    1    1    1  1    1    1    1    1
+86    1    0    1    1    1    1    1  1    1    0    1    1
+113   1    1    1    1    1    1    1  1    1    0    1    1
+155   1    1    1    1    1    1    1  1    1    1    1    1
+181   1    1    1    1    1    1    1  1    1    1    1    1
+329   1    1    1    1    1    1    1  1    1    1    1    1
+404   1    1    1    1    1    0    1  1    1    0    1    1
+406   1    1    1    1    1    1    1  1    1    1    1    1
+411   1    0    1    1    1    1    1  1    1    1    1    1
+420   1    1    1    1    1    0    1  0    1    0    0    0
+447   1    1    1    1    1    1    1  1    1    1    1    1
+449   1    1    1    1    1    1    1  1    1    1    1    1
+576   1    1    1    1    1    1    1  1    1    1    1    1
+591   1    1    1    1    1    1    1  1    1    1    1    1
+641   1    1    1    0    1    1    1  1    1    1    1    1
+749   1    1    1    1    1    1    1  1    1    1    1    1
+817   1    1    1    1    1    1    1  1    1    1    1    0
+837   1    1    1    1    1    1    1  0    1    1    0    0
+847   0    0    0    1    1    0    0  0    0    0    1    0
+870   0    0    1    0    0    0    0  0    0    0    1    0
+907   1    0    1    0    0    0    0  0    0    0    0    0
+1001  0    1    0    0    0    0    1  0    0    0    1    0
+1012  0    0    0    0    1    0    0  0    1    0    0    0
+1083  0    0    0    1    1    0    0  0    0    0    0    0
+1190  0    0    0    0    1    1    0  0    1    1    0    1
+1215  1    1    0    0    1    1    0  0    1    1    1    1
+1297  0    1    0    1    0    0    0  1    1    1    1    1
+1454  0    1    0    0    1    1    0  1    1    1    1    0
+1492  1    1    1    1    0    0    1  1    0    0    1    1
+1514  0    0    1    1    0    0    1  1    0    0    0    1
+1624  1    1    1    0    0    0    1  1    1    1    0    1
+1654  1    1    0    0    1    1    0  0    1    1    0    0
+D:\THU MUC INSTALL\Python\lib\site-packages\sklearn\neighbors\_classification.py:228: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims`will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  mode, _ = stats.mode(_y[neigh_ind, k], axis=1)
+Ket qua du doan ['s' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's' 's'
+ 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 'w' 's' 'w' 's' 'w']
+Danh gia mo hinh KNN
+3 lines
+k = 50
+N_AVERAGE = 50
+N_NEIGHBORS = 20
+-------------------------------------- Ket Qua 50 lan ------------------------------
+50 lan accuracy: [93.93939393939394, 93.93939393939394, 100.0, 93.93939393939394, 96.96969696969697, 96.96969696969697, 96.96969696969697, 93.93939393939394, 100.0, 93.93939393939394, 100.0, 84.84848484848484, 96.96969696969697, 96.96969696969697, 100.0, 90.9090909090909, 93.93939393939394, 96.96969696969697, 96.96969696969697, 100.0, 93.93939393939394, 96.96969696969697, 90.9090909090909, 100.0, 87.87878787878788, 93.93939393939394, 96.96969696969697, 100.0, 93.93939393939394, 100.0, 96.96969696969697, 96.96969696969697, 100.0, 90.9090909090909, 96.96969696969697, 93.93939393939394, 87.87878787878788, 100.0, 96.96969696969697, 100.0, 93.93939393939394, 93.93939393939394, 100.0, 96.96969696969697, 96.96969696969697, 93.93939393939394, 100.0, 100.0, 100.0, 93.93939393939394]
+50 lan F1: [array([0.94444444, 0.93333333]), array([0.93333333, 0.94444444]), array([1., 1.]), array([0.94117647, 0.9375    ]), array([0.97674419, 0.95652174]), array([0.96296296, 0.97435897]), array([0.97560976, 0.96      ]), array([0.95      , 0.92307692]), array([1., 1.]), array([0.94736842, 0.92857143]), array([1., 1.]), array([0.84848485, 0.84848485]), array([0.96551724, 0.97297297]), array([0.96969697, 0.96969697]), array([1., 1.]), array([0.92307692, 0.88888889]), array([0.95652174, 0.9       ]), array([0.96969697, 0.96969697]), array([0.97142857, 0.96774194]), array([1., 1.]), array([0.95238095, 0.91666667]), array([0.97560976, 0.96      ]), array([0.91428571, 0.90322581]), array([1., 1.]), array([0.85714286, 0.89473684]), array([0.94444444, 0.93333333]), array([0.97142857, 0.96774194]), array([1., 1.]), array([0.93333333, 0.94444444]), array([1., 1.]), array([0.97142857, 0.96774194]), array([0.96296296, 0.97435897]), array([1., 1.]), array([0.90322581, 0.91428571]), array([0.97777778, 0.95238095]), array([0.93333333, 0.94444444]), array([0.89473684, 0.85714286]), array([1., 1.]), array([0.97297297, 0.96551724]), array([1., 1.]), array([0.94117647, 0.9375    ]), array([0.92857143, 0.94736842]), array([1., 1.]), array([0.97142857, 0.96774194]), array([0.96551724, 0.97297297]), array([0.93333333, 0.94444444]), array([1., 1.]), array([1., 1.]), array([1., 1.]), array([0.94736842, 0.92857143])]
+50 lan Recall: [array([1.   , 0.875]), array([1.        , 0.89473684]), array([1., 1.]), array([1.        , 0.88235294]), array([0.95454545, 1.        ]), array([0.92857143, 1.        ]), array([1.        , 0.92307692]), array([0.9047619, 1.       ]), array([1., 1.]), array([0.9, 1. ]), array([1., 1.]), array([0.93333333, 0.77777778]), array([1.        , 0.94736842]), array([1.        , 0.94117647]), array([1., 1.]), array([1. , 0.8]), array([1.        , 0.81818182]), array([1.        , 0.94117647]), array([0.94444444, 1.        ]), array([1., 1.]), array([1.        , 0.84615385]), array([0.95238095, 1.        ]), array([0.94117647, 0.875     ]), array([1., 1.]), array([0.85714286, 0.89473684]), array([0.94444444, 0.93333333]), array([1.    , 0.9375]), array([1., 1.]),array([0.93333333, 0.94444444]), array([1., 1.]), array([1.    , 0.9375]), array([0.92857143, 1.        ]), array([1., 1.]), array([1.        , 0.84210526]), array([0.95652174, 1.        ]), array([0.93333333, 0.94444444]), array([1.  , 0.75]), array([1., 1.]), array([1.        , 0.93333333]), array([1., 1.]),array([0.94117647, 0.9375    ]), array([1. , 0.9]), array([1., 1.]), array([0.94444444, 1.        ]), array([1.        , 0.94736842]), array([0.875, 1.   ]), array([1., 1.]), array([1., 1.]), array([1., 1.]), array([1.        , 0.86666667])]
+50 lan Precision: [array([0.89473684, 1.        ]), array([0.875, 1.   ]), array([1., 1.]), array([0.88888889, 1.        ]), array([1.        , 0.91666667]), array([1.  , 0.95]), array([0.95238095, 1.        ]), array([1.        , 0.85714286]), array([1., 1.]), array([1.        , 0.86666667]), array([1., 1.]),array([0.77777778, 0.93333333]), array([0.93333333, 1.        ]), array([0.94117647, 1.        ]), array([1., 1.]), array([0.85714286, 1.        ]), array([0.91666667, 1.        ]), array([0.94117647, 1.        ]), array([1.    , 0.9375]), array([1., 1.]), array([0.90909091, 1.        ]), array([1.        , 0.92307692]), array([0.88888889, 0.93333333]), array([1., 1.]), array([0.85714286, 0.89473684]), array([0.94444444, 0.93333333]), array([0.94444444, 1.]), array([1., 1.]), array([0.93333333, 0.94444444]), array([1., 1.]), array([0.94444444, 1.        ]), array([1.  , 0.95]), array([1., 1.]), array([0.82352941, 1.        ]), array([1.        , 0.90909091]), array([0.93333333, 0.94444444]), array([0.80952381, 1.        ]), array([1., 1.]), array([0.94736842, 1.        ]), array([1., 1.]), array([0.94117647, 0.9375    ]), array([0.86666667, 1.        ]), array([1., 1.]), array([1.    , 0.9375]), array([0.93333333,1.        ]), array([1.        , 0.89473684]), array([1., 1.]), array([1., 1.]), array([1., 1.]), array([0.9, 1. ])]
+-------------------------------------- Trung Binh ------------------------------
+3 lines
+---------------------------------------------------------------------------------
+
+trung binh 50 lan accuracy 96.06060606060608
+trung binh 50 lan F1 0.9595843197854584
+trung binh 50 lan Recall 0.9606411629885347
+trung binh 50 lan Precision 0.9621850762326767
+MAX ACCURACY IN 50:  100.0
+TOTAL TIME 50 lan:   1.3371920585632324
+
+E:\CTU\LUAN_VAN_2023\code_thay_Thanh>
