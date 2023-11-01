@@ -1,0 +1,21 @@
+- hạn chế xưng 'tôi' và 'chúng tôi' thay đó dùng từ hệ thống
+- danh mục các từ viết tắt theo thứ tự ABC
+- trang tóm tắt để cuối cùng viết (trình bày những cái nổi trội, đóng góp chính của mình) vd: dữ liệu tự quay, detect người với YOLO ,mô hình CNN pose (lie, sit, stand), áp dụng mediapipe đưa ra thuật toán tạo
+- đặt vấn đề: đi thẳng (ko dùng CNTT đang phát triển) hiên nay sử dụng điện sao... dẫn đến lãng phí điện từ đó đưa AI vào để hạn chế điện năng tốn ít tài nguyên. Chia ra nhìu đoạn mỗi đoạn 1 nhiệm vụ riêng (p1 giới thiệu, ...) đặt vấn đề từ lí thuyết vào thực tế. Chú ý đoạn 'vì lí do đã nêu trên ... ' (PHẢI CÓ ĐOẠN NÀY) GHI LẠI: HIỆN CHƯA CÓ ĐỀ TÀI NÀO ĐỀ CẬP ĐẾN NỘI DUNG ĐỀ TÀI NÀY. 
+
+
+- Mục tiêu đề tài trang 19: Mục tiêu chung (phải định hướng trong tương lai), đề tài này được chia làm 3 giai đoạn (1: một thiết bị dự đoán ngủ/ko 2: áp dụng cho nhìu thiết bị, 3: triển khai mô hình ra thực tế)
+
+- Mục tiêu chi tiết (trang 13): những đóng góp chính của mình nêu ra (liệt kê ra)
+
+- Đối tượng nghiên cứu / Phạm vi nghiên cứu (trang 14): ràng buộc vô những gì mình nghiên cứu thật chi tiết vd: góc camera, độ phân giải bao nhiêu, dò tìm 1 người, ánh sáng vừa và đủ ,...
+
+- Kết quả đạt được (trang 15): đóng góp làm được những gì (vd: dữ liệu tự quay, detect người với YOLO ,mô hình CNN pose (lie, sit, stand), áp dụng mediapipe đưa ra thuật toán tạo...)
+
+- Mô tả chi tiết bài toán trang (17): dùng hình
+- vấn đề và giải phái liên quan đến bài toán: yolo, svm, tuya...
+
+CHƯƠNG 2: THIẾT KẾ VÀ CÀI ĐẶT
+- cái flow được chuẩn bị và xử lí tuần tự ràng buộc
+
+-KẾT QỦA ĐẠT ĐƯỢC: phải khớp với mục tiêu chi tiết
