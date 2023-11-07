@@ -16,6 +16,7 @@ import joblib
 import tkinter as tk
 from tkinter import Canvas, ttk
 from tkinter import filedialog, IntVar, messagebox
+import PIL.Image,PIL.ImageTk
 
 lm_list = []
 
@@ -138,6 +139,12 @@ def process_video(video_path, selected_option):
         image_expand = np.expand_dims(image_resize,axis=0)
         pred=model_CNN.predict(image_expand)
         res = argmax(pred, axis=1)
+        accuracy_CNN = pred[0][res][0] * 100
+        accuracy_CNN_formatted = "{:.2f}".format(accuracy_CNN)
+        
+        result_name_pose.config(text = categories[res[0]])
+        result_accuracy_pose.config(text = accuracy_CNN_formatted)
+        
         if categories[res[0]] == 'lie':
             frameRGB = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGB)
             results = pose.process(frameRGB)
@@ -169,11 +176,13 @@ def process_video(video_path, selected_option):
                 if(preds[0] == 's'):
                     print('preds:  SLEEP', )
                     STATUS = 'SLEEP'
+                    result_status_label.config(text = STATUS)
                 else: 
                     print('preds:  WAKE', )
                     STATUS = 'WAKE'
+                    result_status_label.config(text = STATUS)
                 isSleep = []
-            accuracy_CNN = pred[0][res][0] * 100
+        accuracy_CNN = pred[0][res][0] * 100
         accuracy_CNN_formatted = "{:.2f}".format(accuracy_CNN)
         print('categories[res]:   ',categories[res[0]])
         cv2.rectangle(resized_img, (x, y), (x+w, y+h), color = (0, 0, 255), thickness=2)
@@ -219,11 +228,43 @@ label = tk.Label(app, text="Mini App Detect Person Sleep!",font=("Arial Bold", 2
 
 # Create radio buttons
 selected_option = tk.IntVar()
-option1 = tk.Radiobutton(app, text="12 features (3 lines)", font=("Arial Bold", 10), variable=selected_option, value=3, command=lambda: process_option(3), bg='red').place(x = 30, y = 120)
-option2 = tk.Radiobutton(app, text="16 features (4 lines)", font=("Arial Bold", 10), variable=selected_option, value=4, command=lambda: process_option(4)).place(x = 30, y = 160)
-option3 = tk.Radiobutton(app, text="20 features (5 lines)", font=("Arial Bold", 10), variable=selected_option, value=5, command=lambda: process_option(5)).place(x = 30, y = 200)
+selected_option.set(3)
+option1 = tk.Radiobutton(app, 
+                         text="12 features (3 lines)", 
+                         font=("Arial Bold", 10), 
+                         variable=selected_option, 
+                         value=3, 
+                        #  command=lambda: process_option(3),
+                         activebackground='red',
+                        )
+
+option2 = tk.Radiobutton(app, 
+                         text="16 features (4 lines)", 
+                         font=("Arial Bold", 10), 
+                         variable=selected_option, 
+                         value=4, 
+                        #  command=lambda: process_option(4),
+                         activebackground='red'
+                        )
+
+option3 = tk.Radiobutton(app,
+                         text="20 features (5 lines)",
+                         font=("Arial Bold", 10),
+                         variable=selected_option,
+                         value=5,
+                        #  command=lambda: process_option(5),
+                         activebackground='red'
+                        )
+
+option1.place(x=80, y=120)
+option2.place(x=80, y=160)
+option3.place(x=80, y=200)
 
 
+
+
+
+# create cropdown
 n = tk.StringVar() 
 optionModel = ttk.Combobox(app, width = 20, textvariable = n) 
   
@@ -232,22 +273,53 @@ optionModel['values'] = (' SVM',
                           ' Median', 
                           ' Mean', ) 
   
-optionModel.place(x = 30, y = 230)
+optionModel.place(x = 80, y = 230)
 optionModel.current(0) 
 
 # Create button choose file video
-choose_file_button = tk.Button(app, text="Choose Video", command=choose_file).place(x = 10, y = 280)
-choose_camera_button = tk.Button(app, text="Use Camera", command=choose_file).place(x = 120, y = 280)
+open_file_icon=PIL.Image.open("./icon_app/open_file.png")
+open_file_icon_resize=open_file_icon.resize((25,25),PIL.Image.ANTIALIAS)
+open_file_icon_img=PIL.ImageTk.PhotoImage(open_file_icon_resize)
+choose_file_button = tk.Button(app,
+                               text="Choose Video ",
+                               width="105",
+                               height="30",
+                               borderwidth=4,
+                               relief="ridge",
+                               command=choose_file,
+                               image=open_file_icon_img,
+                               compound = "right",
+                               activebackground='#a9b1b6',
+                               activeforeground='white'
+                            ).place(x = 30, y = 280)
+
+camera_icon=PIL.Image.open("./icon_app/open_camera.png")
+camera_icon_resize=camera_icon.resize((25,25),PIL.Image.ANTIALIAS)
+camera_icon_img=PIL.ImageTk.PhotoImage(camera_icon_resize)
+choose_file_button = tk.Button(app,
+                               text="Use Camera ",
+                               width="100",
+                               height="30",
+                               borderwidth=4,
+                               relief="ridge",
+                               command=choose_file,
+                               image=camera_icon_img,
+                               compound = "right",
+                               activebackground='#a9b1b6',
+                               activeforeground='white').place(x = 180, y = 280)
+
+
+# choose_camera_button = tk.Button(app, text="Use Camera", command=choose_file).place(x = 120, y = 280)
 
 # Đường phân chia
 line_separate = tk.Canvas(app, width=20, height=800)
-line_separate.place(x=200, y=60)
+line_separate.place(x=300, y=60)
 line_separate.create_line((10, 15), (10, 650), width=1, fill='gray')
 
 
 # Tạo một `Canvas` cho cột phải để hiển thị kết quả
-result_board = tk.Canvas(app, width=730, height=620, bg='white', borderwidth=8, relief="groove")
-result_board.place(x=230, y=80)
+result_board = tk.Canvas(app, width=630, height=620, bg='white', borderwidth=8, relief="groove")
+result_board.place(x=330, y=80)
 
 # author=tk.Label(app, text = "datb1913221@student.ctu.edu.vn",
 #           font = ("Times New Roman", 12),
@@ -260,13 +332,82 @@ result_board.place(x=230, y=80)
 footer = tk.Canvas(app, width=1005, height=27, bg="#22272e")
 footer.place(x=-5, y=723)
 
-# Tạo Label chữ trắng cho footer
+# create footer
 footer_label = tk.Label(app, 
                         text="datb1913221@student.ctu.edu.vn",
                         font = ("Times New Roman", 12, 'italic'),
                         fg="white",
                         bg="#22272e")
 footer_label.place(x=500, y=737, anchor="center")
+
+
+# create label for name CNN predict
+name_pose_label = tk.Label(app, 
+                        text="The pose is: ",
+                        font = ("Times New Roman", 15, 'bold'),
+                        fg="black",
+                        bg="white"
+                        )
+name_pose_label.place(x=440, y=180)
+
+result_name_pose = tk.Label(app, 
+                        text="none",
+                        font = ("Times New Roman", 18, 'bold'),
+                        fg="red",
+                        bg="white"
+                        )
+result_name_pose.place(x=600, y=180)
+
+accuracy_pose_label = tk.Label(app, 
+                        text="Accuracy is: ",
+                        font = ("Times New Roman", 15, 'bold'),
+                        fg="black",
+                        bg="white"
+                        )
+accuracy_pose_label.place(x=440, y=240)
+
+result_accuracy_pose = tk.Label(app, 
+                        text="none",
+                        font = ("Times New Roman", 18, 'bold'),
+                        fg="red",
+                        bg="white"
+                        )
+result_accuracy_pose.place(x=600, y=240)
+
+
+
+# create label for name predict isSleep
+name_status_label = tk.Label(app, 
+                        text="The person is: ",
+                        font = ("Times New Roman", 15, 'bold'),
+                        fg="black",
+                        bg="white"
+                        )
+name_status_label.place(x=440, y=300)
+
+result_status_label = tk.Label(app, 
+                        text="none",
+                        font = ("Times New Roman", 18, 'bold'),
+                        fg="red",
+                        bg="white"
+                        )
+result_status_label.place(x=600, y=300)
+
+# accuracy_status_label = tk.Label(app, 
+#                         text="Accuracy is: ",
+#                         font = ("Times New Roman", 15, 'bold'),
+#                         fg="black",
+#                         bg="white"
+#                         )
+# accuracy_status_label.place(x=440, y=360)
+
+# result_accuracy_status = tk.Label(app, 
+#                         text="none",
+#                         font = ("Times New Roman", 15, 'bold'),
+#                         fg="red",
+#                         bg="white"
+#                         )
+# result_accuracy_status.place(x=600, y=360)
 
 
 app.resizable(False,False)
