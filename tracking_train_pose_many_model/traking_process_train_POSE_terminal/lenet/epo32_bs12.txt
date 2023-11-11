@@ -1,0 +1,95 @@
+
+E:\CTU\LUAN_VAN_2023>python train_pose_lenet_beta.py
+[['./data_cropped/at_home/minus/item_1743.jpg', 3], ['./data_cropped/at_home/stand/stand_632.jpg', 2], ['./data_cropped/at_home/sit/sit_1099.jpg', 1], ['./data_cropped/at_home/minus/item_2362.jpg', 3], ['./data_cropped/at_home/minus/item_2591.jpg', 3], ['./data_cropped/at_home/sit/sit_1543.jpg', 1], ['./data_cropped/at_home/stand/stand_1733.jpg', 2], ['./data_cropped/at_home/minus/item_1398.jpg', 3], ['./data_cropped/at_home/minus/item_1345.jpg', 3], ['./data_cropped/at_home/minus/item_1229.jpg', 3]]
+Chuan bi doc anh tu folder:
+scale raw pixel / 255.0
+train test split
+trainX shape:  (6464, 128, 128, 3)
+testX shape:  (2020, 128, 128, 3)
+trainY shape:  (6464, 4)
+testY shape:  (2020,)
+valX shape:  (1616, 128, 128, 3)
+valY shape:  (1616, 4)
+[INFO] compiling model...
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ conv2d (Conv2D)             (None, 128, 128, 32)      2432
+
+ max_pooling2d (MaxPooling2D  (None, 64, 64, 32)       0
+ )
+
+ conv2d_1 (Conv2D)           (None, 60, 60, 48)        38448
+
+ max_pooling2d_1 (MaxPooling  (None, 30, 30, 48)       0
+ 2D)
+
+ flatten (Flatten)           (None, 43200)             0
+
+ dense (Dense)               (None, 256)               11059456
+
+ dense_1 (Dense)             (None, 84)                21588
+
+ dense_2 (Dense)             (None, 4)                 340
+
+=================================================================
+Total params: 11,122,264
+Trainable params: 11,122,264
+Non-trainable params: 0
+_________________________________________________________________
+None
+bat dau fit model
+2023-11-11 05:40:55.878182: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 1270874112 exceeds 10% of free system memory.
+Epoch 1/32
+539/539 [==============================] - 21s 33ms/step - loss: 0.1510 - accuracy: 0.9541 - val_loss: 0.0281 - val_accuracy: 0.9926
+Epoch 2/32
+539/539 [==============================] - 17s 31ms/step - loss: 0.0532 - accuracy: 0.9848 - val_loss: 0.0399 - val_accuracy: 0.9907
+Epoch 3/32
+539/539 [==============================] - 17s 31ms/step - loss: 0.0112 - accuracy: 0.9968 - val_loss: 0.0239 - val_accuracy: 0.9963
+Epoch 4/32
+539/539 [==============================] - 17s 31ms/step - loss: 0.0027 - accuracy: 0.9997 - val_loss: 0.0160 - val_accuracy: 0.9975
+Epoch 5/32
+539/539 [==============================] - 17s 31ms/step - loss: 0.0016 - accuracy: 0.9995 - val_loss: 0.0180 - val_accuracy: 0.9975
+Epoch 6/32
+539/539 [==============================] - 17s 31ms/step - loss: 0.0018 - accuracy: 0.9998 - val_loss: 0.0243 - val_accuracy: 0.9963
+Epoch 7/32
+539/539 [==============================] - 17s 31ms/step - loss: 0.0978 - accuracy: 0.9783 - val_loss: 0.0476 - val_accuracy: 0.9926
+Epoch 8/32
+539/539 [==============================] - 17s 31ms/step - loss: 0.0119 - accuracy: 0.9975 - val_loss: 0.0377 - val_accuracy: 0.9950
+Epoch 9/32
+539/539 [==============================] - 17s 31ms/step - loss: 0.0029 - accuracy: 0.9994 - val_loss: 0.0495 - val_accuracy: 0.9957
+Epoch 10/32
+539/539 [==============================] - 17s 31ms/step - loss: 0.0027 - accuracy: 0.9994 - val_loss: 0.0407 - val_accuracy: 0.9957
+Epoch 11/32
+539/539 [==============================] - 17s 31ms/step - loss: 5.3280e-04 - accuracy: 0.9998 - val_loss: 0.0364 - val_accuracy: 0.9950
+Epoch 12/32
+539/539 [==============================] - 17s 31ms/step - loss: 2.6525e-04 - accuracy: 0.9998 - val_loss: 0.0535 - val_accuracy: 0.9950
+Epoch 13/32
+539/539 [==============================] - 17s 31ms/step - loss: 4.2368e-05 - accuracy: 1.0000 - val_loss: 0.0523 - val_accuracy: 0.9957
+Epoch 14/32
+539/539 [==============================] - 17s 32ms/step - loss: 2.0730e-05 - accuracy: 1.0000 - val_loss: 0.0596 - val_accuracy: 0.9950
+new_model:   <keras.engine.sequential.Sequential object at 0x0000027065A98130>
+prepare save new_model:
+bat dau kiem tra model:
+2023-11-11 05:45:07.797121: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 532.01MiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+64/64 [==============================] - 2s 16ms/step
+E:\CTU\LUAN_VAN_2023\train_pose_lenet_beta.py:148: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels([''] + categories)
+E:\CTU\LUAN_VAN_2023\train_pose_lenet_beta.py:149: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_yticklabels([''] + categories)
+Accuracy : 99.50%
+
+
+Recall :99.50%
+
+
+Precision : 99.51%
+
+
+F1 : 99.50%
+
+
+Time train Lenet:  3.99
+
+E:\CTU\LUAN_VAN_2023>

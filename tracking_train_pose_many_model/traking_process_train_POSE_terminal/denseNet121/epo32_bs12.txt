@@ -1,0 +1,87 @@
+
+E:\CTU\LUAN_VAN_2023>python train_pose_denseNet121_beta.py
+[['./data_cropped/at_home/sit/sit_1340.jpg', 1], ['./data_cropped/at_home/sit/sit_1434.jpg', 1], ['./data_cropped/at_home/minus/item_1373.jpg', 3], ['./data_cropped/at_home/stand/stand_153.jpg', 2], ['./data_cropped/at_home/stand/stand_2037.jpg', 2], ['./data_cropped/at_home/stand/stand_922.jpg', 2], ['./data_cropped/at_home/stand/stand_1408.jpg', 2], ['./data_cropped/at_home/stand/stand_231.jpg', 2], ['./data_cropped/at_home/minus/item_462.jpg', 3], ['./data_cropped/at_home/sit/sit_1697.jpg', 1]]
+Chuan bi doc anh tu folder:
+scale raw pixel / 255.0
+train test split
+trainX shape:  (6464, 128, 128, 3)
+testX shape:  (2020, 128, 128, 3)
+trainY shape:  (6464, 4)
+testY shape:  (2020,)
+valX shape:  (1616, 128, 128, 3)
+valY shape:  (1616, 4)
+[INFO] compiling model...
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ densenet121 (Functional)    (None, 4, 4, 1024)        7037504
+
+ global_average_pooling2d (G  (None, 1024)             0
+ lobalAveragePooling2D)
+
+ dropout (Dropout)           (None, 1024)              0
+
+ flatten (Flatten)           (None, 1024)              0
+
+ dense (Dense)               (None, 4)                 4100
+
+=================================================================
+Total params: 7,041,604
+Trainable params: 4,100
+Non-trainable params: 7,037,504
+_________________________________________________________________
+None
+bat dau fit model DenseNet121
+2023-11-05 15:15:37.861055: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 1270874112 exceeds 10% of free system memory.
+Epoch 1/32
+539/539 [==============================] - 56s 86ms/step - loss: 0.2780 - accuracy: 0.9104 - val_loss: 0.0141 - val_accuracy: 0.9988
+Epoch 2/32
+539/539 [==============================] - 42s 78ms/step - loss: 0.0306 - accuracy: 0.9913 - val_loss: 0.0110 - val_accuracy: 0.9994
+Epoch 3/32
+539/539 [==============================] - 43s 79ms/step - loss: 0.0195 - accuracy: 0.9946 - val_loss: 0.0102 - val_accuracy: 0.9988
+Epoch 4/32
+539/539 [==============================] - 43s 80ms/step - loss: 0.0178 - accuracy: 0.9952 - val_loss: 0.0090 - val_accuracy: 0.9994
+Epoch 5/32
+539/539 [==============================] - 42s 79ms/step - loss: 0.0114 - accuracy: 0.9966 - val_loss: 0.0101 - val_accuracy: 0.9994
+Epoch 6/32
+539/539 [==============================] - 43s 79ms/step - loss: 0.0109 - accuracy: 0.9963 - val_loss: 0.0111 - val_accuracy: 0.9994
+Epoch 7/32
+539/539 [==============================] - 43s 79ms/step - loss: 0.0161 - accuracy: 0.9964 - val_loss: 0.0104 - val_accuracy: 0.9994
+Epoch 8/32
+539/539 [==============================] - 42s 79ms/step - loss: 0.0107 - accuracy: 0.9963 - val_loss: 0.0103 - val_accuracy: 0.9988
+Epoch 9/32
+539/539 [==============================] - 42s 79ms/step - loss: 0.0107 - accuracy: 0.9971 - val_loss: 0.0104 - val_accuracy: 0.9994
+Epoch 10/32
+539/539 [==============================] - 42s 79ms/step - loss: 0.0062 - accuracy: 0.9983 - val_loss: 0.0115 - val_accuracy: 0.9994
+Epoch 11/32
+539/539 [==============================] - 137s 255ms/step - loss: 0.0078 - accuracy: 0.9977 - val_loss: 0.0116 - val_accuracy: 0.9994
+Epoch 12/32
+539/539 [==============================] - 43s 80ms/step - loss: 0.0077 - accuracy: 0.9977 - val_loss: 0.0122 - val_accuracy: 0.9994
+Epoch 13/32
+539/539 [==============================] - 43s 79ms/step - loss: 0.0081 - accuracy: 0.9969 - val_loss: 0.0135 - val_accuracy: 0.9981
+Epoch 14/32
+539/539 [==============================] - 43s 79ms/step - loss: 0.0117 - accuracy: 0.9980 - val_loss: 0.0138 - val_accuracy: 0.9988
+new_model:   <keras.engine.sequential.Sequential object at 0x0000023F61E81760>
+prepare save new_model:
+bat dau kiem tra model:
+64/64 [==============================] - 12s 117ms/step
+E:\CTU\LUAN_VAN_2023\train_pose_denseNet121_beta.py:154: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels([''] + categories)
+E:\CTU\LUAN_VAN_2023\train_pose_denseNet121_beta.py:155: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_yticklabels([''] + categories)
+Accuracy : 99.80%
+
+
+Recall :99.80%
+
+
+Precision : 99.80%
+
+
+F1 : 99.80%
+
+
+Time train DenseNet121:  11.76
+
+E:\CTU\LUAN_VAN_2023>

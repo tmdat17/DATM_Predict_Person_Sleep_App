@@ -18,8 +18,9 @@ from tkinter import Canvas, ttk
 from tkinter import filedialog, IntVar, messagebox
 import PIL.Image,PIL.ImageTk
 
-lm_list = []
+# ====================================================== Function Implement ======================================================
 
+lm_list = []
 
 def make_landmark_timestep(results):
     # print(results.pose_landmarks.landmark)
@@ -50,8 +51,6 @@ def draw_landmark_on_image(mpDraw, results, img):
 
 # fit_landmark = [11, 12, 23, 24, 25, 26]
 fit_landmark = [15, 16, 25, 26]
-
-
 def euclidean_distance(point1, point2):
     point1 = np.array(point1)
     point2 = np.array(point2)
@@ -198,25 +197,42 @@ def process_video(video_path, selected_option):
     cap.release()
     cv2.destroyAllWindows()
 
-# Hàm mở hộp thoại để chọn tệp video
 
-
-def process_option(option):
-    print('option:  ', option)
-    global selected_option
-    selected_option = option
-
-def show_error_message(msg):
-    messagebox.showerror(msg)
-
+# Hàm mở hộp thoại để chọn tệp video cũng như submit tất cả các option
 def choose_file():
     file_path = filedialog.askopenfilename(
         filetypes=[("Video files", "*.mp4")])
+    selected_option = selected.get()
+    selected_dropdown = valueDropdown.get()
+    print('value_option:  ',selected_option)
+    print('value_dropdown:  ',selected_dropdown)
     if file_path:
-        if selected_option == 3 or selected_option == 4 or selected_option == 5:
-            process_video(file_path, selected_option)
-        else: show_error_message('Select option not empty!')
+        process_video(file_path, selected_option)
         
+
+def quitApp():
+    global stop_threads
+    stop_threads = True  
+    app.destroy()
+    
+def clearResult():
+    result_name_pose.config(text='none')
+    result_accuracy_pose.config(text='none')
+    result_status_label.config(text='none')
+
+def update_entry_state(event):
+    selected_dropdown = valueDropdown.get()
+    if selected_dropdown == 'Threshold':
+        input_threshold.config(state=tk.NORMAL)
+    else:
+        input_threshold.config(state=tk.DISABLED)
+
+
+# tổng hợp lại các lựa chọn ở UI đưa ra quyết định sử dụng mô hình hay thuật toán gì.
+# def execute_app_with_all_option(video_path, selected_option):
+
+# ====================================================== UI ======================================================
+
 # Tạo cửa sổ ứng dụng Tkinter
 app = tk.Tk()
 app.geometry('1000x750+150+20')
@@ -224,57 +240,77 @@ app.geometry('1000x750+150+20')
 app.title("Mini App Detect Person Sleep")
 
 # Create a label
-label = tk.Label(app, text="Mini App Detect Person Sleep!",font=("Arial Bold", 20)).place(x = 400, y = 20)
+label = tk.Label(app, text="Mini App Detect Person Sleep!",font=("Times New Roman", 23, 'bold')).place(x = 390, y = 20)
 
 # Create radio buttons
-selected_option = tk.IntVar()
-selected_option.set(3)
+
+selected = tk.IntVar()
+selected.set(3)
 option1 = tk.Radiobutton(app, 
                          text="12 features (3 lines)", 
-                         font=("Arial Bold", 10), 
-                         variable=selected_option, 
+                         font=("Times New Roman", 13), 
+                         variable=selected, 
                          value=3, 
-                        #  command=lambda: process_option(3),
                          activebackground='red',
                         )
 
 option2 = tk.Radiobutton(app, 
                          text="16 features (4 lines)", 
-                         font=("Arial Bold", 10), 
-                         variable=selected_option, 
+                         font=("Times New Roman", 13), 
+                         variable=selected, 
                          value=4, 
-                        #  command=lambda: process_option(4),
                          activebackground='red'
                         )
 
 option3 = tk.Radiobutton(app,
                          text="20 features (5 lines)",
-                         font=("Arial Bold", 10),
-                         variable=selected_option,
+                         font=("Times New Roman", 13),
+                         variable=selected,
                          value=5,
-                        #  command=lambda: process_option(5),
                          activebackground='red'
                         )
 
-option1.place(x=80, y=120)
-option2.place(x=80, y=160)
-option3.place(x=80, y=200)
+option1.place(x=20, y=130)
+option2.place(x=20, y=170)
+option3.place(x=20, y=210)
 
 
 
 
 
-# create cropdown
-n = tk.StringVar() 
-optionModel = ttk.Combobox(app, width = 20, textvariable = n) 
+# create dropdown
+valueDropdown = tk.StringVar() 
+optionModel = ttk.Combobox(app, 
+                           width = 20, 
+                           textvariable = valueDropdown, 
+                           font=("Times New Roman", 13),
+                           ) 
   
 # Adding combobox drop down list 
-optionModel['values'] = (' SVM',  
-                          ' Median', 
-                          ' Mean', ) 
-  
-optionModel.place(x = 80, y = 230)
-optionModel.current(0) 
+optionModel['values'] = ('SVM',  
+                          'Threshold', )
+optionModel.place(x = 20, y = 265)
+optionModel.current(0)
+optionModel.bind("<<ComboboxSelected>>", update_entry_state)
+
+
+# create box input threshold
+threshold_label = tk.Label(app, 
+                        text="Threshold:  ",
+                        font = ("Times New Roman", 15),
+                        )
+threshold_label.place(x=20, y=307)
+
+input_threshold = tk.Entry(app, 
+                           state=tk.DISABLED, 
+                           relief='groove', 
+                           justify='center',
+                           font = ("Times New Roman", 13),
+                           width= '10',
+                           highlightcolor='yellow'
+                           )
+input_threshold.place(x=120, y=310)
+
 
 # Create button choose file video
 open_file_icon=PIL.Image.open("./icon_app/open_file.png")
@@ -282,7 +318,8 @@ open_file_icon_resize=open_file_icon.resize((25,25),PIL.Image.ANTIALIAS)
 open_file_icon_img=PIL.ImageTk.PhotoImage(open_file_icon_resize)
 choose_file_button = tk.Button(app,
                                text="Choose Video ",
-                               width="105",
+                               font = ("Times New Roman", 11),
+                               width="115",
                                height="30",
                                borderwidth=4,
                                relief="ridge",
@@ -291,14 +328,15 @@ choose_file_button = tk.Button(app,
                                compound = "right",
                                activebackground='#a9b1b6',
                                activeforeground='white'
-                            ).place(x = 30, y = 280)
+                            ).place(x = 20, y = 370)
 
 camera_icon=PIL.Image.open("./icon_app/open_camera.png")
 camera_icon_resize=camera_icon.resize((25,25),PIL.Image.ANTIALIAS)
 camera_icon_img=PIL.ImageTk.PhotoImage(camera_icon_resize)
 choose_file_button = tk.Button(app,
                                text="Use Camera ",
-                               width="100",
+                               font = ("Times New Roman", 11),
+                               width="112",
                                height="30",
                                borderwidth=4,
                                relief="ridge",
@@ -306,10 +344,44 @@ choose_file_button = tk.Button(app,
                                image=camera_icon_img,
                                compound = "right",
                                activebackground='#a9b1b6',
-                               activeforeground='white').place(x = 180, y = 280)
+                               activeforeground='white').place(x = 160, y = 370)
 
 
-# choose_camera_button = tk.Button(app, text="Use Camera", command=choose_file).place(x = 120, y = 280)
+clean_result_icon=PIL.Image.open("./icon_app/clean_result.png")
+clean_result_icon_resize=clean_result_icon.resize((25,25),PIL.Image.ANTIALIAS)
+clean_result_icon_img=PIL.ImageTk.PhotoImage(clean_result_icon_resize)
+choose_file_button = tk.Button(app,
+                               text="CLEAN RESULT     ",
+                               font = ("Times New Roman", 11),
+                               width="250",
+                               height="30",
+                               borderwidth=4,
+                               relief="ridge",
+                               command=clearResult,
+                               image=clean_result_icon_img,
+                               compound = "right",
+                               activebackground='#a9b1b6',
+                               activeforeground='white'
+                            ).place(x = 20, y = 440)
+
+
+quit_app_icon=PIL.Image.open("./icon_app/exit_app.png")
+quit_app_icon_resize=quit_app_icon.resize((25,25),PIL.Image.ANTIALIAS)
+quit_app_icon_img=PIL.ImageTk.PhotoImage(quit_app_icon_resize)
+choose_file_button = tk.Button(app,
+                               text="QUIT   ",
+                               font = ("Times New Roman", 11),
+                               width="250",
+                               height="30",
+                               borderwidth=4,
+                               relief="ridge",
+                               command=quitApp,
+                               image=quit_app_icon_img,
+                               compound = "right",
+                               activebackground='#a9b1b6',
+                               activeforeground='white'
+                            ).place(x = 20, y = 500)
+
 
 # Đường phân chia
 line_separate = tk.Canvas(app, width=20, height=800)
@@ -321,24 +393,17 @@ line_separate.create_line((10, 15), (10, 650), width=1, fill='gray')
 result_board = tk.Canvas(app, width=630, height=620, bg='white', borderwidth=8, relief="groove")
 result_board.place(x=330, y=80)
 
-# author=tk.Label(app, text = "datb1913221@student.ctu.edu.vn",
-#           font = ("Times New Roman", 12),
-#           fg='white',
-#           bg="black",
-#         )
-# author.place(x=0, y=730)
 
-# Tạo phần nền màu đen
-footer = tk.Canvas(app, width=1005, height=27, bg="#22272e")
-footer.place(x=-5, y=723)
 
-# create footer
-footer_label = tk.Label(app, 
-                        text="datb1913221@student.ctu.edu.vn",
-                        font = ("Times New Roman", 12, 'italic'),
-                        fg="white",
-                        bg="#22272e")
-footer_label.place(x=500, y=737, anchor="center")
+# create title result board
+name_pose_label = tk.Label(app, 
+                        text="RESULT ",
+                        font = ("Times New Roman", 25, 'bold'),
+                        fg="black",
+                        bg="white"
+                        )
+name_pose_label.place(x=600, y=100)
+
 
 
 # create label for name CNN predict
@@ -348,7 +413,7 @@ name_pose_label = tk.Label(app,
                         fg="black",
                         bg="white"
                         )
-name_pose_label.place(x=440, y=180)
+name_pose_label.place(x=440, y=200)
 
 result_name_pose = tk.Label(app, 
                         text="none",
@@ -356,7 +421,7 @@ result_name_pose = tk.Label(app,
                         fg="red",
                         bg="white"
                         )
-result_name_pose.place(x=600, y=180)
+result_name_pose.place(x=600, y=200)
 
 accuracy_pose_label = tk.Label(app, 
                         text="Accuracy is: ",
@@ -364,7 +429,7 @@ accuracy_pose_label = tk.Label(app,
                         fg="black",
                         bg="white"
                         )
-accuracy_pose_label.place(x=440, y=240)
+accuracy_pose_label.place(x=440, y=260)
 
 result_accuracy_pose = tk.Label(app, 
                         text="none",
@@ -372,7 +437,7 @@ result_accuracy_pose = tk.Label(app,
                         fg="red",
                         bg="white"
                         )
-result_accuracy_pose.place(x=600, y=240)
+result_accuracy_pose.place(x=600, y=260)
 
 
 
@@ -383,7 +448,7 @@ name_status_label = tk.Label(app,
                         fg="black",
                         bg="white"
                         )
-name_status_label.place(x=440, y=300)
+name_status_label.place(x=440, y=320)
 
 result_status_label = tk.Label(app, 
                         text="none",
@@ -391,7 +456,7 @@ result_status_label = tk.Label(app,
                         fg="red",
                         bg="white"
                         )
-result_status_label.place(x=600, y=300)
+result_status_label.place(x=600, y=320)
 
 # accuracy_status_label = tk.Label(app, 
 #                         text="Accuracy is: ",
@@ -409,6 +474,19 @@ result_status_label.place(x=600, y=300)
 #                         )
 # result_accuracy_status.place(x=600, y=360)
 
+
+
+# Tạo phần nền màu đen
+footer = tk.Canvas(app, width=1005, height=27, bg="#22272e")
+footer.place(x=-5, y=723)
+
+# create footer
+footer_label = tk.Label(app, 
+                        text="datb1913221@student.ctu.edu.vn",
+                        font = ("Times New Roman", 12, 'italic'),
+                        fg="white",
+                        bg="#22272e")
+footer_label.place(x=500, y=737, anchor="center")
 
 app.resizable(False,False)
 app.mainloop()

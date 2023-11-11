@@ -1,0 +1,98 @@
+
+E:\CTU\LUAN_VAN_2023>python train_pose_inceptionV3_beta.py
+[['./data_cropped/at_home/stand/stand_1341.jpg', 2], ['./data_cropped/at_home/stand/stand_72.jpg', 2], ['./data_cropped/at_home/minus/item_1143.jpg', 3], ['./data_cropped/at_home/stand/stand_633.jpg', 2], ['./data_cropped/at_home/minus/item_1993.jpg', 3], ['./data_cropped/at_home/minus/item_1112.JPG', 3], ['./data_cropped/at_home/minus/item_1046.jpg', 3], ['./data_cropped/at_home/minus/item_885.jpg', 3], ['./data_cropped/at_home/lie/lie_wake_1981.jpg', 0], ['./data_cropped/at_home/sit/sit_9.jpg', 1]]
+Chuan bi doc anh tu folder:
+scale raw pixel / 255.0
+train test split
+trainX shape:  (6464, 128, 128, 3)
+testX shape:  (2020, 128, 128, 3)
+trainY shape:  (6464, 4)
+testY shape:  (2020,)
+valX shape:  (1616, 128, 128, 3)
+valY shape:  (1616, 4)
+[INFO] compiling model...
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ inception_v3 (Functional)   (None, 2, 2, 2048)        21802784
+
+ global_average_pooling2d (G  (None, 2048)             0
+ lobalAveragePooling2D)
+
+ dropout (Dropout)           (None, 2048)              0
+
+ flatten (Flatten)           (None, 2048)              0
+
+ dense (Dense)               (None, 4)                 8196
+
+=================================================================
+Total params: 21,810,980
+Trainable params: 8,196
+Non-trainable params: 21,802,784
+_________________________________________________________________
+None
+bat dau fit model InceptionV3
+2023-11-10 15:17:14.861730: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 1270874112 exceeds 10% of free system memory.
+Epoch 1/20
+2023-11-10 15:17:23.914072: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.53GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+2023-11-10 15:17:23.932553: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.81GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+2023-11-10 15:17:23.952233: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.09GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+269/270 [============================>.] - ETA: 0s - loss: 0.2232 - accuracy: 0.93172023-11-10 15:17:42.751682: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.46GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+2023-11-10 15:17:42.767967: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.74GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+2023-11-10 15:17:42.784805: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.02GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+270/270 [==============================] - 33s 92ms/step - loss: 0.2230 - accuracy: 0.9318 - val_loss: 0.0237 - val_accuracy: 0.9938
+Epoch 2/20
+270/270 [==============================] - 21s 79ms/step - loss: 0.0422 - accuracy: 0.9873 - val_loss: 0.0223 - val_accuracy: 0.9957
+Epoch 3/20
+270/270 [==============================] - 22s 81ms/step - loss: 0.0236 - accuracy: 0.9924 - val_loss: 0.0160 - val_accuracy: 0.9969
+Epoch 4/20
+270/270 [==============================] - 22s 81ms/step - loss: 0.0191 - accuracy: 0.9944 - val_loss: 0.0137 - val_accuracy: 0.9975
+Epoch 5/20
+270/270 [==============================] - 22s 81ms/step - loss: 0.0132 - accuracy: 0.9947 - val_loss: 0.0156 - val_accuracy: 0.9981
+Epoch 6/20
+270/270 [==============================] - 22s 81ms/step - loss: 0.0133 - accuracy: 0.9964 - val_loss: 0.0168 - val_accuracy: 0.9981
+Epoch 7/20
+270/270 [==============================] - 22s 80ms/step - loss: 0.0091 - accuracy: 0.9960 - val_loss: 0.0250 - val_accuracy: 0.9944
+Epoch 8/20
+270/270 [==============================] - 22s 81ms/step - loss: 0.0114 - accuracy: 0.9961 - val_loss: 0.0220 - val_accuracy: 0.9981
+Epoch 9/20
+270/270 [==============================] - 22s 82ms/step - loss: 0.0092 - accuracy: 0.9971 - val_loss: 0.0189 - val_accuracy: 0.9988
+Epoch 10/20
+270/270 [==============================] - 22s 81ms/step - loss: 0.0113 - accuracy: 0.9964 - val_loss: 0.0177 - val_accuracy: 0.9988
+Epoch 11/20
+270/270 [==============================] - 22s 81ms/step - loss: 0.0075 - accuracy: 0.9981 - val_loss: 0.0162 - val_accuracy: 0.9981
+Epoch 12/20
+270/270 [==============================] - 22s 81ms/step - loss: 0.0045 - accuracy: 0.9989 - val_loss: 0.0170 - val_accuracy: 0.9981
+Epoch 13/20
+270/270 [==============================] - 22s 82ms/step - loss: 0.0100 - accuracy: 0.9974 - val_loss: 0.0226 - val_accuracy: 0.9975
+Epoch 14/20
+270/270 [==============================] - 22s 82ms/step - loss: 0.0118 - accuracy: 0.9957 - val_loss: 0.0189 - val_accuracy: 0.9975
+new_model:   <keras.engine.sequential.Sequential object at 0x0000018CF3BEFD60>
+prepare save new_model:
+bat dau kiem tra model:
+2023-11-10 15:49:46.893954: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 397148160 exceeds 10% of free system memory.
+2023-11-10 15:49:51.910608: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1007.56MiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+2023-11-10 15:49:51.926959: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.16GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+2023-11-10 15:49:51.943035: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.34GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+2023-11-10 15:49:52.061518: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 840.50MiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+64/64 [==============================] - 10s 82ms/step
+E:\CTU\LUAN_VAN_2023\train_pose_inceptionV3_beta.py:154: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels([''] + categories)
+E:\CTU\LUAN_VAN_2023\train_pose_inceptionV3_beta.py:155: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_yticklabels([''] + categories)
+Accuracy : 99.75%
+
+
+F1 : 99.75%
+
+
+Recall :99.75%
+
+
+Precision : 99.75%
+
+
+Time train inceptionV3:  5.31
+
+E:\CTU\LUAN_VAN_2023>

@@ -1,0 +1,126 @@
+
+E:\CTU\LUAN_VAN_2023>python train_pose_lenet_beta.py
+[['./data_cropped/at_home/stand/stand_273.jpg', 2], ['./data_cropped/at_home/sit/sit_821.jpg', 1], ['./data_cropped/at_home/lie/lie_wake_970.jpg', 0], ['./data_cropped/at_home/stand/stand_1717.jpg', 2], ['./data_cropped/at_home/sit/sit_909.jpg', 1], ['./data_cropped/at_home/minus/item_2084.jpg', 3], ['./data_cropped/at_home/sit/sit_1767.jpg', 1], ['./data_cropped/at_home/lie/lie_wake_2433.jpg', 0], ['./data_cropped/at_home/lie/lie_wake_905.jpg', 0], ['./data_cropped/at_home/sit/sit_1394.jpg', 1]]
+Chuan bi doc anh tu folder:
+scale raw pixel / 255.0
+train test split
+trainX shape:  (6464, 128, 128, 3)
+testX shape:  (2020, 128, 128, 3)
+trainY shape:  (6464, 4)
+testY shape:  (2020,)
+valX shape:  (1616, 128, 128, 3)
+valY shape:  (1616, 4)
+[INFO] compiling model...
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ conv2d (Conv2D)             (None, 128, 128, 32)      2432
+
+ max_pooling2d (MaxPooling2D  (None, 64, 64, 32)       0
+ )
+
+ conv2d_1 (Conv2D)           (None, 60, 60, 48)        38448
+
+ max_pooling2d_1 (MaxPooling  (None, 30, 30, 48)       0
+ 2D)
+
+ flatten (Flatten)           (None, 43200)             0
+
+ dense (Dense)               (None, 256)               11059456
+
+ dense_1 (Dense)             (None, 84)                21588
+
+ dense_2 (Dense)             (None, 4)                 340
+
+=================================================================
+Total params: 11,122,264
+Trainable params: 11,122,264
+Non-trainable params: 0
+_________________________________________________________________
+None
+bat dau fit model
+2023-11-11 05:55:30.807687: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 1270874112 exceeds 10% of free system memory.
+Epoch 1/32
+202/202 [==============================] - 13s 53ms/step - loss: 0.1270 - accuracy: 0.9562 - val_loss: 0.0113 - val_accuracy: 0.9975
+Epoch 2/32
+202/202 [==============================] - 10s 49ms/step - loss: 0.0553 - accuracy: 0.9869 - val_loss: 0.0065 - val_accuracy: 0.9981
+Epoch 3/32
+202/202 [==============================] - 10s 49ms/step - loss: 0.0129 - accuracy: 0.9966 - val_loss: 0.0129 - val_accuracy: 0.9969
+Epoch 4/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0055 - accuracy: 0.9983 - val_loss: 0.0022 - val_accuracy: 0.9994
+Epoch 5/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0024 - accuracy: 0.9994 - val_loss: 0.0024 - val_accuracy: 0.9994
+Epoch 6/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0573 - accuracy: 0.9848 - val_loss: 0.0167 - val_accuracy: 0.9957
+Epoch 7/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0153 - accuracy: 0.9961 - val_loss: 0.0090 - val_accuracy: 0.9975
+Epoch 8/32
+202/202 [==============================] - 10s 49ms/step - loss: 0.0042 - accuracy: 0.9989 - val_loss: 0.0055 - val_accuracy: 0.9988
+Epoch 9/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0144 - accuracy: 0.9968 - val_loss: 0.0046 - val_accuracy: 0.9988
+Epoch 10/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0129 - accuracy: 0.9968 - val_loss: 0.0131 - val_accuracy: 0.9969
+Epoch 11/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0083 - accuracy: 0.9977 - val_loss: 0.0015 - val_accuracy: 0.9994
+Epoch 12/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0019 - accuracy: 0.9995 - val_loss: 2.4297e-04 - val_accuracy: 1.0000
+Epoch 13/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0021 - accuracy: 0.9995 - val_loss: 1.7206e-04 - val_accuracy: 1.0000
+Epoch 14/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0016 - accuracy: 0.9995 - val_loss: 1.2480e-04 - val_accuracy: 1.0000
+Epoch 15/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0016 - accuracy: 0.9995 - val_loss: 0.0012 - val_accuracy: 0.9994
+Epoch 16/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0020 - accuracy: 0.9994 - val_loss: 2.2783e-04 - val_accuracy: 1.0000
+Epoch 17/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0016 - accuracy: 0.9995 - val_loss: 2.0740e-04 - val_accuracy: 1.0000
+Epoch 18/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0012 - accuracy: 0.9997 - val_loss: 1.5284e-04 - val_accuracy: 1.0000
+Epoch 19/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0013 - accuracy: 0.9997 - val_loss: 0.0011 - val_accuracy: 0.9994
+Epoch 20/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0013 - accuracy: 0.9998 - val_loss: 9.6036e-05 - val_accuracy: 1.0000
+Epoch 21/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0011 - accuracy: 0.9998 - val_loss: 8.8458e-04 - val_accuracy: 1.0000
+Epoch 22/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0016 - accuracy: 0.9995 - val_loss: 0.0036 - val_accuracy: 0.9988
+Epoch 23/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.1015 - accuracy: 0.9845 - val_loss: 0.0119 - val_accuracy: 0.9950
+Epoch 24/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0080 - accuracy: 0.9981 - val_loss: 0.0011 - val_accuracy: 1.0000
+Epoch 25/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0011 - accuracy: 0.9997 - val_loss: 0.0036 - val_accuracy: 0.9994
+Epoch 26/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0016 - accuracy: 0.9995 - val_loss: 0.0011 - val_accuracy: 0.9994
+Epoch 27/32
+202/202 [==============================] - 10s 50ms/step - loss: 0.0012 - accuracy: 0.9998 - val_loss: 0.0012 - val_accuracy: 0.9994
+Epoch 28/32
+202/202 [==============================] - 10s 49ms/step - loss: 0.0012 - accuracy: 0.9998 - val_loss: 0.0017 - val_accuracy: 0.9988
+Epoch 29/32
+202/202 [==============================] - 10s 49ms/step - loss: 9.2416e-04 - accuracy: 0.9998 - val_loss: 0.0032 - val_accuracy: 0.9988
+Epoch 30/32
+202/202 [==============================] - 10s 49ms/step - loss: 0.0021 - accuracy: 0.9997 - val_loss: 0.0029 - val_accuracy: 0.9994
+new_model:   <keras.engine.sequential.Sequential object at 0x000001E83BA78130>
+prepare save new_model:
+bat dau kiem tra model:
+64/64 [==============================] - 1s 16ms/step
+E:\CTU\LUAN_VAN_2023\train_pose_lenet_beta.py:148: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels([''] + categories)
+E:\CTU\LUAN_VAN_2023\train_pose_lenet_beta.py:149: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_yticklabels([''] + categories)
+Accuracy : 99.85%
+
+
+F1 : 99.85%
+
+
+Recall :99.85%
+
+
+Precision : 99.85%
+
+
+Time train Lenet:  5.08
+
+E:\CTU\LUAN_VAN_2023>
