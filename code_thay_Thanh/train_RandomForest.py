@@ -24,8 +24,8 @@ KetquaNlanPrecision = []
 TOTAL_TIME = []
 K = 50
 N_AVERAGE = 50
-N_ESTIMATORS = 100
-MAX_DEPTH = 10
+N_ESTIMATORS = 450
+MAX_DEPTH = 75
 MAX_ACC = -9999999
 LIMIT_LINE = 5
 while (n < N_AVERAGE):
@@ -76,7 +76,7 @@ while (n < N_AVERAGE):
     precision, recall, f1, support = precision_recall_fscore_support(y_test, Y_dudoan)
     accuracy = accuracy_score(y_test, Y_dudoan)*100
     if(accuracy >= 95 and accuracy > MAX_ACC):
-        # joblib.dump(Model_Sleep, f'../model_detect_sleep/RandomForest/RandomForest_KFold_{LIMIT_LINE}_lines.h5')
+        joblib.dump(Model_Sleep, f'../model_detect_sleep/RandomForest/RandomForest_KFold_NTrees_{N_ESTIMATORS}_MaxDepth_{MAX_DEPTH}_{LIMIT_LINE}_lines.h5')
         MAX_ACC = accuracy
 
     # In kết quả
