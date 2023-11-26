@@ -18,7 +18,59 @@ from tkinter import Canvas, ttk
 from tkinter import filedialog, IntVar, messagebox
 import PIL.Image,PIL.ImageTk
 # from PIL import Image, ImageTk
+
+import logging
+from tuya_connector import TuyaOpenAPI, TUYA_LOGGER
+
 # ====================================================== Function Implement ======================================================
+
+
+ACCESS_ID = "t7dmg8tqa554a47uchmc"
+ACCESS_KEY = "1b532ff96ed84213a4550a7841c8cee4"
+API_ENDPOINT = "https://openapi.tuyaus.com"
+
+# Enable debug log
+TUYA_LOGGER.setLevel(logging.DEBUG)
+
+# Init OpenAPI and connect
+openapi = TuyaOpenAPI(API_ENDPOINT, ACCESS_ID, ACCESS_KEY)
+openapi.connect()
+
+# Set up device_id
+DEVICE_ID = "4812100834ab9502b7d7"
+
+# Initialize the state of the light to be ON
+light_state = True
+
+command_payload = {
+    "commands": [
+        {
+            "code": "switch_3",
+            "value": light_state
+        }
+    ]
+}
+
+# Send the command to the device
+openapi.post(
+    "/v1.0/iot-03/devices/{}/commands".format(DEVICE_ID), command_payload)
+
+def turnOnLight():
+    global command_payload
+    global light_state
+    light_state = not light_state
+    command_payload = {
+        "commands": [
+            {
+                "code": "switch_3",
+                "value": light_state
+            }
+        ]
+    }
+    openapi.post(
+                    "/v1.0/iot-03/devices/{}/commands".format(DEVICE_ID), command_payload)
+    status_light_label.config(text= "On" if light_state else "Off")
+    print('light_state:  ', light_state)
 
 lm_list = []
 
@@ -112,19 +164,28 @@ LIMIT_LINE = 3
 LIMIT_FEATURE = LIMIT_LINE * 4
 
 QUANTITY_1 = 0
-def updateFilePath(file_path, selected_option, selected_dropdown, value_threshold):
+
+isCamera = True
+
+def updateFilePath(file_path, selected_option, selected_dropdown, value_threshold, isCameraLive = False):
+    global IS_PLAYING
+    global STATUS
+    global cap
     global QUANTITY_1
     global LIMIT_LINE
     global LIMIT_FEATURE
     global model_detect_sleep
+    IS_PLAYING = True
+    STATUS = 'STATUS'
     LIMIT_LINE = selected_option
     LIMIT_FEATURE = LIMIT_LINE * 4
+    result_status_label.config(text=STATUS)
     if value_threshold:
         THRESHOLD = int(value_threshold)
     model_detect_sleep = joblib.load(
         f'./model_detect_sleep/SVC/SVC_KFold_{LIMIT_LINE}_lines_K_50_C_100000_GAMMA_0.001.h5')
-    if(file_path is not None):
-        global cap
+    if(file_path is not None and not isCameraLive):
+        print('Use video mp4\n')
         cap = cv2.VideoCapture(file_path)
         if selected_dropdown == 'SVM':
             print('selected_option:  ', selected_option)
@@ -137,9 +198,305 @@ def updateFilePath(file_path, selected_option, selected_dropdown, value_threshol
                 QUANTITY_1 = LIMIT_LINE * 4 * THRESHOLD / 100
                 print('QUANTITY_1:  ', QUANTITY_1)
                 process_video_with_threshold()
+    elif (file_path is not None and isCameraLive):
+        print('Use camera Live\n')
+        print(file_path)
+        cap = cv2.VideoCapture(file_path)
+        if selected_dropdown == 'SVM':
+            print('selected_option:  ', selected_option)
+            print(f'\nLIMIT_LINE: {LIMIT_LINE}\nLIMIT_FEATURE: {LIMIT_FEATURE}')
+            process_camera_live_with_model_SVM()
+        else:
+            if not value_threshold:
+                show_error_message('Please input Threshold value!!')
+            else:
+                QUANTITY_1 = LIMIT_LINE * 4 * THRESHOLD / 100
+                print('QUANTITY_1:  ', QUANTITY_1)
+                process_camera_live_with_threshold()
 
-# Hàm xử lý video with SVM
+# Hàm xử lý with model SVM camera live
+def process_camera_live_with_model_SVM():
+    global isCamera
+    global light_state
+    global f
+    global STATUS
+    global pre_coordinate
+    global coordinate
+    global isSleep
+    cap.set(cv2.CAP_PROP_POS_FRAMES, cap.get(
+            cv2.CAP_PROP_POS_FRAMES) + 45)
+    ret, img = cap.read()
+    print('isCamera:   ', isCamera)
+    if isCamera:
+        print('isCamera 2:   ', isCamera)
+        img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
+        img = cv2.flip(img, 1)
+        height, width = img.shape[:2]
+        n = 3
+        for i in range(n):
+            if i == n - 1:
+                width = int(width * 0.99)
+                # height = int(height * 0.99)
+            else:
+                width = int(width * 0.8)
+                # height = int(height * 0.8)
+        resized_img = cv2.resize(img, (width, height))
+        x, y, w, h, conf = detect_objects(model, device, resized_img, half, img_size=640, conf_thres=0.1, iou_thres=0.45)
+        conf = int(float(conf))
+        if((conf) > 70):
+            cv2.rectangle(resized_img, (x, y), (x+w, y+h), color = (0, 0, 255), thickness=2)
+            cv2.putText(resized_img, str(conf) + "% YOLO", (x+60, y-90), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
+            # cv2.imshow(f'Result', resized_img)
+            # Resize ảnh của chủ thể người
+            roi = resized_img[y:y+h,x:x+w]
+            if not roi.shape[0] or not roi.shape[1]:
+                print("Invalid image size.")
+                image_resize = resized_img
+            else:
+                image_resize = cv2.resize(roi, (WIDTH, HEIGHT))
+            image_resize = image_resize.astype('float32')/255.0
+            image_expand = np.expand_dims(image_resize,axis=0)
+            pred=model_CNN.predict(image_expand)
+            res = argmax(pred, axis=1)
+            accuracy_CNN = pred[0][res][0] * 100
+            accuracy_CNN_formatted = "{:.2f}".format(accuracy_CNN)
+            
+            result_name_pose.config(text = categories[res[0]])
+            result_accuracy_pose.config(text = accuracy_CNN_formatted)
+            
+            if categories[res[0]] == 'lie':
+                frameRGB = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGB)
+                results = pose.process(frameRGB)
+                if results.pose_landmarks:
+                    # ghi nhan thong so khung xuong
+                    lm = make_landmark_timestep(results)
+                    lm_list.append(lm)
+                    # ve khung xuong
+                    # global coordinate
+                    resized_img, coordinate = draw_landmark_on_image(mpDraw, results, resized_img)
+                if coordinate is not None:
+                    cur_coordinate = coordinate
+                    if f % EACH_FRAME == 0:
+                        if pre_coordinate is not None:
+                            print('pre_coordinate:  ', pre_coordinate)
+                            print('cur_coordinate:  ', cur_coordinate)
+                            for i in range(len(coordinate)):
+                                result_euclid = euclidean_distance(pre_coordinate[i], cur_coordinate[i])
+                                print('{} result_euclid: {}'.format(f, result_euclid))
+                                if result_euclid > LIMIT_DISTANCE:
+                                    global isSleep
+                                    isSleep.append(0)   # DONT SLEEP
+                                elif result_euclid <= LIMIT_DISTANCE:
+                                    isSleep.append(1)   # SLEEP
+                        # global pre_coordinate
+                        pre_coordinate = coordinate
+                        print('isSLeep:  ', isSleep)
+                print('{} have isSleep: {}\nsize: {}'.format(f, isSleep, len(isSleep)))
+                if(len(isSleep) == LIMIT_FEATURE):
+                    test_df = pd.DataFrame([isSleep])
+                    preds = model_detect_sleep.predict(test_df)
+                    if (preds[0] == "s" and light_state == True):
+                        # Toggle the light state
+                        light_state = not light_state
+                        # Build the command payload
+                        command_payload = {
+                            "commands": [
+                                {
+                                    "code": "switch_3",
+                                    "value": light_state
+                                }
+                            ]
+                        }
+                        # Send the command to the device
+                        openapi.post(
+                            "/v1.0/iot-03/devices/{}/commands".format(DEVICE_ID), command_payload)
+                        # Print the new state of the light
+                        status_light_label.config(text= "On" if light_state else "Off")
+                        print("Light is now", "on" if light_state else "off")
+                    if(preds[0] == 's'):
+                        print('preds:  SLEEP', )
+                        STATUS = 'SLEEP'
+                        result_status_label.config(text = STATUS)
+                    else: 
+                        print('preds:  WAKE', )
+                        STATUS = 'WAKE'
+                        result_status_label.config(text = STATUS)
+                    isSleep = []
+            accuracy_CNN = pred[0][res][0] * 100
+            accuracy_CNN_formatted = "{:.2f}".format(accuracy_CNN)
+            print('categories[res]:   ',categories[res[0]])
+            cv2.rectangle(resized_img, (x, y), (x+w, y+h), color = (0, 0, 255), thickness=2)
+            cv2.putText(resized_img, str(accuracy_CNN_formatted) + "% CNN", (x+60, y-50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
+            cv2.putText(resized_img, categories[res[0]], (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
+            cv2.putText(resized_img, STATUS, (x , y + 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
+            
+            f+=1
+            img_convert_color = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGBA)
+            photo = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(img_convert_color))
+            # cv2.imshow(f'Result', resized_img)
+            result_img.imgtk = photo
+            result_img.configure(image=photo, width=300, height= 675)
+            result_img.place(x=325, y=10)
+            if IS_PLAYING and isCamera:
+                result_img.after(15, process_camera_live_with_model_SVM)
+        else:
+            print('No object to detect')
+            result_name_pose.config(text='No object to detect')
+            result_accuracy_pose.config(text='No object to detect')
+            result_status_label.config(text='No object to detect')
+            img_convert_color = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGBA)
+            photo = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(img_convert_color))
+            # cv2.imshow(f'Result', resized_img)
+            result_img.imgtk = photo
+            result_img.configure(image=photo, width=300, height= 675)
+            result_img.place(x=325, y=10)
+            if IS_PLAYING and isCamera:
+                result_img.after(15, process_camera_live_with_model_SVM)
+    else: print('----------------------------------------------------------------------------------')
+
+# Hàm xử lý with Threshold camera live
+def process_camera_live_with_threshold():
+    global isCamera
+    global light_state
+    global f
+    global STATUS
+    global pre_coordinate
+    global coordinate
+    global isSleep
+    cap.set(cv2.CAP_PROP_POS_FRAMES, cap.get(
+            cv2.CAP_PROP_POS_FRAMES) + 45)
+    ret, img = cap.read()
+    print('isCamera:   ', isCamera)
+    if isCamera:
+        print('isCamera 2:   ', isCamera)
+        img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
+        img = cv2.flip(img, 1)
+        height, width = img.shape[:2]
+        n = 3
+        for i in range(n):
+            if i == n - 1:
+                width = int(width * 0.99)
+                # height = int(height * 0.99)
+            else:
+                width = int(width * 0.8)
+                # height = int(height * 0.8)
+        resized_img = cv2.resize(img, (width, height))
+        x, y, w, h, conf = detect_objects(model, device, resized_img, half, img_size=640, conf_thres=0.1, iou_thres=0.45)
+        conf = int(float(conf))
+        if((conf) > 70):
+            cv2.rectangle(resized_img, (x, y), (x+w, y+h), color = (0, 0, 255), thickness=2)
+            cv2.putText(resized_img, str(conf) + "% YOLO", (x+60, y-90), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
+            # cv2.imshow(f'Result', resized_img)
+            # Resize ảnh của chủ thể người
+            roi = resized_img[y:y+h,x:x+w]
+            if not roi.shape[0] or not roi.shape[1]:
+                print("Invalid image size.")
+                image_resize = resized_img
+            else:
+                image_resize = cv2.resize(roi, (WIDTH, HEIGHT))
+            image_resize = image_resize.astype('float32')/255.0
+            image_expand = np.expand_dims(image_resize,axis=0)
+            pred=model_CNN.predict(image_expand)
+            res = argmax(pred, axis=1)
+            accuracy_CNN = pred[0][res][0] * 100
+            accuracy_CNN_formatted = "{:.2f}".format(accuracy_CNN)
+            
+            result_name_pose.config(text = categories[res[0]])
+            result_accuracy_pose.config(text = accuracy_CNN_formatted)
+            
+            if categories[res[0]] == 'lie':
+                frameRGB = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGB)
+                results = pose.process(frameRGB)
+                if results.pose_landmarks:
+                    # ghi nhan thong so khung xuong
+                    lm = make_landmark_timestep(results)
+                    lm_list.append(lm)
+                    # ve khung xuong
+                    # global coordinate
+                    resized_img, coordinate = draw_landmark_on_image(mpDraw, results, resized_img)
+                if coordinate is not None:
+                    cur_coordinate = coordinate
+                    if f % EACH_FRAME == 0:
+                        if pre_coordinate is not None:
+                            print('pre_coordinate:  ', pre_coordinate)
+                            print('cur_coordinate:  ', cur_coordinate)
+                            for i in range(len(coordinate)):
+                                result_euclid = euclidean_distance(pre_coordinate[i], cur_coordinate[i])
+                                print('{} result_euclid: {}'.format(f, result_euclid))
+                                if result_euclid > LIMIT_DISTANCE:
+                                    global isSleep
+                                    isSleep.append(0)   # DONT SLEEP
+                                elif result_euclid <= LIMIT_DISTANCE:
+                                    isSleep.append(1)   # SLEEP
+                        # global pre_coordinate
+                        pre_coordinate = coordinate
+                        print('isSLeep:  ', isSleep)
+                print('{} have isSleep: {}\nsize: {}'.format(f, isSleep, len(isSleep)))
+                print(f'\ncount_1 current: {isSleep.count(1)}\n')
+                if(len(isSleep) == LIMIT_FEATURE):
+                    count_ones = isSleep.count(1)
+                    if (count_ones >= QUANTITY_1 and light_state == True):
+                        # Toggle the light state
+                        light_state = not light_state
+                        # Build the command payload
+                        command_payload = {
+                            "commands": [
+                                {
+                                    "code": "switch_3",
+                                    "value": light_state
+                                }
+                            ]
+                        }
+                        # Send the command to the device
+                        openapi.post(
+                            "/v1.0/iot-03/devices/{}/commands".format(DEVICE_ID), command_payload)
+                        # Print the new state of the light
+                        status_light_label.config(text= "On" if light_state else "Off")
+                        print("Light is now", "on" if light_state else "off")
+                    if(count_ones >= QUANTITY_1):
+                        print('preds:  SLEEP', )
+                        STATUS = 'SLEEP'
+                        result_status_label.config(text = STATUS)
+                    else: 
+                        print('preds:  WAKE', )
+                        STATUS = 'WAKE'
+                        result_status_label.config(text = STATUS)
+                    isSleep = []
+            accuracy_CNN = pred[0][res][0] * 100
+            accuracy_CNN_formatted = "{:.2f}".format(accuracy_CNN)
+            print('categories[res]:   ',categories[res[0]])
+            cv2.rectangle(resized_img, (x, y), (x+w, y+h), color = (0, 0, 255), thickness=2)
+            cv2.putText(resized_img, str(accuracy_CNN_formatted) + "% CNN", (x+60, y-50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
+            cv2.putText(resized_img, categories[res[0]], (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
+            cv2.putText(resized_img, STATUS, (x , y + 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
+            
+            f+=1
+            img_convert_color = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGBA)
+            photo = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(img_convert_color))
+            # cv2.imshow(f'Result', resized_img)
+            result_img.imgtk = photo
+            result_img.configure(image=photo, width=300, height= 675)
+            result_img.place(x=325, y=10)
+            if IS_PLAYING and isCamera:
+                result_img.after(15, process_camera_live_with_threshold)
+        else:
+            print('No object to detect')
+            result_name_pose.config(text='No object to detect')
+            result_accuracy_pose.config(text='No object to detect')
+            result_status_label.config(text='No object to detect')
+            img_convert_color = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGBA)
+            photo = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(img_convert_color))
+            # cv2.imshow(f'Result', resized_img)
+            result_img.imgtk = photo
+            result_img.configure(image=photo, width=300, height= 675)
+            result_img.place(x=325, y=10)
+            if IS_PLAYING and isCamera:
+                result_img.after(15, process_camera_live_with_threshold)
+    else: print('----------------------------------------------------------------------------------')
+
+# Hàm xử lý video with SVM video mp4
 def process_video_with_model_SVM():
+    global light_state
     global f
     global STATUS
     global pre_coordinate
@@ -148,196 +505,228 @@ def process_video_with_model_SVM():
     cap.set(cv2.CAP_PROP_POS_FRAMES, cap.get(
             cv2.CAP_PROP_POS_FRAMES) + FAST_FORWARD_RATE)
     ret, img = cap.read()
-    # frame = cv2.resize(img, dsize=None, fx=0.5, fy=0.5)
-    # image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # to RGB
-    
-    height, width = img.shape[:2]
-    n = 5
-    for i in range(n):
-        if i == n - 1:
-            width = int(width * 0.99)
-            height = int(height * 0.99)
-        else:
-            width = int(width * 0.8)
-            height = int(height * 0.8)
-    resized_img = cv2.resize(img, (width, height))
-    x, y, w, h, conf = detect_objects(model, device, resized_img, half, img_size=640, conf_thres=0.1, iou_thres=0.45)
-    # now = time.time() - curr
-    # print('time:  ', now)
-    cv2.rectangle(resized_img, (x, y), (x+w, y+h), color = (0, 0, 255), thickness=2)
-    cv2.putText(resized_img, str(conf) + "% YOLO", (x+60, y-90), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
-    # cv2.imshow(f'Result', resized_img)
-    # Resize ảnh của chủ thể người
-    roi = resized_img[y:y+h,x:x+w]
-    image_resize = cv2.resize(roi, (WIDTH, HEIGHT))
-    image_resize = image_resize.astype('float32')/255.0
-    image_expand = np.expand_dims(image_resize,axis=0)
-    pred=model_CNN.predict(image_expand)
-    res = argmax(pred, axis=1)
-    accuracy_CNN = pred[0][res][0] * 100
-    accuracy_CNN_formatted = "{:.2f}".format(accuracy_CNN)
-    
-    result_name_pose.config(text = categories[res[0]])
-    result_accuracy_pose.config(text = accuracy_CNN_formatted)
-    
-    if categories[res[0]] == 'lie':
-        frameRGB = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGB)
-        results = pose.process(frameRGB)
-        if results.pose_landmarks:
-            # ghi nhan thong so khung xuong
-            lm = make_landmark_timestep(results)
-            lm_list.append(lm)
-            # ve khung xuong
-            # global coordinate
-            resized_img, coordinate = draw_landmark_on_image(mpDraw, results, resized_img)
-        if coordinate is not None:
-            cur_coordinate = coordinate
-            if f % EACH_FRAME == 0:
-                if pre_coordinate is not None:
-                    print('pre_coordinate:  ', pre_coordinate)
-                    print('cur_coordinate:  ', cur_coordinate)
-                    for i in range(len(coordinate)):
-                        result_euclid = euclidean_distance(pre_coordinate[i], cur_coordinate[i])
-                        print('{} result_euclid: {}'.format(f, result_euclid))
-                        if result_euclid > LIMIT_DISTANCE:
-                            global isSleep
-                            isSleep.append(0)   # DONT SLEEP
-                        elif result_euclid <= LIMIT_DISTANCE:
-                            isSleep.append(1)   # SLEEP
-                # global pre_coordinate
-                pre_coordinate = coordinate
-                print('isSLeep:  ', isSleep)
-        print('{} have isSleep: {}\nsize: {}'.format(f, isSleep, len(isSleep)))
-        if(len(isSleep) == LIMIT_FEATURE):
-            test_df = pd.DataFrame([isSleep])
-            preds = model_detect_sleep.predict(test_df)
-            if(preds[0] == 's'):
-                print('preds:  SLEEP', )
-                STATUS = 'SLEEP'
-                result_status_label.config(text = STATUS)
-            else: 
-                print('preds:  WAKE', )
-                STATUS = 'WAKE'
-                result_status_label.config(text = STATUS)
-            isSleep = []
-    accuracy_CNN = pred[0][res][0] * 100
-    accuracy_CNN_formatted = "{:.2f}".format(accuracy_CNN)
-    print('categories[res]:   ',categories[res[0]])
-    cv2.rectangle(resized_img, (x, y), (x+w, y+h), color = (0, 0, 255), thickness=2)
-    cv2.putText(resized_img, str(accuracy_CNN_formatted) + "% CNN", (x+60, y-50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
-    cv2.putText(resized_img, categories[res[0]], (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
-    cv2.putText(resized_img, STATUS, (x , y + 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
-    
-    f+=1
-    img_convert_color = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGBA)
-    photo = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(img_convert_color))
-    # cv2.imshow(f'Result', resized_img)
-    result_img.imgtk = photo
-    result_img.configure(image=photo, height=675)
-    if IS_PLAYING:
-        result_img.after(15, process_video_with_model_SVM)
-    else: print('----------------------------------------------------------------------------------')
-    
-# Hàm xử lý video with Threshold
-def process_video_with_threshold():
-    global f
-    global STATUS
-    global pre_coordinate
-    global coordinate
-    global isSleep
-    cap.set(cv2.CAP_PROP_POS_FRAMES, cap.get(
-            cv2.CAP_PROP_POS_FRAMES) + FAST_FORWARD_RATE)
-    ret, img = cap.read()
-    # frame = cv2.resize(img, dsize=None, fx=0.5, fy=0.5)
-    # image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # to RGB
-    
-    height, width = img.shape[:2]
-    n = 5
-    for i in range(n):
-        if i == n - 1:
-            width = int(width * 0.99)
-            height = int(height * 0.99)
-        else:
-            width = int(width * 0.8)
-            height = int(height * 0.8)
-    resized_img = cv2.resize(img, (width, height))
-    x, y, w, h, conf = detect_objects(model, device, resized_img, half, img_size=640, conf_thres=0.1, iou_thres=0.45)
-    # now = time.time() - curr
-    # print('time:  ', now)
-    cv2.rectangle(resized_img, (x, y), (x+w, y+h), color = (0, 0, 255), thickness=2)
-    cv2.putText(resized_img, str(conf) + "% YOLO", (x+60, y-90), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
-    # cv2.imshow(f'Result', resized_img)
-    # Resize ảnh của chủ thể người
-    roi = resized_img[y:y+h,x:x+w]
-    image_resize = cv2.resize(roi, (WIDTH, HEIGHT))
-    image_resize = image_resize.astype('float32')/255.0
-    image_expand = np.expand_dims(image_resize,axis=0)
-    pred=model_CNN.predict(image_expand)
-    res = argmax(pred, axis=1)
-    accuracy_CNN = pred[0][res][0] * 100
-    accuracy_CNN_formatted = "{:.2f}".format(accuracy_CNN)
-    
-    result_name_pose.config(text = categories[res[0]])
-    result_accuracy_pose.config(text = accuracy_CNN_formatted)
-    
-    if categories[res[0]] == 'lie':
-        frameRGB = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGB)
-        results = pose.process(frameRGB)
-        if results.pose_landmarks:
-            # ghi nhan thong so khung xuong
-            lm = make_landmark_timestep(results)
-            lm_list.append(lm)
-            # ve khung xuong
-            # global coordinate
-            resized_img, coordinate = draw_landmark_on_image(mpDraw, results, resized_img)
-        if coordinate is not None:
-            cur_coordinate = coordinate
-            if f % EACH_FRAME == 0:
-                if pre_coordinate is not None:
-                    print('pre_coordinate:  ', pre_coordinate)
-                    print('cur_coordinate:  ', cur_coordinate)
-                    for i in range(len(coordinate)):
-                        result_euclid = euclidean_distance(pre_coordinate[i], cur_coordinate[i])
-                        print('{} result_euclid: {}'.format(f, result_euclid))
-                        if result_euclid > LIMIT_DISTANCE:
-                            global isSleep
-                            isSleep.append(0)   # DONT SLEEP
-                        elif result_euclid <= LIMIT_DISTANCE:
-                            isSleep.append(1)   # SLEEP
-                # global pre_coordinate
-                pre_coordinate = coordinate
-                print('isSLeep:  ', isSleep)
-        print('{} have isSleep: {}\nsize: {}'.format(f, isSleep, len(isSleep)))
-        print(f'\ncount_1 current: {isSleep.count(1)}\n')
-        if(len(isSleep) == LIMIT_FEATURE):
-            count_ones = isSleep.count(1)
-            if(count_ones >= QUANTITY_1):
-                print('preds:  SLEEP', )
-                STATUS = 'SLEEP'
-                result_status_label.config(text = STATUS)
-            else: 
-                print('preds:  WAKE', )
-                STATUS = 'WAKE'
-                result_status_label.config(text = STATUS)
-            isSleep = []
-    accuracy_CNN = pred[0][res][0] * 100
-    accuracy_CNN_formatted = "{:.2f}".format(accuracy_CNN)
-    print('categories[res]:   ',categories[res[0]])
-    cv2.rectangle(resized_img, (x, y), (x+w, y+h), color = (0, 0, 255), thickness=2)
-    cv2.putText(resized_img, str(accuracy_CNN_formatted) + "% CNN", (x+60, y-50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
-    cv2.putText(resized_img, categories[res[0]], (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
-    cv2.putText(resized_img, STATUS, (x , y + 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
-    
-    f+=1
-    img_convert_color = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGBA)
-    photo = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(img_convert_color))
-    # cv2.imshow(f'Result', resized_img)
-    result_img.imgtk = photo
-    result_img.configure(image=photo, height=675)
-    if IS_PLAYING:
-        result_img.after(15, process_video_with_threshold)
-    else: print('----------------------------------------------------------------------------------')
+    if ret:
+        height, width = img.shape[:2]
+        n = 5
+        for i in range(n):
+            if i == n - 1:
+                width = int(width * 0.99)
+                height = int(height * 0.99)
+            else:
+                width = int(width * 0.8)
+                height = int(height * 0.8)
+        resized_img = cv2.resize(img, (width, height))
+        x, y, w, h, conf = detect_objects(model, device, resized_img, half, img_size=640, conf_thres=0.1, iou_thres=0.45)
+        # now = time.time() - curr
+        # print('time:  ', now)
+        cv2.rectangle(resized_img, (x, y), (x+w, y+h), color = (0, 0, 255), thickness=2)
+        cv2.putText(resized_img, str(conf) + "% YOLO", (x+60, y-90), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
+        # cv2.imshow(f'Result', resized_img)
+        # Resize ảnh của chủ thể người
+        roi = resized_img[y:y+h,x:x+w]
+        image_resize = cv2.resize(roi, (WIDTH, HEIGHT))
+        image_resize = image_resize.astype('float32')/255.0
+        image_expand = np.expand_dims(image_resize,axis=0)
+        pred=model_CNN.predict(image_expand)
+        res = argmax(pred, axis=1)
+        accuracy_CNN = pred[0][res][0] * 100
+        accuracy_CNN_formatted = "{:.2f}".format(accuracy_CNN)
+        
+        result_name_pose.config(text = categories[res[0]])
+        result_accuracy_pose.config(text = accuracy_CNN_formatted)
+        
+        if categories[res[0]] == 'lie':
+            frameRGB = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGB)
+            results = pose.process(frameRGB)
+            if results.pose_landmarks:
+                # ghi nhan thong so khung xuong
+                lm = make_landmark_timestep(results)
+                lm_list.append(lm)
+                # ve khung xuong
+                # global coordinate
+                resized_img, coordinate = draw_landmark_on_image(mpDraw, results, resized_img)
+            if coordinate is not None:
+                cur_coordinate = coordinate
+                if f % EACH_FRAME == 0:
+                    if pre_coordinate is not None:
+                        print('pre_coordinate:  ', pre_coordinate)
+                        print('cur_coordinate:  ', cur_coordinate)
+                        for i in range(len(coordinate)):
+                            result_euclid = euclidean_distance(pre_coordinate[i], cur_coordinate[i])
+                            print('{} result_euclid: {}'.format(f, result_euclid))
+                            if result_euclid > LIMIT_DISTANCE:
+                                global isSleep
+                                isSleep.append(0)   # DONT SLEEP
+                            elif result_euclid <= LIMIT_DISTANCE:
+                                isSleep.append(1)   # SLEEP
+                    # global pre_coordinate
+                    pre_coordinate = coordinate
+                    print('isSLeep:  ', isSleep)
+            print('{} have isSleep: {}\nsize: {}'.format(f, isSleep, len(isSleep)))
+            if(len(isSleep) == LIMIT_FEATURE):
+                test_df = pd.DataFrame([isSleep])
+                preds = model_detect_sleep.predict(test_df)
+                if (preds[0] == "s" and light_state == True):
+                    # Toggle the light state
+                    light_state = not light_state
+                    # Build the command payload
+                    command_payload = {
+                        "commands": [
+                            {
+                                "code": "switch_3",
+                                "value": light_state
+                            }
+                        ]
+                    }
+                    # Send the command to the device
+                    openapi.post(
+                        "/v1.0/iot-03/devices/{}/commands".format(DEVICE_ID), command_payload)
+                    # Print the new state of the light
+                    status_light_label.config(text= "On" if light_state else "Off")
+                    print("Light is now", "on" if light_state else "off")
+                if(preds[0] == 's'):
+                    print('preds:  SLEEP', )
+                    STATUS = 'SLEEP'
+                    result_status_label.config(text = STATUS)
+                else: 
+                    print('preds:  WAKE', )
+                    STATUS = 'WAKE'
+                    result_status_label.config(text = STATUS)
+                isSleep = []
+        accuracy_CNN = pred[0][res][0] * 100
+        accuracy_CNN_formatted = "{:.2f}".format(accuracy_CNN)
+        print('categories[res]:   ',categories[res[0]])
+        cv2.rectangle(resized_img, (x, y), (x+w, y+h), color = (0, 0, 255), thickness=2)
+        cv2.putText(resized_img, str(accuracy_CNN_formatted) + "% CNN", (x+60, y-50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
+        cv2.putText(resized_img, categories[res[0]], (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
+        cv2.putText(resized_img, STATUS, (x , y + 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
+        
+        f+=1
+        img_convert_color = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGBA)
+        photo = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(img_convert_color))
+        # cv2.imshow(f'Result', resized_img)
+        result_img.imgtk = photo
+        result_img.configure(image=photo, height=675)
+        if IS_PLAYING:
+            result_img.after(15, process_video_with_model_SVM)
+        else: print('----------------------------------------------------------------------------------')
 
+# Hàm xử lý video with Threshold video mp4
+def process_video_with_threshold():
+    global light_state
+    global f
+    global STATUS
+    global pre_coordinate
+    global coordinate
+    global isSleep
+    cap.set(cv2.CAP_PROP_POS_FRAMES, cap.get(
+            cv2.CAP_PROP_POS_FRAMES) + FAST_FORWARD_RATE)
+    ret, img = cap.read()
+    if ret:
+        height, width = img.shape[:2]
+        n = 5
+        for i in range(n):
+            if i == n - 1:
+                width = int(width * 0.99)
+                height = int(height * 0.99)
+            else:
+                width = int(width * 0.8)
+                height = int(height * 0.8)
+        resized_img = cv2.resize(img, (width, height))
+        x, y, w, h, conf = detect_objects(model, device, resized_img, half, img_size=640, conf_thres=0.1, iou_thres=0.45)
+        # now = time.time() - curr
+        # print('time:  ', now)
+        cv2.rectangle(resized_img, (x, y), (x+w, y+h), color = (0, 0, 255), thickness=2)
+        cv2.putText(resized_img, str(conf) + "% YOLO", (x+60, y-90), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
+        # cv2.imshow(f'Result', resized_img)
+        # Resize ảnh của chủ thể người
+        roi = resized_img[y:y+h,x:x+w]
+        image_resize = cv2.resize(roi, (WIDTH, HEIGHT))
+        image_resize = image_resize.astype('float32')/255.0
+        image_expand = np.expand_dims(image_resize,axis=0)
+        pred=model_CNN.predict(image_expand)
+        res = argmax(pred, axis=1)
+        accuracy_CNN = pred[0][res][0] * 100
+        accuracy_CNN_formatted = "{:.2f}".format(accuracy_CNN)
+        
+        result_name_pose.config(text = categories[res[0]])
+        result_accuracy_pose.config(text = accuracy_CNN_formatted)
+        
+        if categories[res[0]] == 'lie':
+            frameRGB = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGB)
+            results = pose.process(frameRGB)
+            if results.pose_landmarks:
+                # ghi nhan thong so khung xuong
+                lm = make_landmark_timestep(results)
+                lm_list.append(lm)
+                # ve khung xuong
+                # global coordinate
+                resized_img, coordinate = draw_landmark_on_image(mpDraw, results, resized_img)
+            if coordinate is not None:
+                cur_coordinate = coordinate
+                if f % EACH_FRAME == 0:
+                    if pre_coordinate is not None:
+                        print('pre_coordinate:  ', pre_coordinate)
+                        print('cur_coordinate:  ', cur_coordinate)
+                        for i in range(len(coordinate)):
+                            result_euclid = euclidean_distance(pre_coordinate[i], cur_coordinate[i])
+                            print('{} result_euclid: {}'.format(f, result_euclid))
+                            if result_euclid > LIMIT_DISTANCE:
+                                global isSleep
+                                isSleep.append(0)   # DONT SLEEP
+                            elif result_euclid <= LIMIT_DISTANCE:
+                                isSleep.append(1)   # SLEEP
+                    # global pre_coordinate
+                    pre_coordinate = coordinate
+                    print('isSLeep:  ', isSleep)
+            print('{} have isSleep: {}\nsize: {}'.format(f, isSleep, len(isSleep)))
+            print(f'\ncount_1 current: {isSleep.count(1)}\n')
+            if(len(isSleep) == LIMIT_FEATURE):
+                count_ones = isSleep.count(1)
+                if (count_ones >= QUANTITY_1 and light_state == True):
+                    # Toggle the light state
+                    light_state = not light_state
+                    # Build the command payload
+                    command_payload = {
+                        "commands": [
+                            {
+                                "code": "switch_3",
+                                "value": light_state
+                            }
+                        ]
+                    }
+                    # Send the command to the device
+                    openapi.post(
+                        "/v1.0/iot-03/devices/{}/commands".format(DEVICE_ID), command_payload)
+                    # Print the new state of the light
+                    status_light_label.config(text= "On" if light_state else "Off")
+                    print("Light is now", "on" if light_state else "off")
+                if(count_ones >= QUANTITY_1):
+                    print('preds:  SLEEP', )
+                    STATUS = 'SLEEP'
+                    result_status_label.config(text = STATUS)
+                else: 
+                    print('preds:  WAKE', )
+                    STATUS = 'WAKE'
+                    result_status_label.config(text = STATUS)
+                isSleep = []
+        accuracy_CNN = pred[0][res][0] * 100
+        accuracy_CNN_formatted = "{:.2f}".format(accuracy_CNN)
+        print('categories[res]:   ',categories[res[0]])
+        cv2.rectangle(resized_img, (x, y), (x+w, y+h), color = (0, 0, 255), thickness=2)
+        cv2.putText(resized_img, str(accuracy_CNN_formatted) + "% CNN", (x+60, y-50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
+        cv2.putText(resized_img, categories[res[0]], (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
+        cv2.putText(resized_img, STATUS, (x , y + 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 100, 255), 2, cv2.LINE_AA)
+        
+        f+=1
+        img_convert_color = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGBA)
+        photo = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(img_convert_color))
+        # cv2.imshow(f'Result', resized_img)
+        result_img.imgtk = photo
+        result_img.configure(image=photo, height=675)
+        if IS_PLAYING:
+            result_img.after(15, process_video_with_threshold)
+        else: print('----------------------------------------------------------------------------------')
 
 
 # Hàm mở hộp thoại để chọn tệp video cũng như submit tất cả các option
@@ -374,9 +763,33 @@ def choose_file():
         updateFilePath(file_path, selected_option, selected_dropdown, value_threshold)
 
 
+def use_camera():
+    global isCamera
+    global selected_option
+    global selected_dropdown
+    isCamera = True
+    isCameraLive = True
+    uri = 'http://192.168.1.106:4747/video'
+    selected_option = selected.get()
+    selected_dropdown = valueDropdown.get()
+    # value_threshold = int(input_threshold.get())
+    value_threshold = input_threshold.get()
+    if(value_threshold):
+        if('%' in value_threshold):
+            value_threshold = int(str(value_threshold).strip().split('%')[0])
+        else: int(value_threshold)
+    print('value_option:  ',selected_option)
+    print('value_dropdown:  ',selected_dropdown)
+    print('value_threshold:  ',value_threshold)
+    updateFilePath(uri, selected_option, selected_dropdown, value_threshold, isCameraLive)
+
 def stopProcess():
     global IS_PLAYING
+    global isCamera
     IS_PLAYING = False
+    if isCamera:
+        cap.release()
+        isCamera = False
 
 def clearResult():
     result_name_pose.config(text='none')
@@ -510,7 +923,7 @@ choose_file_button = tk.Button(app,
                                height="30",
                                borderwidth=4,
                                relief="ridge",
-                               command=choose_file,
+                               command=use_camera,
                                image=camera_icon_img,
                                compound = "right",
                                activebackground='#a9b1b6',
@@ -553,6 +966,24 @@ choose_file_button = tk.Button(app,
                             ).place(x = 20, y = 500)
 
 
+light_icon=PIL.Image.open("./icon_app/light-bulb.png")
+light_icon_resize=light_icon.resize((25,25),PIL.Image.ANTIALIAS)
+light_icon_img=PIL.ImageTk.PhotoImage(light_icon_resize)
+choose_file_button = tk.Button(app,
+                               text="Turn On / Off   ",
+                               font = ("Times New Roman", 11),
+                               width="250",
+                               height="30",
+                               borderwidth=4,
+                               relief="ridge",
+                               command=turnOnLight,
+                               image=light_icon_img,
+                               compound = "right",
+                               activebackground='#a9b1b6',
+                               activeforeground='white'
+                            ).place(x = 20, y = 560)
+
+
 quit_app_icon=PIL.Image.open("./icon_app/exit_app.png")
 quit_app_icon_resize=quit_app_icon.resize((25,25),PIL.Image.ANTIALIAS)
 quit_app_icon_img=PIL.ImageTk.PhotoImage(quit_app_icon_resize)
@@ -568,7 +999,7 @@ choose_file_button = tk.Button(app,
                                compound = "right",
                                activebackground='#a9b1b6',
                                activeforeground='white'
-                            ).place(x = 20, y = 560)
+                            ).place(x = 20, y = 620)
 
 
 # Đường phân chia
@@ -650,6 +1081,24 @@ result_status_label = tk.Label(app,
                         bg="white"
                         )
 result_status_label.place(x=550, y=320)
+
+
+# create label for status light
+light_label = tk.Label(app, 
+                        text="Light is: ",
+                        font = ("Times New Roman", 15, 'bold'),
+                        fg="black",
+                        bg="white"
+                        )
+light_label.place(x=390, y=380)
+
+status_light_label = tk.Label(app, 
+                        text="On",
+                        font = ("Times New Roman", 18, 'bold'),
+                        fg="red",
+                        bg="white"
+                        )
+status_light_label.place(x=550, y=380)
 
 
 # Tạo phần nền màu đen
