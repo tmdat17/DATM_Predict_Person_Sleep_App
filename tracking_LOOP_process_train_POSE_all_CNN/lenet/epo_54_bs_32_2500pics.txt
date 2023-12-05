@@ -1,0 +1,77 @@
+
+E:\CTU\LUAN_VAN_2023>python train_pose_lenet_beta.py
+[['./data_cropped/at_home/lie/lie_wake_1060.jpg', 0], ['./data_cropped/at_home/sit/sit_1873.jpg', 1], ['./data_cropped/at_home/lie/lie_wake_2011.jpg', 0], ['./data_cropped/at_home/minus/item_2480.jpg', 3], ['./data_cropped/at_home/minus/item_1472.jpg', 3], ['./data_cropped/at_home/lie/lie_wake_86.jpg', 0], ['./data_cropped/at_home/sit/sit_998.jpg', 1], ['./data_cropped/at_home/lie/lie_wake_669.jpg', 0], ['./data_cropped/at_home/lie/lie_wake_1230.jpg', 0], ['./data_cropped/at_home/sit/sit_291.jpg', 1]]
+Chuan bi doc anh tu folder:
+scale raw pixel / 255.0
+train test split
+trainX shape:  (6464, 128, 128, 3)
+testX shape:  (2020, 128, 128, 3)
+trainY shape:  (6464, 4)
+testY shape:  (2020,)
+valX shape:  (1616, 128, 128, 3)
+valY shape:  (1616, 4)
+[INFO] compiling model...
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ conv2d (Conv2D)             (None, 128, 128, 32)      2432
+
+ max_pooling2d (MaxPooling2D  (None, 64, 64, 32)       0
+ )
+
+ conv2d_1 (Conv2D)           (None, 60, 60, 48)        38448
+
+ max_pooling2d_1 (MaxPooling  (None, 30, 30, 48)       0
+ 2D)
+
+ flatten (Flatten)           (None, 43200)             0
+
+ dense (Dense)               (None, 256)               11059456
+
+ dense_1 (Dense)             (None, 84)                21588
+
+ dense_2 (Dense)             (None, 4)                 340
+
+=================================================================
+Total params: 11,122,264
+Trainable params: 11,122,264
+Non-trainable params: 0
+_________________________________________________________________
+None
+bat dau fit model
+2023-11-17 16:23:38.065531: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 1270874112 exceeds 10% of free system memory.
+Epoch 1/54
+202/202 [==============================] - 14s 53ms/step - loss: 0.1503 - accuracy: 0.9502 - val_loss: 0.0784 - val_accuracy: 0.9715
+Epoch 2/54
+202/202 [==============================] - 10s 50ms/step - loss: 0.0288 - accuracy: 0.9918 - val_loss: 0.0133 - val_accuracy: 0.9950
+Epoch 3/54
+202/202 [==============================] - 10s 50ms/step - loss: 0.0113 - accuracy: 0.9971 - val_loss: 0.0022 - val_accuracy: 0.9994
+Epoch 4/54
+202/202 [==============================] - 10s 50ms/step - loss: 0.0054 - accuracy: 0.9985 - val_loss: 0.0036 - val_accuracy: 0.9988
+Epoch 5/54
+202/202 [==============================] - 10s 50ms/step - loss: 0.0048 - accuracy: 0.9988 - val_loss: 0.0037 - val_accuracy: 0.9981
+Epoch 6/54
+202/202 [==============================] - 10s 50ms/step - loss: 0.0028 - accuracy: 0.9992 - val_loss: 0.0102 - val_accuracy: 0.9988
+Epoch 7/54
+202/202 [==============================] - 10s 50ms/step - loss: 0.0022 - accuracy: 0.9995 - val_loss: 0.0019 - val_accuracy: 0.9994
+Epoch 8/54
+202/202 [==============================] - 10s 50ms/step - loss: 0.0020 - accuracy: 0.9992 - val_loss: 0.0035 - val_accuracy: 0.9994
+Epoch 9/54
+202/202 [==============================] - 10s 50ms/step - loss: 0.0650 - accuracy: 0.9901 - val_loss: 1.3208 - val_accuracy: 0.8422
+new_model:   <keras.engine.sequential.Sequential object at 0x0000023B073B4CD0>
+prepare save new_model:
+bat dau kiem tra model:
+64/64 [==============================] - 1s 16ms/step
+E:\CTU\LUAN_VAN_2023\train_pose_lenet_beta.py:150: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels([''] + categories)
+E:\CTU\LUAN_VAN_2023\train_pose_lenet_beta.py:151: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_yticklabels([''] + categories)
+Accuracy: 85.6930693069307
+F1 Score: 94.73684210526316
+Recall: 100.0
+Precision: 90.0
+Time train Lenet:  1.58
+Time predict Lenet:  0.03
+
+E:\CTU\LUAN_VAN_2023>

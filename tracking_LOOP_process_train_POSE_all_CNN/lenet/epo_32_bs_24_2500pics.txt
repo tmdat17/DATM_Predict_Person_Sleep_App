@@ -1,0 +1,97 @@
+
+E:\CTU\LUAN_VAN_2023>python train_pose_lenet_beta.py
+[['./data_cropped/at_home/minus/item_2372.jpg', 3], ['./data_cropped/at_home/lie/lie_wake_1854.jpg', 0], ['./data_cropped/at_home/lie/lie_wake_2273.jpg', 0], ['./data_cropped/at_home/minus/item_938.jpg', 3], ['./data_cropped/at_home/minus/item_2394.jpg', 3], ['./data_cropped/at_home/stand/stand_1688.jpg', 2], ['./data_cropped/at_home/minus/item_1124.jpg', 3], ['./data_cropped/at_home/sit/sit_1425.jpg', 1], ['./data_cropped/at_home/stand/stand_225.jpg', 2], ['./data_cropped/at_home/minus/item_2313.jpg', 3]]
+Chuan bi doc anh tu folder:
+scale raw pixel / 255.0
+train test split
+trainX shape:  (6464, 128, 128, 3)
+testX shape:  (2020, 128, 128, 3)
+trainY shape:  (6464, 4)
+testY shape:  (2020,)
+valX shape:  (1616, 128, 128, 3)
+valY shape:  (1616, 4)
+[INFO] compiling model...
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ conv2d (Conv2D)             (None, 128, 128, 32)      2432
+
+ max_pooling2d (MaxPooling2D  (None, 64, 64, 32)       0
+ )
+
+ conv2d_1 (Conv2D)           (None, 60, 60, 48)        38448
+
+ max_pooling2d_1 (MaxPooling  (None, 30, 30, 48)       0
+ 2D)
+
+ flatten (Flatten)           (None, 43200)             0
+
+ dense (Dense)               (None, 256)               11059456
+
+ dense_1 (Dense)             (None, 84)                21588
+
+ dense_2 (Dense)             (None, 4)                 340
+
+=================================================================
+Total params: 11,122,264
+Trainable params: 11,122,264
+Non-trainable params: 0
+_________________________________________________________________
+None
+bat dau fit model
+2023-11-17 16:03:16.190814: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 1270874112 exceeds 10% of free system memory.
+Epoch 1/32
+270/270 [==============================] - 14s 43ms/step - loss: 0.1367 - accuracy: 0.9520 - val_loss: 0.0405 - val_accuracy: 0.9901
+Epoch 2/32
+270/270 [==============================] - 11s 40ms/step - loss: 0.0703 - accuracy: 0.9833 - val_loss: 0.0616 - val_accuracy: 0.9895
+Epoch 3/32
+270/270 [==============================] - 11s 41ms/step - loss: 0.0244 - accuracy: 0.9946 - val_loss: 0.0536 - val_accuracy: 0.9851
+Epoch 4/32
+270/270 [==============================] - 11s 40ms/step - loss: 0.0166 - accuracy: 0.9954 - val_loss: 0.0532 - val_accuracy: 0.9882
+Epoch 5/32
+270/270 [==============================] - 11s 41ms/step - loss: 0.0114 - accuracy: 0.9969 - val_loss: 0.0891 - val_accuracy: 0.9802
+Epoch 6/32
+270/270 [==============================] - 11s 40ms/step - loss: 0.0050 - accuracy: 0.9989 - val_loss: 0.0120 - val_accuracy: 0.9981
+Epoch 7/32
+270/270 [==============================] - 11s 40ms/step - loss: 0.0033 - accuracy: 0.9997 - val_loss: 0.0098 - val_accuracy: 0.9981
+Epoch 8/32
+270/270 [==============================] - 11s 40ms/step - loss: 0.0027 - accuracy: 0.9994 - val_loss: 0.0190 - val_accuracy: 0.9981
+Epoch 9/32
+270/270 [==============================] - 11s 41ms/step - loss: 0.0023 - accuracy: 0.9995 - val_loss: 0.0144 - val_accuracy: 0.9988
+Epoch 10/32
+270/270 [==============================] - 11s 41ms/step - loss: 0.0017 - accuracy: 0.9995 - val_loss: 0.0150 - val_accuracy: 0.9981
+Epoch 11/32
+270/270 [==============================] - 11s 41ms/step - loss: 0.0020 - accuracy: 0.9997 - val_loss: 0.0115 - val_accuracy: 0.9981
+Epoch 12/32
+270/270 [==============================] - 11s 41ms/step - loss: 0.0019 - accuracy: 0.9995 - val_loss: 0.0110 - val_accuracy: 0.9981
+Epoch 13/32
+270/270 [==============================] - 11s 41ms/step - loss: 0.0015 - accuracy: 0.9997 - val_loss: 0.0083 - val_accuracy: 0.9994
+Epoch 14/32
+270/270 [==============================] - 11s 41ms/step - loss: 0.0017 - accuracy: 0.9997 - val_loss: 0.0169 - val_accuracy: 0.9969
+Epoch 15/32
+270/270 [==============================] - 11s 40ms/step - loss: 0.0542 - accuracy: 0.9896 - val_loss: 0.0580 - val_accuracy: 0.9895
+Epoch 16/32
+270/270 [==============================] - 11s 40ms/step - loss: 0.0149 - accuracy: 0.9952 - val_loss: 0.0563 - val_accuracy: 0.9957
+Epoch 17/32
+270/270 [==============================] - 11s 40ms/step - loss: 0.0029 - accuracy: 0.9992 - val_loss: 0.0332 - val_accuracy: 0.9944
+Epoch 18/32
+270/270 [==============================] - 11s 40ms/step - loss: 0.0028 - accuracy: 0.9992 - val_loss: 0.0435 - val_accuracy: 0.9950
+Epoch 19/32
+270/270 [==============================] - 11s 40ms/step - loss: 0.0032 - accuracy: 0.9994 - val_loss: 0.0395 - val_accuracy: 0.9969
+new_model:   <keras.engine.sequential.Sequential object at 0x000001EFD6AD4CD0>
+prepare save new_model:
+bat dau kiem tra model:
+64/64 [==============================] - 1s 16ms/step
+E:\CTU\LUAN_VAN_2023\train_pose_lenet_beta.py:150: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels([''] + categories)
+E:\CTU\LUAN_VAN_2023\train_pose_lenet_beta.py:151: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_yticklabels([''] + categories)
+Accuracy: 99.65346534653466
+F1 Score: 100.0
+Recall: 100.0
+Precision: 100.0
+Time train Lenet:  3.54
+Time predict Lenet:  0.03
+
+E:\CTU\LUAN_VAN_2023>

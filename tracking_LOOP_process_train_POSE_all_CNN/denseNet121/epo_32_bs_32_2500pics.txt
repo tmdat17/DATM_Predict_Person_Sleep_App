@@ -1,0 +1,70 @@
+
+E:\CTU\LUAN_VAN_2023>python train_pose_denseNet121_beta.py
+[['./data_cropped/at_home/minus/item_138.jpg', 3], ['./data_cropped/at_home/sit/sit_1362.jpg', 1], ['./data_cropped/at_home/lie/lie_wake_1696.jpg', 0], ['./data_cropped/at_home/lie/lie_wake_263.jpg', 0], ['./data_cropped/at_home/lie/lie_wake_2319.jpg', 0], ['./data_cropped/at_home/sit/sit_1020.jpg', 1], ['./data_cropped/at_home/minus/item_2160.jpg', 3], ['./data_cropped/at_home/sit/sit_342.jpg', 1], ['./data_cropped/at_home/sit/sit_1234.jpg', 1], ['./data_cropped/at_home/minus/item_753.jpg', 3]]
+Chuan bi doc anh tu folder:
+scale raw pixel / 255.0
+train test split
+trainX shape:  (6464, 128, 128, 3)
+testX shape:  (2020, 128, 128, 3)
+trainY shape:  (6464, 4)
+testY shape:  (2020,)
+valX shape:  (1616, 128, 128, 3)
+valY shape:  (1616, 4)
+[INFO] compiling model...
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ densenet121 (Functional)    (None, 4, 4, 1024)        7037504
+
+ global_average_pooling2d (G  (None, 1024)             0
+ lobalAveragePooling2D)
+
+ dropout (Dropout)           (None, 1024)              0
+
+ flatten (Flatten)           (None, 1024)              0
+
+ dense (Dense)               (None, 4)                 4100
+
+=================================================================
+Total params: 7,041,604
+Trainable params: 4,100
+Non-trainable params: 7,037,504
+_________________________________________________________________
+None
+bat dau fit model DenseNet121
+2023-11-17 15:08:11.720861: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 1270874112 exceeds 10% of free system memory.
+Epoch 1/32
+202/202 [==============================] - ETA: 0s - loss: 0.4815 - accuracy: 0.84582023-11-17 15:08:51.362070: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.18GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+202/202 [==============================] - 39s 145ms/step - loss: 0.4815 - accuracy: 0.8458 - val_loss: 0.0142 - val_accuracy: 0.9994
+Epoch 2/32
+202/202 [==============================] - 25s 124ms/step - loss: 0.0617 - accuracy: 0.9821 - val_loss: 0.0063 - val_accuracy: 1.0000
+Epoch 3/32
+202/202 [==============================] - 25s 123ms/step - loss: 0.0356 - accuracy: 0.9903 - val_loss: 0.0048 - val_accuracy: 1.0000
+Epoch 4/32
+202/202 [==============================] - 25s 125ms/step - loss: 0.0303 - accuracy: 0.9932 - val_loss: 0.0036 - val_accuracy: 1.0000
+Epoch 5/32
+202/202 [==============================] - 25s 125ms/step - loss: 0.0198 - accuracy: 0.9957 - val_loss: 0.0025 - val_accuracy: 1.0000
+Epoch 6/32
+202/202 [==============================] - 25s 125ms/step - loss: 0.0224 - accuracy: 0.9941 - val_loss: 0.0027 - val_accuracy: 1.0000
+Epoch 7/32
+202/202 [==============================] - 25s 125ms/step - loss: 0.0139 - accuracy: 0.9974 - val_loss: 0.0021 - val_accuracy: 1.0000
+Epoch 8/32
+202/202 [==============================] - 25s 125ms/step - loss: 0.0139 - accuracy: 0.9964 - val_loss: 0.0019 - val_accuracy: 1.0000
+new_model:   <keras.engine.sequential.Sequential object at 0x000001BEE92D46D0>
+prepare save new_model:
+bat dau kiem tra model:
+63/64 [============================>.] - ETA: 0s2023-11-17 15:11:59.070682: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.15GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+64/64 [==============================] - 10s 123ms/step
+E:\CTU\LUAN_VAN_2023\train_pose_denseNet121_beta.py:156: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels([''] + categories)
+E:\CTU\LUAN_VAN_2023\train_pose_denseNet121_beta.py:157: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_yticklabels([''] + categories)
+Accuracy: 99.95049504950495
+F1 Score: 99.89909182643794
+Recall: 100.0
+Precision: 99.79838709677419
+Time train DenseNet121:  3.61
+Time predict DenseNet121:  0.18
+
+E:\CTU\LUAN_VAN_2023>

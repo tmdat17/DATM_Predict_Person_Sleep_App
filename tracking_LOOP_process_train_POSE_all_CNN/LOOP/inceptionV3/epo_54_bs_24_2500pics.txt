@@ -1,0 +1,392 @@
+EPOCH 54 --- BS 24
+ dat@meandark  ~/LV/train_pose_loop  python3 train_pose_inceptionV3_beta.py
+2023-12-04 10:54:31.221944: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-12-04 10:54:31.374348: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /home/dat/.local/lib/python3.10/site-packages/cv2/../../lib64:
+2023-12-04 10:54:31.374379: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2023-12-04 10:54:31.412931: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2023-12-04 10:54:32.220284: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /home/dat/.local/lib/python3.10/site-packages/cv2/../../lib64:
+2023-12-04 10:54:32.220398: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /home/dat/.local/lib/python3.10/site-packages/cv2/../../lib64:
+2023-12-04 10:54:32.220412: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+LAN 1
+[['../data_cropped/at_home/stand/stand_489.jpg', 2], ['../data_cropped/at_home/minus/item_471.jpg', 3], ['../data_cropped/at_home/sit/sit_sleep_564.jpg', 1], ['../data_cropped/at_home/stand/stand_869.jpg', 2], ['../data_cropped/at_home/minus/item_262.jpg', 3], ['../data_cropped/at_home/stand/stand_2004.jpg', 2], ['../data_cropped/at_home/minus/item_1505.jpg', 3], ['../data_cropped/at_home/sit/sit_sleep_861.jpg', 1], ['../data_cropped/at_home/minus/item_791.jpg', 3], ['../data_cropped/at_home/minus/item_2252.jpg', 3]]
+Chuan bi doc anh tu folder: 
+scale raw pixel / 255.0
+train test split
+trainX shape:  (6464, 128, 128, 3)
+testX shape:  (2020, 128, 128, 3)
+trainY shape:  (6464, 4)
+testY shape:  (2020,)
+valX shape:  (1616, 128, 128, 3)
+valY shape:  (1616, 4)
+[INFO] compiling model...
+2023-12-04 10:54:44.243482: E tensorflow/stream_executor/cuda/cuda_driver.cc:265] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2023-12-04 10:54:44.243575: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (meandark): /proc/driver/nvidia/version does not exist
+2023-12-04 10:54:44.244270: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ inception_v3 (Functional)   (None, 2, 2, 2048)        21802784  
+                                                                 
+ global_average_pooling2d (G  (None, 2048)             0         
+ lobalAveragePooling2D)                                          
+                                                                 
+ dropout (Dropout)           (None, 2048)              0         
+                                                                 
+ flatten (Flatten)           (None, 2048)              0         
+                                                                 
+ dense (Dense)               (None, 4)                 8196      
+                                                                 
+=================================================================
+Total params: 21,810,980
+Trainable params: 8,196
+Non-trainable params: 21,802,784
+_________________________________________________________________
+None
+bat dau fit model InceptionV3
+2023-12-04 10:54:47.371770: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 1270874112 exceeds 10% of free system memory.
+Epoch 1/54
+270/270 [==============================] - 178s 646ms/step - loss: 0.2972 - accuracy: 0.9200 - val_loss: 0.0424 - val_accuracy: 0.9876
+Epoch 2/54
+270/270 [==============================] - 163s 603ms/step - loss: 0.0590 - accuracy: 0.9830 - val_loss: 0.0212 - val_accuracy: 0.9932
+Epoch 3/54
+270/270 [==============================] - 169s 627ms/step - loss: 0.0353 - accuracy: 0.9898 - val_loss: 0.0187 - val_accuracy: 0.9938
+Epoch 4/54
+270/270 [==============================] - 165s 610ms/step - loss: 0.0241 - accuracy: 0.9924 - val_loss: 0.0226 - val_accuracy: 0.9938
+Epoch 5/54
+270/270 [==============================] - 163s 604ms/step - loss: 0.0179 - accuracy: 0.9950 - val_loss: 0.0173 - val_accuracy: 0.9944
+Epoch 6/54
+270/270 [==============================] - 166s 615ms/step - loss: 0.0219 - accuracy: 0.9921 - val_loss: 0.0207 - val_accuracy: 0.9950
+Epoch 7/54
+270/270 [==============================] - 167s 618ms/step - loss: 0.0139 - accuracy: 0.9963 - val_loss: 0.0200 - val_accuracy: 0.9950
+Epoch 8/54
+270/270 [==============================] - 171s 633ms/step - loss: 0.0103 - accuracy: 0.9958 - val_loss: 0.0186 - val_accuracy: 0.9957
+Epoch 9/54
+270/270 [==============================] - 164s 610ms/step - loss: 0.0145 - accuracy: 0.9957 - val_loss: 0.0186 - val_accuracy: 0.9963
+Epoch 10/54
+270/270 [==============================] - 161s 598ms/step - loss: 0.0150 - accuracy: 0.9954 - val_loss: 0.0206 - val_accuracy: 0.9944
+Epoch 11/54
+270/270 [==============================] - 181s 670ms/step - loss: 0.0176 - accuracy: 0.9960 - val_loss: 0.0282 - val_accuracy: 0.9932
+Epoch 12/54
+270/270 [==============================] - 177s 654ms/step - loss: 0.0102 - accuracy: 0.9972 - val_loss: 0.0284 - val_accuracy: 0.9920
+new_model:   <keras.engine.sequential.Sequential object at 0x7f7f3c797d60>
+prepare save new_model:
+bat dau kiem tra model: 
+2023-12-04 11:28:32.161771: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 397148160 exceeds 10% of free system memory.
+64/64 [==============================] - 43s 655ms/step
+accuracy 1:  99.35643564356435
+precision 1:  100.0
+recall 1:  98.34368530020704
+f1_score 1:  99.16492693110646
+===========================================================================================
+LAN 2
+[['../data_cropped/at_home/lie/lie_wake_2193.jpg', 0], ['../data_cropped/at_home/lie/lie_wake_19.jpg', 0], ['../data_cropped/at_home/sit/sit_sleep_1152.jpg', 1], ['../data_cropped/at_home/lie/lie_wake_769.jpg', 0], ['../data_cropped/at_home/minus/item_2597.jpg', 3], ['../data_cropped/at_home/lie/lie_wake_563.jpg', 0], ['../data_cropped/at_home/sit/sit_sleep_172.jpg', 1], ['../data_cropped/at_home/sit/sit_sleep_1213.jpg', 1], ['../data_cropped/at_home/lie/lie_wake_381.jpg', 0], ['../data_cropped/at_home/stand/stand_2190.jpg', 2]]
+Chuan bi doc anh tu folder: 
+scale raw pixel / 255.0
+train test split
+trainX shape:  (6464, 128, 128, 3)
+testX shape:  (2020, 128, 128, 3)
+trainY shape:  (6464, 4)
+testY shape:  (2020,)
+valX shape:  (1616, 128, 128, 3)
+valY shape:  (1616, 4)
+[INFO] compiling model...
+Model: "sequential_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ inception_v3 (Functional)   (None, 2, 2, 2048)        21802784  
+                                                                 
+ global_average_pooling2d_1   (None, 2048)             0         
+ (GlobalAveragePooling2D)                                        
+                                                                 
+ dropout_1 (Dropout)         (None, 2048)              0         
+                                                                 
+ flatten_1 (Flatten)         (None, 2048)              0         
+                                                                 
+ dense_1 (Dense)             (None, 4)                 8196      
+                                                                 
+=================================================================
+Total params: 21,810,980
+Trainable params: 8,196
+Non-trainable params: 21,802,784
+_________________________________________________________________
+None
+bat dau fit model InceptionV3
+2023-12-04 11:29:35.935359: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 1270874112 exceeds 10% of free system memory.
+Epoch 1/54
+270/270 [==============================] - 178s 643ms/step - loss: 0.2160 - accuracy: 0.9336 - val_loss: 0.0493 - val_accuracy: 0.9876
+Epoch 2/54
+270/270 [==============================] - 170s 631ms/step - loss: 0.0386 - accuracy: 0.9887 - val_loss: 0.0331 - val_accuracy: 0.9901
+Epoch 3/54
+270/270 [==============================] - 164s 607ms/step - loss: 0.0342 - accuracy: 0.9884 - val_loss: 0.0343 - val_accuracy: 0.9913
+Epoch 4/54
+270/270 [==============================] - 171s 635ms/step - loss: 0.0247 - accuracy: 0.9916 - val_loss: 0.0296 - val_accuracy: 0.9913
+Epoch 5/54
+270/270 [==============================] - 178s 661ms/step - loss: 0.0231 - accuracy: 0.9938 - val_loss: 0.0267 - val_accuracy: 0.9938
+Epoch 6/54
+270/270 [==============================] - 171s 634ms/step - loss: 0.0141 - accuracy: 0.9947 - val_loss: 0.0239 - val_accuracy: 0.9913
+Epoch 7/54
+270/270 [==============================] - 159s 590ms/step - loss: 0.0125 - accuracy: 0.9960 - val_loss: 0.0209 - val_accuracy: 0.9950
+Epoch 8/54
+270/270 [==============================] - 158s 587ms/step - loss: 0.0121 - accuracy: 0.9958 - val_loss: 0.0157 - val_accuracy: 0.9963
+Epoch 9/54
+270/270 [==============================] - 158s 587ms/step - loss: 0.0112 - accuracy: 0.9963 - val_loss: 0.0224 - val_accuracy: 0.9950
+Epoch 10/54
+270/270 [==============================] - 158s 587ms/step - loss: 0.0153 - accuracy: 0.9949 - val_loss: 0.0200 - val_accuracy: 0.9963
+Epoch 11/54
+270/270 [==============================] - 159s 589ms/step - loss: 0.0136 - accuracy: 0.9963 - val_loss: 0.0154 - val_accuracy: 0.9950
+new_model:   <keras.engine.sequential.Sequential object at 0x7f7ef8576bf0>
+prepare save new_model:
+bat dau kiem tra model: 
+2023-12-04 12:00:03.054034: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 397148160 exceeds 10% of free system memory.
+64/64 [==============================] - 41s 617ms/step
+accuracy 2:  99.60396039603961
+precision 2:  99.38524590163934
+recall 2:  99.58932238193019
+f1_score 2:  99.48717948717949
+===========================================================================================
+LAN 3
+[['../data_cropped/at_home/lie/lie_wake_1691.jpg', 0], ['../data_cropped/at_home/stand/stand_1782.jpg', 2], ['../data_cropped/at_home/lie/lie_wake_697.jpg', 0], ['../data_cropped/at_home/minus/item_2301.jpg', 3], ['../data_cropped/at_home/minus/item_2563.jpg', 3], ['../data_cropped/at_home/lie/lie_wake_2138.jpg', 0], ['../data_cropped/at_home/sit/sit_sleep_639.jpg', 1], ['../data_cropped/at_home/stand/stand_1710.jpg', 2], ['../data_cropped/at_home/minus/item_256.jpg', 3], ['../data_cropped/at_home/stand/stand_1268.jpg', 2]]
+Chuan bi doc anh tu folder: 
+scale raw pixel / 255.0
+train test split
+trainX shape:  (6464, 128, 128, 3)
+testX shape:  (2020, 128, 128, 3)
+trainY shape:  (6464, 4)
+testY shape:  (2020,)
+valX shape:  (1616, 128, 128, 3)
+valY shape:  (1616, 4)
+[INFO] compiling model...
+Model: "sequential_2"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ inception_v3 (Functional)   (None, 2, 2, 2048)        21802784  
+                                                                 
+ global_average_pooling2d_2   (None, 2048)             0         
+ (GlobalAveragePooling2D)                                        
+                                                                 
+ dropout_2 (Dropout)         (None, 2048)              0         
+                                                                 
+ flatten_2 (Flatten)         (None, 2048)              0         
+                                                                 
+ dense_2 (Dense)             (None, 4)                 8196      
+                                                                 
+=================================================================
+Total params: 21,810,980
+Trainable params: 8,196
+Non-trainable params: 21,802,784
+_________________________________________________________________
+None
+bat dau fit model InceptionV3
+2023-12-04 12:01:03.660170: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 1270874112 exceeds 10% of free system memory.
+Epoch 1/54
+270/270 [==============================] - 163s 590ms/step - loss: 0.2259 - accuracy: 0.9325 - val_loss: 0.0261 - val_accuracy: 0.9938
+Epoch 2/54
+270/270 [==============================] - 157s 583ms/step - loss: 0.0523 - accuracy: 0.9847 - val_loss: 0.0265 - val_accuracy: 0.9932
+Epoch 3/54
+270/270 [==============================] - 157s 583ms/step - loss: 0.0294 - accuracy: 0.9901 - val_loss: 0.0151 - val_accuracy: 0.9957
+Epoch 4/54
+270/270 [==============================] - 157s 581ms/step - loss: 0.0211 - accuracy: 0.9918 - val_loss: 0.0231 - val_accuracy: 0.9944
+Epoch 5/54
+270/270 [==============================] - 157s 583ms/step - loss: 0.0228 - accuracy: 0.9924 - val_loss: 0.0240 - val_accuracy: 0.9950
+Epoch 6/54
+270/270 [==============================] - 157s 582ms/step - loss: 0.0157 - accuracy: 0.9955 - val_loss: 0.0239 - val_accuracy: 0.9963
+Epoch 7/54
+270/270 [==============================] - 158s 584ms/step - loss: 0.0102 - accuracy: 0.9961 - val_loss: 0.0216 - val_accuracy: 0.9944
+Epoch 8/54
+270/270 [==============================] - 158s 585ms/step - loss: 0.0132 - accuracy: 0.9955 - val_loss: 0.0264 - val_accuracy: 0.9938
+Epoch 9/54
+270/270 [==============================] - 159s 588ms/step - loss: 0.0130 - accuracy: 0.9960 - val_loss: 0.0324 - val_accuracy: 0.9926
+new_model:   <keras.engine.sequential.Sequential object at 0x7f7f0c570be0>
+prepare save new_model:
+bat dau kiem tra model: 
+64/64 [==============================] - 41s 614ms/step
+accuracy 3:  99.15841584158416
+precision 3:  98.5655737704918
+recall 3:  99.17525773195877
+f1_score 3:  98.86947584789311
+===========================================================================================
+LAN 4
+[['../data_cropped/at_home/minus/item_603.jpg', 3], ['../data_cropped/at_home/stand/stand_569.jpg', 2], ['../data_cropped/at_home/minus/item_662.jpg', 3], ['../data_cropped/at_home/minus/item_1306.jpg', 3], ['../data_cropped/at_home/lie/lie_wake_725.jpg', 0], ['../data_cropped/at_home/minus/item_1877.jpg', 3], ['../data_cropped/at_home/lie/lie_wake_750.jpg', 0], ['../data_cropped/at_home/sit/sit_sleep_1839.jpg', 1], ['../data_cropped/at_home/sit/sit_sleep_964.jpg', 1], ['../data_cropped/at_home/stand/stand_1786.jpg', 2]]
+Chuan bi doc anh tu folder: 
+scale raw pixel / 255.0
+train test split
+trainX shape:  (6464, 128, 128, 3)
+testX shape:  (2020, 128, 128, 3)
+trainY shape:  (6464, 4)
+testY shape:  (2020,)
+valX shape:  (1616, 128, 128, 3)
+valY shape:  (1616, 4)
+[INFO] compiling model...
+Model: "sequential_3"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ inception_v3 (Functional)   (None, 2, 2, 2048)        21802784  
+                                                                 
+ global_average_pooling2d_3   (None, 2048)             0         
+ (GlobalAveragePooling2D)                                        
+                                                                 
+ dropout_3 (Dropout)         (None, 2048)              0         
+                                                                 
+ flatten_3 (Flatten)         (None, 2048)              0         
+                                                                 
+ dense_3 (Dense)             (None, 4)                 8196      
+                                                                 
+=================================================================
+Total params: 21,810,980
+Trainable params: 8,196
+Non-trainable params: 21,802,784
+_________________________________________________________________
+None
+bat dau fit model InceptionV3
+Epoch 1/54
+270/270 [==============================] - 163s 590ms/step - loss: 0.2282 - accuracy: 0.9377 - val_loss: 0.0368 - val_accuracy: 0.9913
+Epoch 2/54
+270/270 [==============================] - 157s 582ms/step - loss: 0.0556 - accuracy: 0.9836 - val_loss: 0.0262 - val_accuracy: 0.9913
+Epoch 3/54
+270/270 [==============================] - 157s 583ms/step - loss: 0.0280 - accuracy: 0.9906 - val_loss: 0.0191 - val_accuracy: 0.9932
+Epoch 4/54
+270/270 [==============================] - 157s 582ms/step - loss: 0.0199 - accuracy: 0.9941 - val_loss: 0.0211 - val_accuracy: 0.9938
+Epoch 5/54
+270/270 [==============================] - 158s 584ms/step - loss: 0.0157 - accuracy: 0.9946 - val_loss: 0.0202 - val_accuracy: 0.9938
+Epoch 6/54
+270/270 [==============================] - 158s 585ms/step - loss: 0.0160 - accuracy: 0.9938 - val_loss: 0.0265 - val_accuracy: 0.9920
+Epoch 7/54
+270/270 [==============================] - 158s 586ms/step - loss: 0.0149 - accuracy: 0.9946 - val_loss: 0.0257 - val_accuracy: 0.9938
+new_model:   <keras.engine.sequential.Sequential object at 0x7f7f0c312890>
+prepare save new_model:
+bat dau kiem tra model: 
+64/64 [==============================] - 41s 617ms/step
+accuracy 4:  99.20792079207921
+precision 4:  99.56803455723542
+recall 4:  97.66949152542372
+f1_score 4:  98.6096256684492
+===========================================================================================
+LAN 5
+[['../data_cropped/at_home/minus/item_1666.jpg', 3], ['../data_cropped/at_home/minus/item_2349.jpg', 3], ['../data_cropped/at_home/minus/item_1051.jpg', 3], ['../data_cropped/at_home/lie/lie_wake_57.jpg', 0], ['../data_cropped/at_home/stand/stand_1701.jpg', 2], ['../data_cropped/at_home/minus/item_2586.jpg', 3], ['../data_cropped/at_home/stand/stand_1868.jpg', 2], ['../data_cropped/at_home/minus/item_695.jpg', 3], ['../data_cropped/at_home/sit/sit_sleep_777.jpg', 1], ['../data_cropped/at_home/lie/lie_wake_2238.jpg', 0]]
+Chuan bi doc anh tu folder: 
+scale raw pixel / 255.0
+train test split
+trainX shape:  (6464, 128, 128, 3)
+testX shape:  (2020, 128, 128, 3)
+trainY shape:  (6464, 4)
+testY shape:  (2020,)
+valX shape:  (1616, 128, 128, 3)
+valY shape:  (1616, 4)
+[INFO] compiling model...
+Model: "sequential_4"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ inception_v3 (Functional)   (None, 2, 2, 2048)        21802784  
+                                                                 
+ global_average_pooling2d_4   (None, 2048)             0         
+ (GlobalAveragePooling2D)                                        
+                                                                 
+ dropout_4 (Dropout)         (None, 2048)              0         
+                                                                 
+ flatten_4 (Flatten)         (None, 2048)              0         
+                                                                 
+ dense_4 (Dense)             (None, 4)                 8196      
+                                                                 
+=================================================================
+Total params: 21,810,980
+Trainable params: 8,196
+Non-trainable params: 21,802,784
+_________________________________________________________________
+None
+bat dau fit model InceptionV3
+Epoch 1/54
+270/270 [==============================] - 164s 591ms/step - loss: 0.2258 - accuracy: 0.9355 - val_loss: 0.0551 - val_accuracy: 0.9839
+Epoch 2/54
+270/270 [==============================] - 157s 583ms/step - loss: 0.0518 - accuracy: 0.9838 - val_loss: 0.0243 - val_accuracy: 0.9926
+Epoch 3/54
+270/270 [==============================] - 158s 584ms/step - loss: 0.0322 - accuracy: 0.9892 - val_loss: 0.0289 - val_accuracy: 0.9920
+Epoch 4/54
+270/270 [==============================] - 157s 582ms/step - loss: 0.0206 - accuracy: 0.9929 - val_loss: 0.0397 - val_accuracy: 0.9907
+Epoch 5/54
+270/270 [==============================] - 157s 582ms/step - loss: 0.0207 - accuracy: 0.9940 - val_loss: 0.0317 - val_accuracy: 0.9907
+new_model:   <keras.engine.sequential.Sequential object at 0x7f7f76344b20>
+prepare save new_model:
+bat dau kiem tra model: 
+64/64 [==============================] - 40s 614ms/step
+accuracy 5:  99.70297029702971
+precision 5:  99.61612284069098
+recall 5:  99.42528735632183
+f1_score 5:  99.52061361457334
+===========================================================================================
+LAN 6
+[['../data_cropped/at_home/sit/sit_sleep_1019.jpg', 1], ['../data_cropped/at_home/stand/stand_609.jpg', 2], ['../data_cropped/at_home/sit/sit_sleep_1084.jpg', 1], ['../data_cropped/at_home/minus/item_367.jpg', 3], ['../data_cropped/at_home/minus/item_1840.jpg', 3], ['../data_cropped/at_home/sit/sit_sleep_515.jpg', 1], ['../data_cropped/at_home/minus/item_1854.jpg', 3], ['../data_cropped/at_home/sit/sit_sleep_928.jpg', 1], ['../data_cropped/at_home/sit/sit_sleep_1562.jpg', 1], ['../data_cropped/at_home/stand/stand_592.jpg', 2]]
+Chuan bi doc anh tu folder: 
+scale raw pixel / 255.0
+train test split
+trainX shape:  (6464, 128, 128, 3)
+testX shape:  (2020, 128, 128, 3)
+trainY shape:  (6464, 4)
+testY shape:  (2020,)
+valX shape:  (1616, 128, 128, 3)
+valY shape:  (1616, 4)
+[INFO] compiling model...
+Model: "sequential_5"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ inception_v3 (Functional)   (None, 2, 2, 2048)        21802784  
+                                                                 
+ global_average_pooling2d_5   (None, 2048)             0         
+ (GlobalAveragePooling2D)                                        
+                                                                 
+ dropout_5 (Dropout)         (None, 2048)              0         
+                                                                 
+ flatten_5 (Flatten)         (None, 2048)              0         
+                                                                 
+ dense_5 (Dense)             (None, 4)                 8196      
+                                                                 
+=================================================================
+Total params: 21,810,980
+Trainable params: 8,196
+Non-trainable params: 21,802,784
+_________________________________________________________________
+None
+bat dau fit model InceptionV3
+Epoch 1/54
+270/270 [==============================] - 163s 587ms/step - loss: 0.2302 - accuracy: 0.9327 - val_loss: 0.0426 - val_accuracy: 0.9895
+Epoch 2/54
+270/270 [==============================] - 157s 584ms/step - loss: 0.0505 - accuracy: 0.9828 - val_loss: 0.0228 - val_accuracy: 0.9938
+Epoch 3/54
+270/270 [==============================] - 158s 585ms/step - loss: 0.0382 - accuracy: 0.9890 - val_loss: 0.0129 - val_accuracy: 0.9963
+Epoch 4/54
+270/270 [==============================] - 158s 585ms/step - loss: 0.0253 - accuracy: 0.9907 - val_loss: 0.0171 - val_accuracy: 0.9950
+Epoch 5/54
+270/270 [==============================] - 158s 585ms/step - loss: 0.0243 - accuracy: 0.9921 - val_loss: 0.0142 - val_accuracy: 0.9963
+Epoch 6/54
+270/270 [==============================] - 158s 586ms/step - loss: 0.0163 - accuracy: 0.9943 - val_loss: 0.0196 - val_accuracy: 0.9963
+new_model:   <keras.engine.sequential.Sequential object at 0x7f7f0c6f4670>
+prepare save new_model:
+bat dau kiem tra model: 
+64/64 [==============================] - 40s 610ms/step
+accuracy 6:  99.55445544554455
+precision 6:  100.0
+recall 6:  99.41747572815534
+f1_score 6:  99.70788704965919
+===========================================================================================
+accuracyArr:  [99.35643564356435, 99.60396039603961, 99.15841584158416, 99.20792079207921, 99.70297029702971, 99.55445544554455]
+f1_scoreArr:  [99.16492693110646, 99.48717948717949, 98.86947584789311, 98.6096256684492, 99.52061361457334, 99.70788704965919]
+recallArr:  [98.34368530020704, 99.58932238193019, 99.17525773195877, 97.66949152542372, 99.42528735632183, 99.41747572815534]
+precisionArr:  [100.0, 99.38524590163934, 98.5655737704918, 99.56803455723542, 99.61612284069098, 100.0]
+timeTrainArr:  [2024.7912983894348, 1827.1196329593658, 1423.5932278633118, 1109.0049331188202, 794.1038694381714, 952.825742483139]
+timePredictArr:  [43.43550515174866, 40.91471266746521, 41.05905103683472, 40.94399428367615, 40.79930067062378, 40.50891351699829]
+AVG 6 LAN    -    TOTAL TIME: 141.4
+Accuracy: 99.43069306930693
+F1 Score: 99.22661809981014
+Recall: 98.9367533373328
+Precision: 99.52249617834293
+Time train InceptionV3:  1355.2397840420406
+Time predict InceptionV3:  41.276912887891136
+ dat@meandark  ~/LV/train_pose_loop  
+

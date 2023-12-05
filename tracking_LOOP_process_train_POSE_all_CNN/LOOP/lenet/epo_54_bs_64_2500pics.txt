@@ -1,0 +1,81 @@
+
+E:\CTU\LUAN_VAN_2023>python train_pose_lenet_beta.py
+[['./data_cropped/at_home/sit/sit_1964.jpg', 1], ['./data_cropped/at_home/lie/lie_wake_1767.jpg', 0], ['./data_cropped/at_home/minus/item_554.jpg', 3], ['./data_cropped/at_home/minus/item_1688.jpg', 3], ['./data_cropped/at_home/sit/sit_1127.jpg', 1], ['./data_cropped/at_home/lie/lie_wake_2435.jpg', 0], ['./data_cropped/at_home/lie/lie_wake_2286.jpg', 0], ['./data_cropped/at_home/stand/stand_2036.jpg', 2], ['./data_cropped/at_home/lie/lie_wake_798.jpg', 0], ['./data_cropped/at_home/minus/item_267.jpg', 3]]
+Chuan bi doc anh tu folder:
+scale raw pixel / 255.0
+train test split
+trainX shape:  (6464, 128, 128, 3)
+testX shape:  (2020, 128, 128, 3)
+trainY shape:  (6464, 4)
+testY shape:  (2020,)
+valX shape:  (1616, 128, 128, 3)
+valY shape:  (1616, 4)
+[INFO] compiling model...
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ conv2d (Conv2D)             (None, 128, 128, 32)      2432
+
+ max_pooling2d (MaxPooling2D  (None, 64, 64, 32)       0
+ )
+
+ conv2d_1 (Conv2D)           (None, 60, 60, 48)        38448
+
+ max_pooling2d_1 (MaxPooling  (None, 30, 30, 48)       0
+ 2D)
+
+ flatten (Flatten)           (None, 43200)             0
+
+ dense (Dense)               (None, 256)               11059456
+
+ dense_1 (Dense)             (None, 84)                21588
+
+ dense_2 (Dense)             (None, 4)                 340
+
+=================================================================
+Total params: 11,122,264
+Trainable params: 11,122,264
+Non-trainable params: 0
+_________________________________________________________________
+None
+bat dau fit model
+2023-11-17 16:28:32.335705: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 1270874112 exceeds 10% of free system memory.
+Epoch 1/54
+2023-11-17 16:28:36.139808: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.24GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+101/101 [==============================] - 12s 91ms/step - loss: 0.1920 - accuracy: 0.9451 - val_loss: 0.0223 - val_accuracy: 0.9926
+Epoch 2/54
+101/101 [==============================] - 8s 83ms/step - loss: 0.0241 - accuracy: 0.9935 - val_loss: 0.0631 - val_accuracy: 0.9790
+Epoch 3/54
+101/101 [==============================] - 8s 83ms/step - loss: 0.0282 - accuracy: 0.9903 - val_loss: 0.0188 - val_accuracy: 0.9957
+Epoch 4/54
+101/101 [==============================] - 8s 84ms/step - loss: 0.0028 - accuracy: 0.9994 - val_loss: 0.0127 - val_accuracy: 0.9981
+Epoch 5/54
+101/101 [==============================] - 8s 84ms/step - loss: 0.0027 - accuracy: 0.9994 - val_loss: 0.0178 - val_accuracy: 0.9963
+Epoch 6/54
+101/101 [==============================] - 8s 84ms/step - loss: 0.0032 - accuracy: 0.9995 - val_loss: 0.0122 - val_accuracy: 0.9975
+Epoch 7/54
+101/101 [==============================] - 8s 84ms/step - loss: 0.0023 - accuracy: 0.9995 - val_loss: 0.0146 - val_accuracy: 0.9981
+Epoch 8/54
+101/101 [==============================] - 8s 84ms/step - loss: 0.0026 - accuracy: 0.9991 - val_loss: 0.0298 - val_accuracy: 0.9969
+Epoch 9/54
+101/101 [==============================] - 8s 84ms/step - loss: 0.0019 - accuracy: 0.9995 - val_loss: 0.0166 - val_accuracy: 0.9969
+Epoch 10/54
+101/101 [==============================] - 8s 84ms/step - loss: 0.0027 - accuracy: 0.9995 - val_loss: 0.0167 - val_accuracy: 0.9981
+new_model:   <keras.engine.sequential.Sequential object at 0x0000021B3C7A4CD0>
+prepare save new_model:
+bat dau kiem tra model:
+2023-11-17 16:30:02.372594: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 532.01MiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+64/64 [==============================] - 1s 16ms/step
+E:\CTU\LUAN_VAN_2023\train_pose_lenet_beta.py:150: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels([''] + categories)
+E:\CTU\LUAN_VAN_2023\train_pose_lenet_beta.py:151: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_yticklabels([''] + categories)
+Accuracy: 99.8019801980198
+F1 Score: 100.0
+Recall: 100.0
+Precision: 100.0
+Time train Lenet:  1.49
+Time predict Lenet:  0.03
+
+E:\CTU\LUAN_VAN_2023>

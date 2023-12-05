@@ -1,0 +1,74 @@
+
+E:\CTU\LUAN_VAN_2023>python train_pose_denseNet121_beta.py
+[['./data_cropped/at_home/lie/lie_wake_57.jpg', 0], ['./data_cropped/at_home/lie/lie_wake_627.jpg', 0], ['./data_cropped/at_home/minus/item_2079.jpg', 3], ['./data_cropped/at_home/lie/lie_wake_753.jpg', 0], ['./data_cropped/at_home/minus/item_1102.jpg', 3], ['./data_cropped/at_home/minus/item_1215.jpg', 3], ['./data_cropped/at_home/sit/sit_1551.jpg', 1], ['./data_cropped/at_home/lie/lie_wake_1189.jpg', 0], ['./data_cropped/at_home/lie/lie_wake_726.jpg', 0], ['./data_cropped/at_home/stand/stand_1816.jpg', 2]]
+Chuan bi doc anh tu folder:
+scale raw pixel / 255.0
+train test split
+trainX shape:  (6464, 128, 128, 3)
+testX shape:  (2020, 128, 128, 3)
+trainY shape:  (6464, 4)
+testY shape:  (2020,)
+valX shape:  (1616, 128, 128, 3)
+valY shape:  (1616, 4)
+[INFO] compiling model...
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ densenet121 (Functional)    (None, 4, 4, 1024)        7037504
+
+ global_average_pooling2d (G  (None, 1024)             0
+ lobalAveragePooling2D)
+
+ dropout (Dropout)           (None, 1024)              0
+
+ flatten (Flatten)           (None, 1024)              0
+
+ dense (Dense)               (None, 4)                 4100
+
+=================================================================
+Total params: 7,041,604
+Trainable params: 4,100
+Non-trainable params: 7,037,504
+_________________________________________________________________
+None
+bat dau fit model DenseNet121
+2023-11-17 15:23:16.490666: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 1270874112 exceeds 10% of free system memory.
+Epoch 1/54
+270/270 [==============================] - 50s 122ms/step - loss: 0.3880 - accuracy: 0.8721 - val_loss: 0.0189 - val_accuracy: 0.9981
+Epoch 2/54
+270/270 [==============================] - 29s 108ms/step - loss: 0.0563 - accuracy: 0.9842 - val_loss: 0.0119 - val_accuracy: 0.9981
+Epoch 3/54
+270/270 [==============================] - 29s 108ms/step - loss: 0.0319 - accuracy: 0.9913 - val_loss: 0.0092 - val_accuracy: 0.9988
+Epoch 4/54
+270/270 [==============================] - 29s 109ms/step - loss: 0.0223 - accuracy: 0.9952 - val_loss: 0.0078 - val_accuracy: 0.9994
+Epoch 5/54
+270/270 [==============================] - 29s 109ms/step - loss: 0.0189 - accuracy: 0.9947 - val_loss: 0.0064 - val_accuracy: 0.9994
+Epoch 6/54
+270/270 [==============================] - 31s 115ms/step - loss: 0.0176 - accuracy: 0.9950 - val_loss: 0.0056 - val_accuracy: 0.9994
+Epoch 7/54
+270/270 [==============================] - 32s 120ms/step - loss: 0.0133 - accuracy: 0.9972 - val_loss: 0.0050 - val_accuracy: 0.9994
+Epoch 8/54
+270/270 [==============================] - 33s 124ms/step - loss: 0.0131 - accuracy: 0.9978 - val_loss: 0.0041 - val_accuracy: 0.9994
+Epoch 9/54
+270/270 [==============================] - 31s 116ms/step - loss: 0.0124 - accuracy: 0.9972 - val_loss: 0.0045 - val_accuracy: 0.9994
+Epoch 10/54
+270/270 [==============================] - 29s 109ms/step - loss: 0.0104 - accuracy: 0.9972 - val_loss: 0.0043 - val_accuracy: 0.9994
+new_model:   <keras.engine.sequential.Sequential object at 0x0000021B0205EC40>
+prepare save new_model:
+bat dau kiem tra model:
+2023-11-17 15:28:49.438363: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.21GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+63/64 [============================>.] - ETA: 0s2023-11-17 15:28:56.475100: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.15GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+64/64 [==============================] - 12s 110ms/step
+E:\CTU\LUAN_VAN_2023\train_pose_denseNet121_beta.py:156: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels([''] + categories)
+E:\CTU\LUAN_VAN_2023\train_pose_denseNet121_beta.py:157: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_yticklabels([''] + categories)
+Accuracy: 100.0
+F1 Score: 100.0
+Recall: 100.0
+Precision: 100.0
+Time train DenseNet121:  5.43
+Time predict DenseNet121:  0.21
+
+E:\CTU\LUAN_VAN_2023>

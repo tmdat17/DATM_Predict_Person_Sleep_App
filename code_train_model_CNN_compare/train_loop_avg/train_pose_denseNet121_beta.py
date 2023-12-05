@@ -123,19 +123,21 @@ while i <= AVG:
     print("valY shape: ", valY.shape)
 
 
-    EPOCHS = 54
+    EPOCHS = 20
     INIT_LR = 1e-3
     BS = 64
 
-    class_names = categories
 
     print("[INFO] compiling model...")
-    DenseNet121 = DenseNet121(input_shape=(WIDTH, HEIGHT, 3), include_top=False, weights='imagenet')
-    for layer in DenseNet121.layers:
+    denseNet121 = DenseNet121(input_shape=(WIDTH, HEIGHT, 3), include_top=False, weights='imagenet')
+    for layer in denseNet121.layers:
         layer.trainable = False
 
+    class_names = categories
+    
+    
     model = Sequential()
-    model.add(DenseNet121)
+    model.add(denseNet121)
     # model.add(layers.AveragePooling2D((8, 8), padding='valid', name='avg_pool'))
     model.add(GlobalAveragePooling2D())
     model.add(layers.Dropout(0.5))
@@ -147,7 +149,7 @@ while i <= AVG:
 
 
     print("bat dau fit model DenseNet121")
-    early_stopping = EarlyStopping(monitor='val_accuracy', patience=3)
+    early_stopping = EarlyStopping(monitor='val_accuracy', patience=4)
     # early_stopping = EarlyStopping(monitor='val_loss', patience=10)
     start_time = time.time()
     history = model.fit(trainX, trainY, batch_size=BS, epochs=EPOCHS, validation_data=(valX, valY), verbose=1, callbacks=[early_stopping])

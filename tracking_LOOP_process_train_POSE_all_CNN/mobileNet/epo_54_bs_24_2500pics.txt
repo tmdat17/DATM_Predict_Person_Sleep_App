@@ -1,0 +1,71 @@
+
+E:\CTU\LUAN_VAN_2023>python train_pose_mobileNet_beta.py
+[['./data_cropped/at_home/sit/sit_2171.jpg', 1], ['./data_cropped/at_home/stand/stand_28.jpg', 2], ['./data_cropped/at_home/stand/stand_1063.jpg', 2], ['./data_cropped/at_home/lie/lie_wake_1662.jpg', 0], ['./data_cropped/at_home/lie/lie_wake_602.jpg', 0], ['./data_cropped/at_home/minus/item_870.jpg', 3], ['./data_cropped/at_home/stand/stand_1199.jpg', 2], ['./data_cropped/at_home/minus/item_376.jpg', 3], ['./data_cropped/at_home/minus/item_889.jpg', 3], ['./data_cropped/at_home/sit/sit_2410.jpg', 1]]
+Chuan bi doc anh tu folder:
+scale raw pixel / 255.0
+train test split
+trainX shape:  (6464, 128, 128, 3)
+testX shape:  (2020, 128, 128, 3)
+trainY shape:  (6464, 4)
+testY shape:  (2020,)
+valX shape:  (1616, 128, 128, 3)
+valY shape:  (1616, 4)
+[INFO] compiling model...
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ mobilenet_1.00_128 (Functio  (None, 4, 4, 1024)       3228864
+ nal)
+
+ global_average_pooling2d (G  (None, 1024)             0
+ lobalAveragePooling2D)
+
+ dropout (Dropout)           (None, 1024)              0
+
+ flatten (Flatten)           (None, 1024)              0
+
+ dense (Dense)               (None, 4)                 4100
+
+=================================================================
+Total params: 3,232,964
+Trainable params: 4,100
+Non-trainable params: 3,228,864
+_________________________________________________________________
+None
+bat dau fit model MobileNet
+2023-11-24 08:28:07.453713: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 1270874112 exceeds 10% of free system memory.
+Epoch 1/54
+2023-11-24 08:28:11.597557: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.32GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+269/270 [============================>.] - ETA: 0s - loss: 0.1813 - accuracy: 0.93822023-11-24 08:28:21.081700: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.29GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+270/270 [==============================] - 16s 47ms/step - loss: 0.1811 - accuracy: 0.9383 - val_loss: 0.0054 - val_accuracy: 0.9994
+Epoch 2/54
+270/270 [==============================] - 12s 43ms/step - loss: 0.0159 - accuracy: 0.9961 - val_loss: 0.0024 - val_accuracy: 1.0000
+Epoch 3/54
+270/270 [==============================] - 11s 42ms/step - loss: 0.0085 - accuracy: 0.9988 - val_loss: 0.0019 - val_accuracy: 0.9994
+Epoch 4/54
+270/270 [==============================] - 12s 43ms/step - loss: 0.0062 - accuracy: 0.9986 - val_loss: 9.3411e-04 - val_accuracy: 1.0000
+Epoch 5/54
+270/270 [==============================] - 12s 43ms/step - loss: 0.0045 - accuracy: 0.9994 - val_loss: 0.0010 - val_accuracy: 1.0000
+Epoch 6/54
+270/270 [==============================] - 12s 43ms/step - loss: 0.0044 - accuracy: 0.9991 - val_loss: 0.0014 - val_accuracy: 0.9994
+Epoch 7/54
+270/270 [==============================] - 12s 43ms/step - loss: 0.0052 - accuracy: 0.9991 - val_loss: 9.8244e-04 - val_accuracy: 1.0000
+Epoch 8/54
+270/270 [==============================] - 12s 43ms/step - loss: 0.0045 - accuracy: 0.9988 - val_loss: 7.9524e-04 - val_accuracy: 0.9994
+new_model:   <keras.engine.sequential.Sequential object at 0x000001D6E52DDA30>
+prepare save new_model:
+bat dau kiem tra model:
+2023-11-24 08:29:46.730991: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.18GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+2023-11-24 08:29:46.752177: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.34GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+63/64 [============================>.] - ETA: 0s2023-11-24 08:29:49.313788: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.15GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+2023-11-24 08:29:49.330841: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.28GiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+64/64 [==============================] - 3s 41ms/step
+Accuracy: 99.9009900990099
+F1 Score: 99.8965873836608
+Recall: 99.79338842975206
+Precision: 100.0
+Time train mobileNet:  1.64
+Time predict mobileNet:  0.07
+
+E:\CTU\LUAN_VAN_2023>
